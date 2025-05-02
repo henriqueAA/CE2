@@ -1,0 +1,780 @@
+<script>
+	var blockPyScript = true;
+</script>
+
+<!doctype html>
+<html lang="en">
+
+	<head>
+		<meta charset="utf-8">
+
+		<title>Aulas - Prof. Henrique Amorim</title>
+		
+		<meta name="author" content="Henrique Amorim">
+
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+
+		<!-- --------- Reveal Base Styles --------- -->			
+		
+		<link rel="stylesheet" href="../../reveal.js-master/dist/reset.css">		
+		<link rel="stylesheet" href="../../reveal.js-master/dist/reveal.css">
+		<link rel="stylesheet" href="../../reveal.js-master/dist/theme/white.css" id="theme">
+		<link rel="stylesheet" href="../../reveal.js-master/plugin/highlight/monokai.css">  <!-- Theme used for syntax highlighting of code -->
+		<link rel="stylesheet" href="../../reveal.js-master/plugin/title-footer/title-footer.css">
+
+
+		
+		<!-- Miscellaneous -->
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+		
+		<!-- Base CSS -->
+		<!-- <link rel="stylesheet" href="../../css/general.css">			 -->
+		<link rel="stylesheet" href="layout.css">
+		<link rel="stylesheet" href="customReveal.css">
+
+		<link rel="stylesheet" href="custom.css">		
+	</head>
+
+	<body>
+		
+
+		<dialog id="loading" class="hidden">
+			<div class="loading-content">
+				<div class="spinner"></div>
+				<p>Carregando...</p>
+			</div>
+		</dialog>
+		    
+
+		<div class="reveal" id="mainReveal">					
+			<div class="slides">
+				
+				<section data-state="no-toc-progress">
+					<div class="display-flex justify-center items-center h-100 ">
+						<img src="../../media/images-base/capa.png" class="capa" alt="">
+						<p class="titte-app">
+							Amplificadores Operacionais<br>
+							<span class="font-bold">Introdução</span>						
+						</p>
+						<h1 style="display: none;">Prof. Henrique Amorim - UNIFESP - ICT - Engenharia Biomédica</h1>
+					</div>
+
+				</section>			
+				<section>
+					<div class="slide-title">
+						<h1>Amplificadores Operacionais - Definição</h1>
+					</div>
+					<div class="slide-content">
+						<div class="font-size-4">							
+							<p class="mb-3 line-height-6"><span class="font-bold  font-size-5 text-blue-primary-700">Definição:</span> O amplificador operacional (AmpOp) é um dispositivo eletrônico composto por múltiplos estágios de amplificação, projetado para oferecer alto ganho, elevada impedância de entrada e operação com entrada diferencial.</p>
+						
+							<p class="font-bold mb-3 font-size-5 text-blue-primary-700">Origem do nome:</p>
+							<ul>
+								<li class="line-height-6"><span class="font-bold">Amplificador:</span> Baseado em circuitos amplificadores utilizando transistores, sua principal função é amplificar sinais elétricos.</li>
+								<li class="line-height-6"><span class="font-bold">Operacional:</span> Foi originalmente concebido para realizar operações matemáticas analógicas, como soma, subtração, multiplicação, divisão, média, logaritmo, exponencial, integração e derivação.</li>
+							</ul>
+						
+							<p class="font-bold mt-3 mb-3 font-size-5 text-blue-primary-700">Principais características:</p>
+							<ul>
+								<li class="line-height-6"><span class="font-bold">Múltiplos estágios:</span> Internamente, o AmpOp é constituído por uma cadeia de amplificadores em cascata, o que permite alcançar as demais características desejadas.</li>
+								<li class="line-height-6"><span class="font-bold">Ganho elevado:</span> Em malha aberta (sem realimentação), apresenta ganho de tensão extremamente alto, frequentemente superior a 10.000 vezes (ou 80 dB).</li>
+								<li class="line-height-6"><span class="font-bold">Alta impedância de entrada:</span> Possui uma impedância de entrada muito elevada, o que minimiza a corrente que flui dos sinais de entrada e evita carregamento da fonte.</li>
+								<li class="line-height-6"><span class="font-bold">Entrada diferencial:</span> A saída do amplificador é proporcional à diferença de potencial entre suas duas entradas (não inversora e inversora).</li>
+							</ul>
+						</div>
+						
+					</div>
+				</section>
+
+				<section>
+					<div class="slide-title">
+						<h1>Amplificadores Operacionais - Aplicações</h1>
+					</div>
+					<div class="slide-content">				
+						<p class="font-size-5 line-height-7 mb-5">Amplificadores operacionais são amplamente usados na <span class="font-bold">instrumentação biomédica</span>, especialmente no registro de biopotenciais como o ECG. Nesse contexto, são aplicados na amplificação e filtragem de sinais de baixa amplitude gerados pela atividade elétrica do coração.</p>
+						<div class="display-flex justify-center">
+							<img src="imgs/aplicacao_1.png" class="w-80" alt="" srcset="">		
+						</div>
+						<p class="font-size-3 text-right mr-5">Referência: <a href="https://www.ti.com/lit/ds/symlink/ina128.pdf" target="_blank">https://www.ti.com/lit/ds/symlink/ina128.pdf</a></p>
+					</div>
+				</section>
+				<section>
+					<div class="slide-title">
+						<h1>Amplificadores Operacionais - Aplicações</h1>
+					</div>
+					<div class="slide-content">				
+						<p class="font-size-5 line-height-7 mb-5">São empregados na amplificação de variações mínimas de tensão, como as produzidas por <span class="font-bold">strain gages</span> em circuitos em ponte de Wheatstone.</p>
+						<div class="display-flex justify-center mt-5">
+							<p class="circuitikz-code" idCircuit="C_SG" rescale="1.4"></p>	
+						</div>						
+					</div>
+				</section>	
+				<section>
+					<div class="slide-title">
+						<h1>Amplificadores Operacionais - Aplicações</h1>
+					</div>
+					<div class="slide-content">				
+						<p class="font-size-5 line-height-7 mb-5">Amplificadores operacionais são usados em <span class="font-bold">sistema de controle</span> i.e: controladores PID, os amplificadores são configurados para operações de multiplicação (proporcional), integração (integrativo) e derivada (derivativo)</p>
+						<div class="display-flex justify-center">
+							<p class="circuitikz-code" idCircuit="C_exemplo_PID_1" rescale="1.2"></p>
+							<p class="circuitikz-code" idCircuit="C_exemplo_PID_2" rescale="1.2"></p>
+
+						</div>						
+					</div>
+				</section>
+				<section>
+					<div class="slide-title">
+						<h1>Amplificadores Operacionais - Aplicações</h1>
+					</div>
+					<div class="slide-content">				
+						<p class="font-size-5 line-height-7 mb-5">Aplicação de amplificadores operacionais em filtros ativos: amplificação e controle da resposta em frequência.</p>
+						<div class="display-flex justify-center mt-5 mb-4">
+							<img src="imgs/filters.png" class="w-80" alt="" srcset="">		
+						</div>						
+						<p class="font-size-4 text-right mr-5">1 - Sinal amplificado</p>
+						<p class="font-size-4 text-right mr-5">2 - Após filtro passa baixas</p>
+						<p class="font-size-4 text-right mr-5">3 - Após filtro passa altas</p>
+					</div>					
+				</section>	
+				<section>
+					<div class="slide-title">
+						<h1>Amplificadores Operacionais - Anatomia/Simbologia</h1>
+					</div>					
+					<div class="slide-content">	
+						<div class="display-flex justify-center">
+							<p class="w-60 text-center font-size-6">Estágios de amplificação (transistores)</p>
+							<p class="w-40 text-center font-size-6">Simbologia</p>
+						</div>								
+						<div class="display-flex  justify-center">
+							<div class="w-60">
+								<img src="imgs/ampop_transistores.png" alt="" srcset="">
+								<p class="font-size-3 text-center">Arquitetura do amplificador operacional 741</p>	
+							</div>							
+							<div class="display-flex flex-col w-40 items-center">
+								<p class="circuitikz-code" idCircuit="C_AmpOp_Simbolo" rescale="1.6"></p>
+								<p class="w-40 text-center font-size-6 mt-4 mb-3">Referenciais</p>
+								<div class="font-size-4 mt-3">
+									<p class="mb-2">\(V_{p}\) - Entrada não inversora</p>
+									<p class="mb-2">\(V_{n}\) - Entrada inversora</p>
+									<p class="mb-2">\(+V_{cc}\) - Alimentação Positiva</p>
+									<p class="mb-2">\(-V_{cc}\) - Alimentação Negativa</p>
+									<p>\(V_{o}\) - Saída</p>
+								</div>
+							</div>	
+						</div>						
+					</div>					
+				</section>
+				<section>
+					<div class="slide-title">
+						<h1>Amplificadores Operacionais - Componente Eletrônico</h1>
+					</div>
+					<div class="slide-content">				
+						
+						<div class="display-flex justify-center items-center mb-4 font-size-6">
+							<div class="w-30 mr-6 text-center"><p>Encapsulamento DIP*</p></div>
+							<div class="w-40 ml-6 text-center"><p>Pinagem*</p></div>
+						</div>
+						<div class="display-flex justify-center items-center mt-5 mb-4">
+							<div class="w-30 mr-6"><img src="imgs/dip_ampop.png" class="w-100"></div>
+							<div class="w-40 ml-6"><img src="imgs/ampop_pins.png" class="w-100"></div>			
+						</div>						
+
+						<div class="font-size-4 text-right mt-5 mr-5">
+							<p>Lista com os amplificadores operacionais mais comuns do mercado:</p>
+							<a href="https://www.ti.com/lit/ds/symlink/lm741.pdf" target="_blank">LM741</a> | 
+							<a href="https://www.ti.com/lit/ds/symlink/lm358.pdf" target="_blank">LM358</a> | 
+							<a href="https://www.ti.com/lit/ds/symlink/lm324.pdf" target="_blank">LM324</a> | 
+							<a href="https://www.ti.com/lit/ds/symlink/tl071.pdf" target="_blank">TL071</a> | 
+							<a href="https://www.ti.com/lit/ds/symlink/tl081.pdf" target="_blank">TL081</a> | 
+							<a href="https://www.ti.com/lit/ds/symlink/tl082.pdf" target="_blank">TL082</a> | 
+							<a href="https://www.ti.com/lit/ds/symlink/ne5532.pdf" target="_blank">NE5532</a> | 
+							<a href="https://www.ti.com/lit/ds/symlink/op07.pdf" target="_blank">OP07</a> | 
+							<a href="https://www.ti.com/lit/ds/symlink/op27.pdf" target="_blank">OP27</a> | 
+							<a href="https://www.ti.com/lit/ds/symlink/opa2134.pdf" target="_blank">OPA2134</a>
+						</div>
+						<p class="font-size-4 text-right font-italic mt-6">(*) Existem variações de encapsulamento e pinagens</p>						
+					</div>					
+				</section>
+				<section>
+					<div class="slide-title">
+						<h1>Amplificadores Operacionais - Modelo Matemático</h1>
+					</div>					
+					<div class="slide-content">	
+						<div class="display-flex justify-center w-100 items-center">
+							<p class="circuitikz-code" idCircuit="C_Modelo_AmpOp" rescale="1.6"></p>
+							
+						</div>																			
+					</div>					
+				</section>						
+				<section>
+					<div class="slide-title">
+						<h1>Amplificadores Operacionais - Comportamento</h1>
+					</div>					
+					<div class="slide-content">	
+						<p class="font-size-5 mb-8">A tensão de saída não pode ultrapassar os limites \(+V_{cc}\) e \(-V_{cc}\)</p>
+						<div class="display-flex justify-center w-100">
+							<div class="w-30">
+								<p class="font-size-5 mb-5">\(V_{o}=A \cdot \left(V_{p}-V_{n}\right)\)</p>
+								<p class="font-size-5">\(V_{p}-V_{n} = \dfrac{V_{o}}{A}\)</p>
+								<p class="font-size-4 mt-5 font-italic">*Desconsiderando a queda de tensão da impedância de saída</p>
+								
+							</div>
+							<div class="w-70"><p class="circuitikz-code" idCircuit="C_AmpOp_Grafico" rescale="1.6"></p></div>
+
+						</div>						
+					</div>					
+				</section>
+				<section>
+					<div class="slide-title">
+						<h1>Malha aberta</h1>
+					</div>
+					<div class="slide-content">				
+						<p class="font-size-5">Defina o ganho (A):<span class="font-size-5" id="A_Gain_Value"></span></p>	
+						<input type="range" id="A_Gain" py-change="ampop" min="1" max="100" class="w-100" value="10">
+
+						<!-- estilo para customizar a transparência da legenda -->
+						<style>
+							#goComparador .hoverlayer{
+								fill-opacity: 0.4;
+								stroke-opacity: 1;
+							}
+						</style>
+
+						<div class="display-flex flew-gap-7 mt-7" style="height: 70%;">
+							<div class="flex-basis-60">
+								<div id="goComparador" style="height: 100%!important;"></div>
+							</div>
+							<div class="flex-basis-40">
+
+								<div class="display-flex flex-col items-center">
+									<p class="circuitikz-code mb-7" idCircuit="C_AmpOp_Malha_Aberta" rescale="1.3"></p>	
+									<p class="font-size-5 mb-5">Equações:</p>
+									<p class="font-size-4 mb-5">\(V_{n}=V_{1}\)</p>
+									<p class="font-size-4 mb-5">\(V_{p}=V_{2}\)</p>
+									<p class="font-size-4 mb-5">\(V_{1}=5 \cdot cos(\omega t) V\)</p>
+									<p class="font-size-4">\(V_{2}= 2V\)</p>
+								</div>
+							</div>
+						</div>
+
+						<script>
+							// Seleciona o input range e o elemento onde o valor será exibido
+							const rangeInput = document.getElementById('A_Gain');
+							const rangeValue = document.getElementById('A_Gain_Value');
+						
+							// Atualiza o valor exibido ao lado do range
+							rangeInput.addEventListener('input', function() {
+								rangeValue.textContent = rangeInput.value;
+							});
+						</script>	
+					</div>
+				</section>
+				<section>
+					<div class="slide-title">
+						<h1>Amplificadores Operacionais - Tabela Comparativa</h1>
+					</div>					
+					<div class="slide-content">
+						
+						<div class="display-flex justify-center items-center w-100">
+							<div class="flex-basis-50 display-flex justify-center">
+								<p class="circuitikz-code" idCircuit="C_Modelo_AmpOp" rescale="0.9"></p>
+							</div>
+							<div class="flex-basis-50 display-flex justify-center">
+								<p class="circuitikz-code" idCircuit="C_AmpOp_Simbolo" rescale="1.7"></p>
+							</div>
+						</div>
+
+						<div class="display-flex w-100 mt-5">
+							<div class="flex-basis-60">
+								<table class="font-size-5">	
+									<tr>	
+										<td colspan="2" class="font-bold text-center text-blue-primary-700"><p class="mb-3">TABELA COMPARATIVA</p></td>								
+									</tr>						
+									<tr>	
+										<td class="w-70 p-4 font-bold">Amp. Op. Ideal</td>
+										<td class="w-70 p-4 font-bold">Amp. Op. 741</td>
+									</tr>
+									<tr>	
+										<td class="p-4">\(R_{i} \rightarrow \infty \Omega\)</td>
+										<td class="p-4">\(R_{i}=2M \Omega\)</td>
+									</tr>
+									<tr>	
+										<td class="p-4">\(R_{o} = 0 \Omega\)</td>
+										<td class="p-4">\(R_{o}=75 \Omega\)</td>
+									</tr>
+									<tr>	
+										<td class="p-4">\(A \rightarrow \infty\)</td>
+										<td class="p-4">\(A=10^{5}\)</td>
+									</tr>
+								</table>
+							</div>
+							<div class="flex-basis-40 mt-5">
+								<p class="font-size-4">Comparação entre os parâmetros do modelo real do amplificador operacional 741 (um dos mais comuns no mercado) e os de um amplificador operacional ideal.</p>
+								<p class="font-size-4 mt-4">Adotaremos os parâmetros do amplificador operacional ideal para analisar seu funcionamento e principais aplicações.</p>
+							</div>
+
+						</div>
+						
+					</div>					
+				</section>					
+				<section>
+					<div class="slide-title">
+						<h1>Amplificadores Operacionais - Regiões de operação</h1>
+					</div>					
+					<div class="slide-content">	
+						<div class="text-box-5">
+							<p class="mb-5">Um amplificador operacional pode operar em duas regiões distintas: <span class="font-bold">(1)</span> região de saturação e <span class="font-bold">(2)</span> região de amplificação linear. Para que o dispositivo opere na região de amplificação linear, segundo o modelo ideal, é necessário que as tensões nos terminais de entrada inversora (\(V_{n}\)) e não inversora (\(V_{p}\)) sejam rigorosamente iguais, ou seja, \(V_{n}=V_{p}\).</p>
+							<p class="mb-5">No entanto, quando o amplificador operacional é utilizado em malha aberta (ou seja, sem realimentação), essa condição de equilíbrio entre as entradas se torna instável em dispositivos reais e, consequentemente, inviável para aplicações práticas. Nessa configuração, qualquer diferença, por menor que seja, entre  \(V_{p}\) e \(V_{n}\) será amplificada de forma significativa, fazendo com que a tensão de saída (\(V_{o}\)) atinja rapidamente um dos níveis de saturação do circuito, isto é, \(+V_{cc}\) ou \(-V_{cc}\). Como visto na simulação em malha aberta</p>
+							<p class="mb-5">A configuração em <span class="font-bold">Malha Aberta</span> é empregada quando o objetivo é comparar as tensões aplicadas às entradas inversora e não inversora do amplificador operacional. Por essa razão, o dispositivo recebe a denominação de <span class="font-bold">Comparador de Tensão</span>.</p>
+							<p class="mb-5">Para que possamos explorar os diferentes comportamentos operacionais — em especial os de natureza aritmética — do amplificador operacional ideal, é necessário adotar uma configuração com retroalimentação (majoritariamente negativa) e assumir como premissa que o dispositivo opera na região de amplificação linear.</p>
+							
+						</div>			
+					</div>					
+				</section>
+				<section>
+					<div class="slide-title">
+						<h1>Amplificadores Operacionais - <span class="text-purple-secondary-900">Primeira restrição</span></h1>
+					</div>					
+					<div class="slide-content">	
+						<div class="text-box-5">
+							<p>Considerando que a impedância de entrada de um amplificador operacional é elevada, a corrente que flui para seus terminais de entrada é extremamente baixa. No modelo ideal, assume-se que a impedância de entrada tende ao infinito, o que implica que as correntes de entrada são nulas, ou seja, (\(I_{n}=I_{p}=0A\)).</p>
+							<div class="display-flex w-100 mt-8">
+								<div class="flex-basis-50 font-size-5">
+									<p class="mb-5 text-center">\(R_{i} \rightarrow \infty \Omega\)</p>
+									<p class="text-center mt-3">\(I_{n} = 0A; \quad I_{p} = 0A;\)</p>
+									<p class="text-center mt-9 font-size-7"><span class="bg-purple-secondary-200 text-purple-secondary-900 p-3 rounded-6">\(I_{n} = I_{p} = 0A\)</span></p>
+
+								</div>
+								<div class="flex-basis-40">
+									<p class="circuitikz-code" idCircuit="C_Modelo_AmpOp" rescale="1"></p>
+								</div>
+							</div>
+							<table class="font-size-4 mt-8">													
+								<tr>	
+									<td class="w-70 p-4 font-bold">Amp. Op. Ideal</td>
+									<td class="w-70 p-4 font-bold">Amp. Op. 741</td>
+								</tr>
+								<tr>	
+									<td class="p-4">\(R_{i} \rightarrow \infty \Omega\)</td>
+									<td class="p-4">\(R_{i}=2M \Omega\)</td>
+								</tr>					
+							</table>
+						</div>
+												
+					</div>					
+				</section>
+				<section>
+					<div class="slide-title">
+						<h1>Amplificadores Operacionais - <span class="text-purple-secondary-900">Segunda restrição</span></h1>
+					</div>					
+					<div class="slide-content">	
+						<div class="text-box-5">
+							<p>No modelo ideal, o ganho de malha aberta tende ao infinito. Quando há realimentação negativa e o circuito opera na região linear, essa característica força a diferença de potencial entre os terminais de entrada a zero, de modo que \(V_{n} = V_{p}\).</p>
+							<div class="display-flex w-100 ">
+								<div class="flex-basis-50 font-size-4">
+									<p class="text-center mb-5">\(A \rightarrow \infty \)</p>
+									<p class="text-center mb-5">\(R_{o} = 0\Omega\)</p>
+									<p class="text-center mb-5">\(V_{o}=A \cdot \left(V_{p}-V_{n}\right)\)</p>
+									<p class="text-center">\(V_{p}-V_{n} = \dfrac{V_{o}}{A}\)</p>
+								
+									<p class="text-center mt-6 font-size-7"><span class="bg-purple-secondary-200 text-purple-secondary-900 p-3 rounded-6">\(V_{n} = V_{p}\)</span></p>
+
+								</div>
+								<div class="flex-basis-40">
+									<p class="circuitikz-code" idCircuit="C_Modelo_AmpOp" rescale="1"></p>
+								</div>
+							</div>
+							<table class="font-size-4 mt-8">													
+								<tr>	
+									<td class="w-70 p-4 font-bold">Amp. Op. Ideal</td>
+									<td class="w-70 p-4 font-bold">Amp. Op. 741</td>
+								</tr>
+								<tr>	
+									<td class="p-4">\(A \rightarrow \infty\)</td>
+									<td class="p-4">\(A=10^{5}\)</td>
+								</tr>
+								<tr>	
+									<td class="p-4">\(R_{o} = 0 \Omega\)</td>
+									<td class="p-4">\(R_{o}=75 \Omega\)</td>
+								</tr>				
+							</table>
+						</div>
+												
+					</div>					
+				</section>							
+				<section>
+					<div class="slide-title">
+						<h1>Amplificadores Operacionais - Malha Fechada</h1>
+					</div>					
+					<div class="slide-content">
+						<div class="display-flex w-100">
+							<div class="w-65 mt-9">
+								<p class="text-box-5 mr-5">Para que o amplificador operacional opere linearmente e de forma controlada, é necessário considerar uma realimentação na entrada inversora. Também deveremos assumir as restrições citadas anteriormente:</p>
+								<p class="text-center mt-3 font-size-5"><span class="bg-purple-secondary-200 text-purple-secondary-900 p-3 rounded-6">\(I_{n} = I_{p} = 0A\)</span></p>
+								<p class="text-center mt-5 font-size-5"><span class="bg-purple-secondary-200 text-purple-secondary-900 p-3 rounded-6">\(V_{n} = V_{p}\)</span></p>
+								<p class="text-box-5 mr-5 mt-7">Em aulas futuras, serão analisadas as implicações da realimentação na entrada não inversora.</p>
+							</div>
+							<div class="w-35">
+								<img src="imgs/neg_feedback.png" class="w-100" alt="" srcset="">	
+							</div>
+	
+						</div>
+					</div>					
+				</section>
+				<section>
+					<section>
+						<div class="slide-title">
+							<h1>Amplificador Operacional - Malha fechada - Exemplo</h1>
+						</div>
+						<div class="slide-content">
+							<div>
+								<div class="display-flex flew-gap-5 items-end">
+									<div class="flex-basis-60 font-size-4">
+										<p class="mb-1"><span class="font-bold">Exercício:</span> Responda os itens abaixo</p>
+										<ol class="letters-list">
+											<li>Calcule <span class="font-size-3">\(\boldsymbol V_{o}\)</span> de acordo com os valores de <span
+													class="font-size-3">\(\boldsymbol V_{a}\)</span> e <span class="font-size-3">\(\boldsymbol
+													v_{b}\)</span></li>
+											<li>Se <span class="font-size-3">\(\boldsymbol v_{a}=1.5V\)</span>, espeficique a faixa de <span
+													class="font-size-3">\(\boldsymbol v_{b}\)</span> que impeça a saturação do amplificador</li>
+										</ol>
+										<h4 class="mt-3">* Resolução inutitiva</h4>
+										<div class="w-100 border-box">
+											<button class="button button-primary w-49 font-size-4" onclick="ex_AmpOp('calc')">Calcular</button>
+											<button class="button button-secondary w-49 font-size-4" onclick="ex_AmpOp('reset')">Reset</button>											
+										</div>
+
+									</div>
+									<div class="flex-basis-40 font-size-4">
+										<p class="mb-1"><span class="font-bold">Parâmetros:</span></p>
+										<div class="input-group input-group-lg w-75">
+											<span class="input-prefix">\(V_{a}=\)&nbsp;</span>
+											<input id="ex_AmpOp-VA" type="text" inputRef="ex_AmpOp" class="input-field" value="1">											
+											<span class="input-suffix">\(V\)</span>
+										</div>
+										<div class="input-group input-group-lg w-75">
+											<span class="input-prefix">\(V_{b}=\)</span>
+											<input id="ex_AmpOp-VB" type="text" inputRef="ex_AmpOp" class="input-field" value="0">
+											<span class="input-suffix">\(V\)</span>
+										</div>
+										<div class="input-group input-group-lg w-75">
+											<span class="input-prefix">\(+V_{cc}=\)</span>
+											<input id="ex_AmpOp-MaisVCC" type="text" inputRef="ex_AmpOp" class="input-field" value="10">
+											<span class="input-suffix">\(V\)</span>
+										</div>
+										<div class="input-group input-group-lg w-75">
+											<span class="input-prefix">\(-V_{cc}=\)</span>
+											<input id="ex_AmpOp-MenosVCC" type="text" inputRef="ex_AmpOp" class="input-field" value="-10">
+											<span class="input-suffix">\(V\)</span>
+										</div>
+									</div>
+								</div>												
+							</div>
+							<div class="display-flex justify-center w-100">
+								<p class="circuitikz-code mt-5" idCircuit="ex_AmpOp_1" ref="ex_AmpOp" rescale="1.3"></p>							
+							</div>
+						</div>
+					</section>
+					<section>
+						<div class="slide-title">
+							<h1>Amplificador Operacional - Malha fechada - Exemplo</h1>
+						</div>
+						<div class="slide-content">
+							<div class="display-flex w-100">
+								<div class="flex-basis-60">
+									<p class="circuitikz-code mt-5" idCircuit="ex_AmpOp_2" ref="ex_AmpOp" rescale="1.3"></p>
+								</div>
+								<div class="flex-basis-40 mt-6 font-size-5">
+									<p class="font-bold mb-4">Etapa 1</p>
+									<p>Considerar as resitrições</p>							
+								</div>
+							</div>
+						</div>
+					</section>					
+					<section>
+						<div class="slide-title">
+							<h1>Amplificador Operacional - Malha fechada</h1> 
+						</div>
+						<div class="slide-content">
+							<div class="display-flex flew-gap-4 mt-4 flex-justify-content-center">
+								<div class="display-flex flex-col">
+									<p class="equations font-size-3" id="ex_AmpOp-eq-1"></p>
+									<p class="equations font-size-3" id="ex_AmpOp-eq-2"></p>
+									<p class="equations font-size-3" id="ex_AmpOp-eq-3"></p>
+									<p class="equations font-size-3" id="ex_AmpOp-eq-4"></p>
+									<p class="equations font-size-3" id="ex_AmpOp-eq-5"></p>
+									<p class="equations font-size-3" id="ex_AmpOp-eq-6"></p>							
+								</div>	
+								<div class="display-flex flex-col">
+									<p class="equations font-size-3" id="ex_AmpOp-eq-7"></p>
+									<p class="equations font-size-3" id="ex_AmpOp-eq-8"></p>
+									<p class="equations font-size-3" id="ex_AmpOp-eq-9"></p>
+									<p class="equations font-size-3" id="ex_AmpOp-eq-10"></p>
+									<p class="equations font-size-3" id="ex_AmpOp-eq-11"></p>
+									<p class="equations font-size-3" id="ex_AmpOp-eq-12"></p>							
+									<p class="equations font-size-3" id="ex_AmpOp-eq-13"></p>									
+								</div>
+							</div>
+						</div>
+					</section>	
+				</section>	
+				<section>
+					<div class="slide-title">
+						<h1>Amplificadores Operacionais - Configurações Básicas</h1>
+					</div>					
+					<div class="slide-content">	
+					</div>					
+				</section>	
+				
+				<section>
+					<div class="slide-title">
+						<h1>Amplificadores Operacionais - DAC</h1>
+					</div>					
+					<div class="slide-content font-size-4">	
+						<p class="mb-4"><span class="font-bold">Exercício:</span> Responda os itens abaixo</p>
+						<div class="display-flex w-100">
+							<div class="flex-basis-30">
+								<div class="input-group input-group-lg w-80">
+									<span class="input-prefix">\(Bit\space ON=\)</span>
+									<input id="ex_DAC-Bit-ON" type="text" inputRef="ex_DAC" oninput="ex_DAC_refresh_input()" class="input-field" value="5">
+									<span class="input-suffix">\(V\)</span>
+								</div>	
+								<div class="display-flex items-center mt-3">									
+									<div class="mr-4"><p>\(V_{1}\)</p></div>
+									<div>
+										<label class="switch">
+											<input id="ex_DAC_toogle_V1" type="checkbox" onclick="ex_DAC_refresh_input()">
+											<span class="slider round"></span>
+										</label>
+									</div>
+									<div class="ml-4"><p class="equations" id="ex_DAC-label-V1"></p></div>
+								</div>
+								<div class="display-flex items-center mt-3">
+									<div class="mr-4"><p>\(V_{2}\)</p></div>
+									<div>
+										<label class="switch">
+											<input id="ex_DAC_toogle_V2" type="checkbox" onclick="ex_DAC_refresh_input()">
+											<span class="slider round"></span>
+										</label>
+									</div>
+									<div class="ml-4"><p class="equations" id="ex_DAC-label-V2"></p></div>
+								</div>
+								<div class="display-flex items-center mt-3">
+									<div class="mr-4"><p>\(V_{3}\)</p></div>
+									<div>
+										<label class="switch">
+											<input id="ex_DAC_toogle_V3" type="checkbox" onclick="ex_DAC_refresh_input()">
+											<span class="slider round"></span>
+										</label>
+									</div>
+									<div class="ml-4"><p class="equations" id="ex_DAC-label-V3"></p></div>
+								</div>
+								<div class="display-flex items-center mt-3">
+									<div class="mr-4"><p>\(V_{4}\)</p></div>
+									<div>
+										<label class="switch">
+											<input id="ex_DAC_toogle_V4" type="checkbox" onclick="ex_DAC_refresh_input()">
+											<span class="slider round"></span>
+										</label>
+									</div>
+									<div class="ml-4"><p class="equations" id="ex_DAC-label-V4"></p></div>
+								</div>
+								<div class="input-group input-group-lg w-80 mt-4">
+									<span class="input-prefix">\(R_{1}=\)</span>
+									<input id="ex_DAC-R1-mode1" type="text" inputRef="ex_DAC" class="input-field" value="10">
+									<span class="input-suffix">\(K\Omega\)</span>
+								</div>
+								<div class="input-group input-group-lg w-80">
+									<span class="input-prefix">\(R_{F}=\)</span>
+									<input id="ex_DAC-RF-mode1" type="text" inputRef="ex_DAC" class="input-field" value="10">
+									<span class="input-suffix">\(K\Omega\)</span>
+								</div>
+								<div class="w-80 border-box mt-3">
+									<button class="button button-primary w-49" onclick="ex_DAC('calc',1)">Calcular Vo</button>
+									<button class="button button-secondary w-49" onclick="ex_DAC('reset')">Reset</button>											
+								</div>
+								<hr class="w-80" style="margin-inline-start: 0;">
+
+								<div class="input-group input-group-lg w-80 mt-4">
+									<span class="input-prefix">\(V_{o}\space All \space ON=-\)</span>
+									<input id="ex_DAC-Vo-mode2" type="text" inputRef="ex_DAC" class="input-field" value="5">
+									<span class="input-suffix">\(V\)</span>
+								</div>
+								<div class="input-group input-group-lg w-80">
+									<span class="input-prefix">\(R_{1}=\)</span>
+									<input id="ex_DAC-R1-mode2" type="text" inputRef="ex_DAC" class="input-field" value="8">
+									<span class="input-suffix">\(K\Omega\)</span>
+								</div>
+								<div class="w-80 border-box mt-3">
+									<button class="button button-primary w-49" onclick="ex_DAC('calc',2)">Calcular RF</button>
+									<button class="button button-secondary w-49" onclick="ex_DAC('reset')">Reset</button>											
+								</div>					
+							</div>
+							<div class="flex-basis-70">
+								<p class="circuitikz-code" idCircuit="ex_DAC" ref="ex_DAC" rescale="1.2"></p>
+							</div>						
+						</div>
+						    
+						
+					</div>					
+				</section>	
+				
+				<section>
+					<section>
+
+						<div class="slide-title">
+							<h1>Amplificadores Operacionais - Strain Gage</h1>
+						</div>					
+						<div class="slide-content">
+							<div class="display-flex flex-col font-size-4">
+								<p class="mb-1"><span class="font-bold">Exercício:</span> Calcule o valor de \(V_{o}\)</p>
+								<p class="circuitikz-code" idCircuit="ex_SG" ref="ex_SG" rescale="1.3"></p>
+								<div class="display-flex mt-7">
+									<div class="flex-basis-33">
+										<div class="input-group input-group-lg w-75">
+											<span class="input-prefix">\(V_{S}=\)&nbsp;</span>
+											<input id="ex_SG-VS" type="text" inputRef="ex_SG" class="input-field" value="10">											
+											<span class="input-suffix">\(V\)</span>
+										</div>
+										<div class="input-group input-group-lg w-75 mt-3">
+											<span class="input-prefix">\(R_{P}=\)&nbsp;</span>
+											<input id="ex_SG-RP" type="text" inputRef="ex_SG" class="input-field" value="100">											
+											<span class="input-suffix">\(\Omega\)</span>
+										</div>
+									</div>
+									<div class="flex-basis-33">
+										<div class="input-group input-group-lg w-75">
+											<span class="input-prefix">\(R_{A}=\)&nbsp;</span>
+											<input id="ex_SG-RA" type="text" inputRef="ex_SG" class="input-field" value="1">											
+											<span class="input-suffix">\(K\Omega\)</span>
+										</div>
+										<div class="input-group input-group-lg w-75 mt-3">
+											<span class="input-prefix">\(R_{B}=\)&nbsp;</span>
+											<input id="ex_SG-RB" type="text" inputRef="ex_SG" class="input-field" value="800">											
+											<span class="input-suffix">\(K\Omega\)</span>
+										</div>
+									</div>
+									<div class="flex-basis-33">
+										<div class="input-group input-group-lg w-75">
+											<span class="input-prefix">\(\pm \Delta R=\)&nbsp;</span>
+											<input id="ex_SG-DeltaR" type="text" inputRef="ex_SG" class="input-field" value="0.1">											
+											<span class="input-suffix">\(\Omega\)</span>
+										</div>
+										<div class="w-75 border-box mt-3">
+											<button class="button button-primary w-49 font-size-4" onclick="ex_SG('calc')">Calcular</button>
+											<button class="button button-secondary w-49 font-size-4" onclick="ex_SG('reset')">Reset</button>										
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</section>
+					<section>
+						<div class="slide-title">
+							<h1>Amplificadores Operacionais - Strain Gage</h1>
+						</div>					
+						<div class="slide-content">								
+							<div class="display-flex mt-4 flex-justify-content-center font-size-3">
+								<div class="display-flex flex-col">
+									<p class="equations mt-6" id="ex_SG-eq-1"></p>
+									<p class="equations mt-6" id="ex_SG-eq-2"></p>
+									<p class="equations mt-6" id="ex_SG-eq-3"></p>
+									<p class="equations mt-6" id="ex_SG-eq-4"></p>
+									<p class="equations mt-6" id="ex_SG-eq-5"></p>
+									<p class="equations mt-6" id="ex_SG-eq-6"></p>							
+								</div>	
+								<div class="display-flex flex-col ml-6">
+									<p class="equations mt-6" id="ex_SG-eq-7"></p>
+									<p class="equations mt-6" id="ex_SG-eq-8"></p>
+									<p class="equations mt-6" id="ex_SG-eq-9"></p>
+									<p class="equations mt-6" id="ex_SG-eq-10"></p>
+									<p class=" font-size-5 mt-7 text-center">Faixa de \(V_{o}\) :
+										[<span class="equations mt-6" id="ex_SG-eq-11"></span> : 
+										<span class="equations mt-6" id="ex_SG-eq-12"></span>]
+									</p>
+								</div>
+							</div>							
+						</div>					
+					</section>				
+				</section>								
+			</div>
+
+		</div>
+
+
+
+		<!-- Monitor de ativação do Pyscript -->
+		<div hidden id="pyscript-ready"></div>
+
+		<script>
+			// function resizeSlide() {
+			//   const slide = document.getElementById("slide-content");
+			//   const scaleX = window.innerWidth / 1280;
+			//   const scaleY = window.innerHeight / 720;
+			//   const scale = Math.min(scaleX, scaleY);
+			//   slide.style.transform = `scale(${scale})`;
+			// }
+		  
+			// window.addEventListener("resize", resizeSlide);
+			// window.addEventListener("load", resizeSlide);
+		  </script>
+		  
+		<!-- --------- Reveal Base SCRIPTS --------- -->
+		<script src="../../reveal.js-master/dist/reveal.js"></script>
+		<script src="../../reveal.js-master/plugin/zoom/zoom.js"></script>
+		<script src="../../reveal.js-master/plugin/notes/notes.js"></script>
+		<script src="../../reveal.js-master/plugin/search/search.js"></script>
+		<script src="../../reveal.js-master/plugin/markdown/markdown.js"></script>
+		<script src="../../reveal.js-master/plugin/highlight/highlight.js"></script>
+		<script src="../../reveal.js-master/plugin/math/math.js"></script>
+		<script src="../../reveal.js-master/plugin/title-footer/title-footer.js"></script>
+				
+
+		<!-- Latex render -->
+		<!-- <script src="https://i.upmath.me/latex.js"></script> -->		
+		<script src="../../assets/latex/latex.js"></script>
+		<!-- <script src="../../assets/latex/latex_upmath.js"></script> -->
+		<script src="//i.upmath.me/latex.js"></script>
+		
+
+		<!-- --------------------------- PYSCRIPT --------------------------- -->
+		<!-- Python files -->
+		<script type="py" src="main.py" config="pyscript.toml" id="pyscript-main"></script>
+		
+
+		<!-- PyScript Bootstrap -->
+		<script type="module" defer  src="https://pyscript.net/releases/2024.1.1/core.js" id="pyscript-core"></script>
+		
+
+		<!-- PyScript Bootstrap LOCAL -->
+		<!-- <script type="module" src="xxx/public/pyscript/core.js" id="pyscript-core"></script> -->
+		 <!-- Inserir no toml: interpreter = ["public/pyodide/pyodide.mjs"] -->
+				
+		<!-- <script src="https://cdn.plot.ly/plotly-latest.min.js"></script> -->
+		<script src="https://cdn.plot.ly/plotly-3.0.1.min.js" charset="utf-8"></script>
+
+
+		<!-- List of Circuits  -->
+		<script defer src="circuits.js"></script> 
+
+		<!-- Render Circuits  -->
+		<script defer src="../../js/renderCircuit.js"></script>
+
+		<!-- variaveis de inicialização -->
+		<script defer src="../../js/init.js"></script> 		
+		<script defer src="../../js/revealInit.js"></script> 
+
+		<!-- Base SCRIPT -->
+		<script defer src="../../js/general.js"></script> 
+		<script defer src="../../js/reload.js"></script> 
+
+		
+		<script defer src="main.js"></script> 
+		
+
+	</body>
+</html>
+

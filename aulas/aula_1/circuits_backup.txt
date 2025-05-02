@@ -1,0 +1,858 @@
+const circuits = {};
+
+// circuits.C_ = String.raw`
+// `;
+
+//Line Thickness: 0.8
+// Grid Scale: 75
+
+// Malha
+// \draw [arrows=-{>[scale=2, length=3, width=3.5,bend]}, color={rgb,255:red,0; green,0; blue,255}, line width=1pt, ->, >=Stealth] (7.5,14.25) arc (270:20:0.5);
+
+// node[sground]
+// node[ground]
+
+
+circuits.C_exemplo_1 = String.raw`
+\begin{figure}[!ht]
+\centering
+\resizebox{1\textwidth}{!}{%
+\begin{circuitikz}
+\tikzstyle{every node}=[font=\Huge]
+\draw [ line width=1.5pt](13,11.5) to[R] (21,11.5);
+\draw [ color={rgb,255:red,255; green,0; blue,0}, line width=1.5pt, ->, >=Stealth] (19,11.5) -- (20,11.5);
+\node [font=\Huge, color={rgb,255:red,0; green,0; blue,255}] at (13,11) {$+$};
+\node [font=\Huge, color={rgb,255:red,0; green,0; blue,255}] at (21,11) {$-$};
+\node [font=\Huge, color={rgb,255:red,0; green,0; blue,255}] at (17,10.75) {$V$};
+\node [font=\Huge, color={rgb,255:red,255; green,0; blue,0}] at (19.5,12) {$I$};
+\node [circle, fill={rgb,255:red,0; green,0; blue,255}, inner sep=3pt] at (13,11.5) {};
+\node [circle, fill={rgb,255:red,0; green,0; blue,255}, inner sep=3pt] at (21,11.5) {};
+\node [font=\Huge] at (17,12.25) {$R_{1}$};
+\end{circuitikz}
+}%
+\label{fig:my_label}
+\end{figure}
+`;
+
+
+
+
+
+circuits.C_CP1 = String.raw`
+\begin{figure}[!ht]
+\centering
+\resizebox{1\textwidth}{!}{%
+\begin{circuitikz}
+\tikzstyle{every node}=[font=\Huge]
+\draw [ line width=1pt ] (14,14) rectangle (17,13);
+\draw [line width=1pt, short] (17,13.5) -- (18.5,13.5);
+\draw [line width=1pt, short] (14,13.5) -- (12.5,13.5);
+\node at (12.5,13.5) [circ] {};
+\node at (18.5,13.5) [circ] {};
+\draw [line width=1pt, ->, >=Stealth] (15,14.3) -- (16,14.3);
+\node [font=\Huge] at (12.5,14) {+};
+\node [font=\Huge] at (18.5,14) {-};
+\end{circuitikz}
+}%
+\label{fig:my_label}
+\end{figure}
+`;
+
+
+circuits.C_CP2 = String.raw`
+\begin{figure}[!ht]
+\centering
+\resizebox{1\textwidth}{!}{%
+\begin{circuitikz}
+\tikzstyle{every node}=[font=\Huge]
+\draw [ line width=1pt ] (14,14) rectangle (17,13);
+\draw [line width=1pt, short] (17,13.5) -- (18.5,13.5);
+\draw [line width=1pt, short] (14,13.5) -- (12.5,13.5);
+\node at (12.5,13.5) [circ] {};
+\node at (18.5,13.5) [circ] {};
+\draw [line width=1pt, ->, >=Stealth] (15,14.3) -- (16,14.3);
+\node [font=\Huge] at (12.5,14) {-};
+\node [font=\Huge] at (18.5,14) {+};
+\end{circuitikz}
+}%
+\label{fig:my_label}
+\end{figure}
+`;
+
+
+circuits.C_CP3 = String.raw`
+\begin{figure}[!ht]
+\centering
+\resizebox{1\textwidth}{!}{%
+\begin{circuitikz}
+\tikzstyle{every node}=[font=\Huge]
+\draw [ line width=1pt ] (14,14) rectangle (17,13);
+\draw [line width=1pt, short] (17,13.5) -- (18.5,13.5);
+\draw [line width=1pt, short] (14,13.5) -- (12.5,13.5);
+\node at (12.5,13.5) [circ] {};
+\node at (18.5,13.5) [circ] {};
+\node [font=\Huge] at (12.5,14) {+};
+\node [font=\Huge] at (18.5,14) {-};
+\draw [line width=1pt, ->, >=Stealth] (16,14.3) -- (15,14.3);
+\end{circuitikz}
+}%
+\label{fig:my_label}
+\end{figure}
+`;
+
+circuits.C_CP4 = String.raw`
+\begin{figure}[!ht]
+\centering
+\resizebox{1\textwidth}{!}{%
+\begin{circuitikz}
+\tikzstyle{every node}=[font=\Huge]
+\draw [ line width=1pt ] (14,14) rectangle (17,13);
+\draw [line width=1pt, short] (17,13.5) -- (18.5,13.5);
+\draw [line width=1pt, short] (14,13.5) -- (12.5,13.5);
+\node at (12.5,13.5) [circ] {};
+\node at (18.5,13.5) [circ] {};
+\node [font=\Huge] at (12.5,14) {-};
+\node [font=\Huge] at (18.5,14) {+};
+\draw [line width=1pt, ->, >=Stealth] (16,14.3) -- (15,14.3);
+\end{circuitikz}
+}%
+\label{fig:my_label}
+\end{figure}
+`;
+
+circuits.C_Divisor_Tensao = String.raw`
+\begin{figure}[!ht]
+\centering
+\resizebox{1\textwidth}{!}{%
+\begin{circuitikz}
+\tikzstyle{every node}=[font=\Huge]
+\draw [ line width=0.8pt](11,13.5) to[american voltage source] (11,10.5);
+\draw [ line width=0.8pt](11,13.5) to[R] (15,13.5);
+\draw [ line width=0.8pt](15,13.5) to[R] (15,10.5);
+\draw [ line width=0.8pt](11,10.5) to[short] (15,10.5);
+\node [font=\Large] at (9.75,12) {$100V$};
+\node [font=\Large] at (13,12.75) {$R_{1}=1K\Omega$};
+\node [font=\Large] at (14.5,11.25) {$R_{2}$};
+\node [font=\Huge, color={rgb,255:red,0; green,0; blue,255}] at (11,14) {$+$};
+\node [font=\Huge, color={rgb,255:red,0; green,0; blue,255}] at (16,13.5) {$+$};
+\node [font=\Huge, color={rgb,255:red,0; green,0; blue,255}] at (15,14) {$-$};
+\node [font=\Huge, color={rgb,255:red,0; green,0; blue,255}] at (16,10.5) {$-$};
+\node [font=\Large, color={rgb,255:red,0; green,0; blue,255}] at (13,14.25) {$V_{A}$};
+\node [font=\Large, color={rgb,255:red,0; green,0; blue,255}] at (16,12) {$V_{B}$};
+\end{circuitikz}
+}%
+\label{fig:my_label}
+\end{figure}
+`;
+
+
+circuits.C_Divisor_Corrente = String.raw`
+\begin{figure}[!ht]
+\centering
+\resizebox{1\textwidth}{!}{%
+\begin{circuitikz}
+\tikzstyle{every node}=[font=\Large]
+\draw [ line width=0.8pt](10.5,6.5) to[american current source] (10.5,10.5);
+\draw [ line width=0.8pt](14,10.5) to[R] (14,6.5);
+\draw [ line width=0.8pt](17,10.5) to[R] (17,6.5);
+\draw [ line width=0.8pt](10.5,10.5) to[short] (17,10.5);
+\draw [ line width=0.8pt](10.5,6.5) to[short] (17,6.5);
+\draw [ color={rgb,255:red,255; green,0; blue,0}, line width=1pt, ->, >=Stealth] (14,10.5) -- (14,9.5);
+\node [font=\Large, color={rgb,255:red,255; green,0; blue,0}] at (22.5,10.5) {};
+\node [font=\Large, color={rgb,255:red,255; green,0; blue,0}] at (21,10) {};
+\draw [ color={rgb,255:red,255; green,0; blue,0}, line width=1pt, ->, >=Stealth] (17,10.5) -- (17,9.5);
+\node [font=\Large] at (9.5,8.5) {$20A$};
+\node [font=\Large] at (12.5,8.5) {$R_{1}=1K\Omega$};
+\node [font=\Large] at (16.25,8.5) {$R_{2}$};
+\node [font=\Large, color={rgb,255:red,255; green,0; blue,0}] at (14.5,10) {$I_{A}$};
+\node [font=\Large, color={rgb,255:red,255; green,0; blue,0}] at (17.5,10) {$I_{B}$};
+\end{circuitikz}
+}%
+\label{fig:my_label}
+\end{figure}
+`;
+
+
+circuits.C_exercicio_Kirchhoff = String.raw`
+\begin{figure}[!ht]
+\centering
+\resizebox{1\textwidth}{!}{%
+\begin{circuitikz}
+\tikzstyle{every node}=[font=\Large]
+\draw [ line width=0.8pt](11,5.5) to[american voltage source] (11,1.5);
+\draw [ line width=0.8pt](15,5.5) to[R,l={ \Large $R_{1}=5\Omega$}] (11,5.5);
+\draw [ line width=0.8pt](15,5.5) to[R,l={ \Large $R_{4}=70\Omega$}] (15,1.5);
+\draw [ line width=0.8pt](19,5.5) to[R,l={ \Large $R_{3}=10\Omega$}] (15,5.5);
+\draw [ line width=0.8pt](19,7.5) to[R,l={ \Large $R_{2}=25\Omega$}] (11,7.5);
+\draw [ line width=0.8pt](19,5.5) to[R,l={ \Large $R_{5}=8\Omega$}] (19,1.5);
+\draw [ line width=0.8pt](11,1.5) to[short] (19,1.5);
+\draw [ line width=0.8pt](19,5.5) to[short] (19,7.5);
+\draw [ line width=0.8pt](11,5.5) to[short] (11,7.5);
+\node [font=\Large] at (9.25,3.5) {$V_{s}=180V$};
+\draw [ color={rgb,255:red,255; green,0; blue,0}, line width=1pt, ->, >=Stealth] (12,7.5) -- (13,7.5);
+\draw [ color={rgb,255:red,0; green,0; blue,255}, line width=1pt, ->, >=Stealth] (14.5,4) -- (14.5,3);
+\node [font=\Large, color={rgb,255:red,255; green,0; blue,0}] at (12.5,8) {$I_{A}=4A$};
+\node [font=\Large, color={rgb,255:red,0; green,0; blue,255}] at (13.75,3.5) {$I_{x}=?$};
+\end{circuitikz}
+}%
+\label{fig:my_label}
+\end{figure}
+`;
+
+
+circuits.C_exercicio_Kirchhoff_1 = String.raw`
+\begin{figure}[!ht]
+\centering
+\resizebox{1\textwidth}{!}{%
+\begin{circuitikz}
+\tikzstyle{every node}=[font=\Large]
+\draw [ line width=0.8pt](11,5.5) to[american voltage source] (11,1.5);
+\draw [ line width=0.8pt](15,5.5) to[R,l={ \Large $R_{1}=5\Omega$}] (11,5.5);
+\draw [ line width=0.8pt](15,5.5) to[R,l={ \Large $R_{4}=70\Omega$}] (15,1.5);
+\draw [ line width=0.8pt](19,5.5) to[R,l={ \Large $R_{3}=10\Omega$}] (15,5.5);
+\draw [ line width=0.8pt](19,7.5) to[R,l={ \Large $R_{2}=25\Omega$}] (11,7.5);
+\draw [ line width=0.8pt](19,5.5) to[R,l={ \Large $R_{5}=8\Omega$}] (19,1.5);
+\draw [ line width=0.8pt](11,1.5) to[short] (19,1.5);
+\draw [ line width=0.8pt](19,5.5) to[short] (19,7.5);
+\draw [ line width=0.8pt](11,5.5) to[short] (11,7.5);
+\node [font=\Large] at (9.25,3.5) {$V_{s}=180V$};
+\draw [ color={rgb,255:red,255; green,0; blue,0}, line width=1pt, ->, >=Stealth] (12,7.5) -- (13,7.5);
+\draw [ color={rgb,255:red,0; green,0; blue,255}, line width=1pt, ->, >=Stealth] (14.5,4) -- (14.5,3);
+\node [font=\Large, color={rgb,255:red,255; green,0; blue,0}] at (12.5,8) {$I_{A}=4A$};
+\node [font=\Large, color={rgb,255:red,0; green,0; blue,255}] at (13.75,3.5) {$I_{x}=?$};
+\node [font=\Huge, color={rgb,255:red,11; green,111; blue,0}] at (14,8.5) {$+$};
+\node [font=\Huge, color={rgb,255:red,11; green,111; blue,0}] at (16,8.5) {$-$};
+\node [anchor=west, font=\Large, color={rgb,255:red,11; green,111; blue,0}] at (13.5,9.25) {$V_{R2}=$};
+\end{circuitikz}
+}%
+\label{fig:my_label}
+\end{figure}
+`;
+
+
+
+circuits.C_exercicio_Kirchhoff_2 = String.raw`
+\begin{figure}[!ht]
+\centering
+\resizebox{1\textwidth}{!}{%
+\begin{circuitikz}
+\tikzstyle{every node}=[font=\Large]
+\draw [ line width=0.8pt](11,5.5) to[american voltage source] (11,1.5);
+\draw [ line width=0.8pt](15,5.5) to[R,l={ \Large $R_{1}=5\Omega$}] (11,5.5);
+\draw [ line width=0.8pt](15,5.5) to[R,l={ \Large $R_{4}=70\Omega$}] (15,1.5);
+\draw [ line width=0.8pt](19,5.5) to[R,l={ \Large $R_{3}=10\Omega$}] (15,5.5);
+\draw [ line width=0.8pt](19,7.5) to[R,l={ \Large $R_{2}=25\Omega$}] (11,7.5);
+\draw [ line width=0.8pt](19,5.5) to[R,l={ \Large $R_{5}=8\Omega$}] (19,1.5);
+\draw [ line width=0.8pt](11,1.5) to[short] (19,1.5);
+\draw [ line width=0.8pt](19,5.5) to[short] (19,7.5);
+\draw [ line width=0.8pt](11,5.5) to[short] (11,7.5);
+\node [font=\Large] at (9.25,3.5) {$V_{s}=180V$};
+\draw [ color={rgb,255:red,255; green,0; blue,0}, line width=1pt, ->, >=Stealth] (12,7.5) -- (13,7.5);
+\draw [ color={rgb,255:red,0; green,0; blue,255}, line width=1pt, ->, >=Stealth] (14.5,4) -- (14.5,3);
+\node [font=\Large, color={rgb,255:red,255; green,0; blue,0}] at (12.5,8) {$I_{A}=4A$};
+\node [font=\Large, color={rgb,255:red,0; green,0; blue,255}] at (13.75,3.5) {$I_{x}=?$};
+\node [font=\Huge, color={rgb,255:red,11; green,111; blue,0}] at (14,8.5) {$+$};
+\node [font=\Huge, color={rgb,255:red,11; green,111; blue,0}] at (16,8.5) {$-$};
+\node [anchor=west, font=\Large, color={rgb,255:red,11; green,111; blue,0}] at (13.5,9.25) {$V_{R2}=$};
+\node [font=\Huge, color={rgb,255:red,11; green,111; blue,0}] at (22,4.25) {$+$};
+\node [font=\Huge, color={rgb,255:red,11; green,111; blue,0}] at (22,2.75) {$-$};
+\node [anchor=west, font=\Large, color={rgb,255:red,11; green,111; blue,0}] at (21.75,3.5) {$V_{R5}=$};
+\end{circuitikz}
+}%
+\label{fig:my_label}
+\end{figure}
+`;
+
+
+circuits.C_exercicio_Kirchhoff_3 = String.raw`
+\begin{figure}[!ht]
+\centering
+\resizebox{1\textwidth}{!}{%
+\begin{circuitikz}
+\tikzstyle{every node}=[font=\Large]
+\draw [ line width=0.8pt](11,5.5) to[american voltage source] (11,1.5);
+\draw [ line width=0.8pt](15,5.5) to[R,l={ \Large $R_{1}=5\Omega$}] (11,5.5);
+\draw [ line width=0.8pt](15,5.5) to[R,l={ \Large $R_{4}=70\Omega$}] (15,1.5);
+\draw [ line width=0.8pt](19,5.5) to[R,l={ \Large $R_{3}=10\Omega$}] (15,5.5);
+\draw [ line width=0.8pt](19,7.5) to[R,l={ \Large $R_{2}=25\Omega$}] (11,7.5);
+\draw [ line width=0.8pt](19,5.5) to[R,l={ \Large $R_{5}=8\Omega$}] (19,1.5);
+\draw [ line width=0.8pt](11,1.5) to[short] (19,1.5);
+\draw [ line width=0.8pt](19,5.5) to[short] (19,7.5);
+\draw [ line width=0.8pt](11,5.5) to[short] (11,7.5);
+\node [font=\Large] at (9.25,3.5) {$V_{s}=180V$};
+\draw [ color={rgb,255:red,255; green,0; blue,0}, line width=1pt, ->, >=Stealth] (12,7.5) -- (13,7.5);
+\draw [ color={rgb,255:red,0; green,0; blue,255}, line width=1pt, ->, >=Stealth] (14.5,4) -- (14.5,3);
+\node [font=\Large, color={rgb,255:red,255; green,0; blue,0}] at (12.5,8) {$I_{A}=4A$};
+\node [font=\Large, color={rgb,255:red,0; green,0; blue,255}] at (13.75,3.5) {$I_{x}=?$};
+\node [font=\Huge, color={rgb,255:red,11; green,111; blue,0}] at (14,8.5) {$+$};
+\node [font=\Huge, color={rgb,255:red,11; green,111; blue,0}] at (16,8.5) {$-$};
+\node [anchor=west, font=\Large, color={rgb,255:red,11; green,111; blue,0}] at (13.5,9.25) {$V_{R2}=$};
+\node [font=\Huge, color={rgb,255:red,11; green,111; blue,0}] at (22,4.25) {$+$};
+\node [font=\Huge, color={rgb,255:red,11; green,111; blue,0}] at (22,2.75) {$-$};
+\node [anchor=west, font=\Large, color={rgb,255:red,11; green,111; blue,0}] at (21.75,3.5) {$V_{R5}=$};
+\draw [ color={rgb,255:red,255; green,0; blue,0}, line width=1pt, ->, >=Stealth] (19,5.5) -- (19,4.5);
+\node [anchor=west, font=\Large, color={rgb,255:red,255; green,0; blue,0}] at (19.2,4.75) {$I_{R5}=$};
+\end{circuitikz}
+}%
+\label{fig:my_label}
+\end{figure}
+`;
+
+
+circuits.C_exercicio_Kirchhoff_4 = String.raw`
+\begin{figure}[!ht]
+\centering
+\resizebox{1\textwidth}{!}{%
+\begin{circuitikz}
+\tikzstyle{every node}=[font=\Large]
+\draw [ line width=0.8pt](11,5.5) to[american voltage source] (11,1.5);
+\draw [ line width=0.8pt](15,5.5) to[R,l={ \Large $R_{1}=5\Omega$}] (11,5.5);
+\draw [ line width=0.8pt](15,5.5) to[R,l={ \Large $R_{4}=70\Omega$}] (15,1.5);
+\draw [ line width=0.8pt](19,5.5) to[R,l={ \Large $R_{3}=10\Omega$}] (15,5.5);
+\draw [ line width=0.8pt](19,7.5) to[R,l={ \Large $R_{2}=25\Omega$}] (11,7.5);
+\draw [ line width=0.8pt](19,5.5) to[R,l={ \Large $R_{5}=8\Omega$}] (19,1.5);
+\draw [ line width=0.8pt](11,1.5) to[short] (19,1.5);
+\draw [ line width=0.8pt](19,5.5) to[short] (19,7.5);
+\draw [ line width=0.8pt](11,5.5) to[short] (11,7.5);
+\node [font=\Large] at (9.25,3.5) {$V_{s}=180V$};
+\draw [ color={rgb,255:red,255; green,0; blue,0}, line width=1pt, ->, >=Stealth] (12,7.5) -- (13,7.5);
+\draw [ color={rgb,255:red,0; green,0; blue,255}, line width=1pt, ->, >=Stealth] (14.5,4) -- (14.5,3);
+\node [font=\Large, color={rgb,255:red,255; green,0; blue,0}] at (12.5,8) {$I_{A}=4A$};
+\node [font=\Large, color={rgb,255:red,0; green,0; blue,255}] at (13.75,3.5) {$I_{x}=?$};
+\node [font=\Huge, color={rgb,255:red,11; green,111; blue,0}] at (14,8.5) {$+$};
+\node [font=\Huge, color={rgb,255:red,11; green,111; blue,0}] at (16,8.5) {$-$};
+\node [anchor=west, font=\Large, color={rgb,255:red,11; green,111; blue,0}] at (13.5,9.25) {$V_{R2}=$};
+\node [font=\Huge, color={rgb,255:red,11; green,111; blue,0}] at (22,4.25) {$+$};
+\node [font=\Huge, color={rgb,255:red,11; green,111; blue,0}] at (22,2.75) {$-$};
+\node [anchor=west, font=\Large, color={rgb,255:red,11; green,111; blue,0}] at (21.75,3.5) {$V_{R5}=$};
+\draw [ color={rgb,255:red,255; green,0; blue,0}, line width=1pt, ->, >=Stealth] (19,5.5) -- (19,4.5);
+\node [anchor=west, font=\Large, color={rgb,255:red,255; green,0; blue,0}] at (19.2,4.75) {$I_{R5}=$};
+\draw [ color={rgb,255:red,255; green,0; blue,0}, line width=1pt, ->, >=Stealth] (18,5.5) -- (19,5.5);
+\node [anchor=west, font=\Large, color={rgb,255:red,255; green,0; blue,0}] at (19.2,5.75) {$I_{R3}=$};;
+\end{circuitikz}
+}%
+\label{fig:my_label}
+\end{figure}
+`;
+
+
+
+circuits.C_exercicio_Kirchhoff_5 = String.raw`
+\begin{figure}[!ht]
+\centering
+\resizebox{1\textwidth}{!}{%
+\begin{circuitikz}
+\tikzstyle{every node}=[font=\Large]
+\draw [ line width=0.8pt](11,5.5) to[american voltage source] (11,1.5);
+\draw [ line width=0.8pt](15,5.5) to[R,l={ \Large $R_{1}=5\Omega$}] (11,5.5);
+\draw [ line width=0.8pt](15,5.5) to[R,l={ \Large $R_{4}=70\Omega$}] (15,1.5);
+\draw [ line width=0.8pt](19,5.5) to[R,l={ \Large $R_{3}=10\Omega$}] (15,5.5);
+\draw [ line width=0.8pt](19,7.5) to[R,l={ \Large $R_{2}=25\Omega$}] (11,7.5);
+\draw [ line width=0.8pt](19,5.5) to[R,l={ \Large $R_{5}=8\Omega$}] (19,1.5);
+\draw [ line width=0.8pt](11,1.5) to[short] (19,1.5);
+\draw [ line width=0.8pt](19,5.5) to[short] (19,7.5);
+\draw [ line width=0.8pt](11,5.5) to[short] (11,7.5);
+\node [font=\Large] at (9.25,3.5) {$V_{s}=180V$};
+\draw [ color={rgb,255:red,255; green,0; blue,0}, line width=1pt, ->, >=Stealth] (12,7.5) -- (13,7.5);
+\draw [ color={rgb,255:red,0; green,0; blue,255}, line width=1pt, ->, >=Stealth] (14.5,4) -- (14.5,3);
+\node [font=\Large, color={rgb,255:red,255; green,0; blue,0}] at (12.5,8) {$I_{A}=4A$};
+\node [font=\Large, color={rgb,255:red,0; green,0; blue,255}] at (13.75,3.5) {$I_{x}=?$};
+\node [font=\Huge, color={rgb,255:red,11; green,111; blue,0}] at (14,8.5) {$+$};
+\node [font=\Huge, color={rgb,255:red,11; green,111; blue,0}] at (16,8.5) {$-$};
+\node [anchor=west, font=\Large, color={rgb,255:red,11; green,111; blue,0}] at (13.5,9.25) {$V_{R2}=$};
+\node [font=\Huge, color={rgb,255:red,11; green,111; blue,0}] at (22,4.25) {$+$};
+\node [font=\Huge, color={rgb,255:red,11; green,111; blue,0}] at (22,2.75) {$-$};
+\node [anchor=west, font=\Large, color={rgb,255:red,11; green,111; blue,0}] at (21.75,3.5) {$V_{R5}=$};
+\draw [ color={rgb,255:red,255; green,0; blue,0}, line width=1pt, ->, >=Stealth] (19,5.5) -- (19,4.5);
+\node [anchor=west, font=\Large, color={rgb,255:red,255; green,0; blue,0}] at (19.2,4.75) {$I_{R5}=$};
+\draw [ color={rgb,255:red,255; green,0; blue,0}, line width=1pt, ->, >=Stealth] (18,5.5) -- (19,5.5);
+\node [anchor=west, font=\Large, color={rgb,255:red,255; green,0; blue,0}] at (19.2,5.75) {$I_{R3}=$};
+\node [anchor=west, font=\Large, color={rgb,255:red,11; green,111; blue,0}] at (15.8,6.25) {$V_{R3}=$};
+\node [font=\Huge, color={rgb,255:red,11; green,111; blue,0}] at (15.5,6) {$+$};
+\node [font=\Huge, color={rgb,255:red,11; green,111; blue,0}] at (18.5,6) {$-$};
+\end{circuitikz}
+}%
+\label{fig:my_label}
+\end{figure}
+`;
+
+
+
+
+circuits.C_exercicio_Kirchhoff_6 = String.raw`
+\begin{figure}[!ht]
+\centering
+\resizebox{1\textwidth}{!}{%
+\begin{circuitikz}
+\tikzstyle{every node}=[font=\Large]
+\draw [ line width=0.8pt](11,5.5) to[american voltage source] (11,1.5);
+\draw [ line width=0.8pt](15,5.5) to[R,l={ \Large $R_{1}=5\Omega$}] (11,5.5);
+\draw [ line width=0.8pt](15,5.5) to[R,l={ \Large $R_{4}=70\Omega$}] (15,1.5);
+\draw [ line width=0.8pt](19,5.5) to[R,l={ \Large $R_{3}=10\Omega$}] (15,5.5);
+\draw [ line width=0.8pt](19,7.5) to[R,l={ \Large $R_{2}=25\Omega$}] (11,7.5);
+\draw [ line width=0.8pt](19,5.5) to[R,l={ \Large $R_{5}=8\Omega$}] (19,1.5);
+\draw [ line width=0.8pt](11,1.5) to[short] (19,1.5);
+\draw [ line width=0.8pt](19,5.5) to[short] (19,7.5);
+\draw [ line width=0.8pt](11,5.5) to[short] (11,7.5);
+\node [font=\Large] at (9.25,3.5) {$V_{s}=180V$};
+\draw [ color={rgb,255:red,255; green,0; blue,0}, line width=1pt, ->, >=Stealth] (12,7.5) -- (13,7.5);
+\draw [ color={rgb,255:red,0; green,0; blue,255}, line width=1pt, ->, >=Stealth] (14.5,4) -- (14.5,3);
+\node [font=\Large, color={rgb,255:red,255; green,0; blue,0}] at (12.5,8) {$I_{A}=4A$};
+\node [font=\Large, color={rgb,255:red,0; green,0; blue,255}] at (13.75,3.5) {$I_{x}=?$};
+\node [font=\Huge, color={rgb,255:red,11; green,111; blue,0}] at (14,8.5) {$+$};
+\node [font=\Huge, color={rgb,255:red,11; green,111; blue,0}] at (16,8.5) {$-$};
+\node [anchor=west, font=\Large, color={rgb,255:red,11; green,111; blue,0}] at (13.5,9.25) {$V_{R2}=$};
+\node [font=\Huge, color={rgb,255:red,11; green,111; blue,0}] at (22,4.25) {$+$};
+\node [font=\Huge, color={rgb,255:red,11; green,111; blue,0}] at (22,2.75) {$-$};
+\node [anchor=west, font=\Large, color={rgb,255:red,11; green,111; blue,0}] at (21.75,3.5) {$V_{R5}=$};
+\draw [ color={rgb,255:red,255; green,0; blue,0}, line width=1pt, ->, >=Stealth] (19,5.5) -- (19,4.5);
+\node [anchor=west, font=\Large, color={rgb,255:red,255; green,0; blue,0}] at (19.2,4.75) {$I_{R5}=$};
+\draw [ color={rgb,255:red,255; green,0; blue,0}, line width=1pt, ->, >=Stealth] (18,5.5) -- (19,5.5);
+\node [anchor=west, font=\Large, color={rgb,255:red,255; green,0; blue,0}] at (19.2,5.75) {$I_{R3}=$};
+\node [anchor=west, font=\Large, color={rgb,255:red,11; green,111; blue,0}] at (15.8,6.25) {$V_{R3}=$};
+\node [font=\Huge, color={rgb,255:red,11; green,111; blue,0}] at (15.5,6) {$+$};
+\node [font=\Huge, color={rgb,255:red,11; green,111; blue,0}] at (18.5,6) {$-$};
+\node [font=\Huge, color={rgb,255:red,11; green,111; blue,0}] at (15.5,4.75) {$+$};
+\node [font=\Huge, color={rgb,255:red,11; green,111; blue,0}] at (15.5,2) {$-$};
+\node [anchor=west, font=\Large, color={rgb,255:red,11; green,111; blue,0}] at (15.3,2.5) {$V_{R4}=$};
+\end{circuitikz}
+}%
+\label{fig:my_label}
+\end{figure}
+`;
+
+circuits.C_1 = String.raw`
+\begin{figure}[!ht]
+\centering
+\resizebox{1\textwidth}{!}{%
+\begin{circuitikz}
+\tikzstyle{every node}=[font=\Large]
+\draw [ line width=0.8pt](3,13) to[american voltage source] (3,10);
+\draw [ line width=0.8pt](3,13) to[R] (6,13);
+\draw [ line width=0.8pt](6,13) to[R] (6,10);
+\draw [ line width=0.8pt](6,13) to[rmeter, t=A] (9,13);
+\draw [ line width=0.8pt](9,13) to[R] (12,13);
+\draw [ line width=0.8pt](12,13) to[R] (12,10);
+\draw [ line width=0.8pt](15,13) to[rmeter, t=V] (15,10);
+\draw [ line width=0.8pt](12,13) to[short] (15,13);
+\draw [ line width=0.8pt](15,10) to[short] (12,10);
+\draw [ line width=0.8pt](12,10) to[short] (3,10);
+\node [font=\LARGE] at (15.75,12.25) {\textbf{+}};
+\node [font=\LARGE] at (15.75,10.75) {\textbf{-}};
+\node [font=\LARGE] at (6.5,13.5) {\textbf{+}};
+\node [font=\LARGE] at (8.5,13.5) {\textbf{-}};
+\node [font=\Large] at (7.5,14.25) {$(R_{Dis}=0\Omega)$};
+\node [font=\Large] at (17.5,11.5) {$(R_{Dis}= \infty \Omega)$};
+\end{circuitikz}
+}%
+\label{fig:my_label}
+\end{figure}
+`;
+
+// Cópia de C_1
+
+circuits.C_2 = String.raw`
+\begin{figure}[!ht]
+\centering
+\resizebox{1\textwidth}{!}{%
+\begin{circuitikz}
+\tikzstyle{every node}=[font=\Large]
+\draw [ line width=0.8pt](3,13) to[american voltage source] (3,10);
+\draw [ line width=0.8pt](3,13) to[R] (6,13);
+\draw [ line width=0.8pt](6,13) to[R] (6,10);
+\draw [ line width=0.8pt](6,13) to[rmeter, t=A] (9,13);
+\draw [ line width=0.8pt](9,13) to[R] (12,13);
+\draw [ line width=0.8pt](12,13) to[R] (12,10);
+\draw [ line width=0.8pt](15,13) to[rmeter, t=V] (15,10);
+\draw [ line width=0.8pt](12,13) to[short] (15,13);
+\draw [ line width=0.8pt](15,10) to[short] (12,10);
+\draw [ line width=0.8pt](12,10) to[short] (3,10);
+\node [font=\LARGE] at (15.75,12.25) {\textbf{+}};
+\node [font=\LARGE] at (15.75,10.75) {\textbf{-}};
+\node [font=\LARGE] at (6.5,13.5) {\textbf{+}};
+\node [font=\LARGE] at (8.5,13.5) {\textbf{-}};
+\node [font=\Large] at (7.5,14.25) {$(R_{Dis}=0\Omega)$};
+\node [font=\Large] at (17.5,11.5) {$(R_{Dis}= \infty \Omega)$};
+\end{circuitikz}
+}%
+\label{fig:my_label}
+\end{figure}
+`;
+
+circuits.C_3 = String.raw`
+\begin{figure}[!ht]
+\centering
+\resizebox{1\textwidth}{!}{%
+\begin{circuitikz}
+\tikzstyle{every node}=[font=\huge]
+\draw [ line width=0.6pt](3,13) to[american voltage source] (3,10);
+\draw [ line width=0.6pt](3,13) to[R] (6,13);
+\draw [ line width=0.6pt](6,13) to[R] (6,10);
+\draw [ line width=0.6pt](7.5,13) to[R] (10.5,13);
+\draw [ line width=0.6pt](10.5,13) to[R] (10.5,10);
+\draw [ line width=0.6pt](3,10) to[short] (9,10);
+\draw [ line width=0.6pt](7.5,13) to[short] (6,13);
+\draw [ line width=0.6pt](9,10) to[short] (10.5,10);
+\draw [ color={rgb,255:red,255; green,0; blue,0}, line width=1pt, ->, >=Stealth] (6.75,13) -- (7.5,13);
+\node [font=\huge, color={rgb,255:red,255; green,0; blue,0}] at (7.25,13.75) {$i_{x}$};
+\node [font=\huge, color={rgb,255:red,255; green,0; blue,0}] at (11.75,12.5) {\textbf{+}};
+\node [font=\huge, color={rgb,255:red,255; green,0; blue,0}] at (11.75,10.5) {\textbf{-}};
+\node [font=\huge, color={rgb,255:red,255; green,0; blue,0}] at (11.75,11.5) {$v_{x}$};
+\end{circuitikz}
+}%
+\label{fig:my_label}
+\end{figure}
+`;
+
+circuits.C_4 = String.raw`
+\begin{figure}[!ht]
+\centering
+\resizebox{1\textwidth}{!}{%
+\begin{circuitikz}
+\tikzstyle{every node}=[font=\Large]
+\draw [ line width=0.8pt](5,14.5) to[american voltage source,l={ \Large $V_{1}$}] (5,11.5);
+\draw [ line width=0.8pt](5,14.5) to[R,l={ \Large $R_{1}$}] (9,14.5);
+\draw [ line width=0.8pt](9,14.5) to[R,l={ \Large $R_{2}$}] (9,11.5);
+\draw [ line width=0.8pt](9,14.5) to[R,l={ \Large $R_{3}$}] (13,14.5);
+\draw [ line width=0.8pt](13,14.5) to[R,l={ \Large $R_{4}$}] (13,11.5);
+\draw [ line width=0.8pt](17,14.5) to[american voltage source,l={ \Large $V_{2}$}] (17,11.5);
+\draw [ line width=0.8pt](17,14.5) to[short] (13,14.5);
+\draw [ line width=0.8pt](17,11.5) to[short] (5,11.5);
+\node at (11,11.5) [circ, color={rgb,255:red,255; green,0; blue,0}] {};
+\node at (15,14.5) [circ, color={rgb,255:red,255; green,0; blue,0}] {};
+\node at (9,14.5) [circ, color={rgb,255:red,255; green,0; blue,0}] {};
+\node at (5,14.5) [circ, color={rgb,255:red,255; green,0; blue,0}] {};
+\node [font=\Large, color={rgb,255:red,0; green,0; blue,255}] at (7.25,13) {$M_{1}$};
+\node [font=\Large, color={rgb,255:red,0; green,0; blue,255}] at (11,13) {$M_{2}$};
+\node [font=\Large, color={rgb,255:red,0; green,0; blue,255}] at (15,13) {$M_{3}$};
+\node [font=\Large, color={rgb,255:red,255; green,0; blue,0}] at (4.75,15.25) {$N_{a}$};
+\node [font=\Large, color={rgb,255:red,255; green,0; blue,0}] at (9,15.25) {$N_{b}$};
+\node [font=\Large, color={rgb,255:red,255; green,0; blue,0}] at (15,15.25) {$N_{c}$};
+\node [font=\Large, color={rgb,255:red,255; green,0; blue,0}] at (11,10.75) {$N_{d}$};
+\draw [arrows=-{>[scale=2, length=3, width=3.5,bend]}, color={rgb,255:red,0; green,0; blue,255}, line width=1pt, ->, >=Stealth] (7.25,12.5) arc (270:15:0.5);
+\draw [arrows=-{>[scale=2, length=3, width=3.5,bend]}, color={rgb,255:red,0; green,0; blue,255}, line width=1pt, ->, >=Stealth] (11,12.5) arc (270:15:0.5);
+\draw [arrows=-{>[scale=2, length=3, width=3.5,bend]}, color={rgb,255:red,0; green,0; blue,255}, line width=1pt, ->, >=Stealth] (15,12.5) arc (270:15:0.5);
+\end{circuitikz}
+}%
+\label{fig:my_label}
+\end{figure}
+`;
+
+
+circuits.C_5 = String.raw`
+\begin{figure}[!ht]
+\centering
+\resizebox{1\textwidth}{!}{%
+\begin{circuitikz}
+\tikzstyle{every node}=[font=\Large]
+\draw [ line width=0.8pt](17,11.25) to[american controlled current source] (13,11.25);
+\draw [ line width=0.8pt](9,9.25) to[american voltage source,l={ \Large $V_{S}=50V$}] (9,6.25);
+\draw [ line width=0.8pt](9,9.25) to[R,l={ \Large $R_{1}=6\Omega$}] (13,9.25);
+\draw [ line width=0.8pt](13,9.25) to[R,l={ \Large $R_{3}=8\Omega$}] (13,6.25);
+\draw [ line width=0.8pt](13,9.25) to[R,l={ \Large $R_{2}=2\Omega$}] (17,9.25);
+\draw [ line width=0.8pt](17,9.25) to[R,l={ \Large $R_{4}=4\Omega$}] (17,6.25);
+\draw [ line width=0.8pt](21,6.25) to[american current source] (21,9.25);
+\draw [ line width=0.8pt](21,9.25) to[short] (17,9.25);
+\draw [ line width=0.8pt](21,6.25) to[short] (9,6.25);
+\draw [ line width=0.8pt](17,11.25) to[short] (17,9.25);
+\draw [ line width=0.8pt](13,11.25) to[short] (13,9.25);
+\draw [ color={rgb,255:red,255; green,0; blue,0}, line width=2pt, ->, >=Stealth] (9.25,9.25) -- (10,9.25);
+\node [font=\Large, color={rgb,255:red,255; green,0; blue,0}] at (9.5,9.75) {$i_{a}$};
+\node [font=\Large] at (15,12) {$I_{FD}=3\cdoti_{a}$};
+\node [font=\Large] at (22.5,7.75) {$I_{S}=5A$};
+\end{circuitikz}
+}%
+\label{fig:my_label}
+\end{figure}
+`;
+
+circuits.C_6 = String.raw`
+\begin{figure}[!ht]
+\centering
+\resizebox{1\textwidth}{!}{%
+\begin{circuitikz}
+\tikzstyle{every node}=[font=\Large]
+\draw [ line width=0.8pt](17,11.25) to[american controlled current source] (13,11.25);
+\draw [ line width=0.8pt](8,9.25) to[american voltage source,l={ \Large $V_{S}=50V$}] (8,5.5);
+\draw [ line width=0.8pt](8,9.25) to[R,l={ \Large $R_{1}=6\Omega$}] (13,9.25);
+\draw [ line width=0.8pt](13,9.25) to[R,l={ \Large $R_{3}=8\Omega$}] (13,5.5);
+\draw [ line width=0.8pt](17,9.25) to[R,l={ \Large $R_{2}=2\Omega$}] (13,9.25);
+\draw [ line width=0.8pt](17,9.25) to[R,l={ \Large $R_{4}=4\Omega$}] (17,5.5);
+\draw [ line width=0.8pt](21,5.5) to[american current source] (21,9.25);
+\draw [ line width=0.8pt](21,9.25) to[short] (17,9.25);
+\draw [ line width=0.8pt](21,5.5) to[short] (8,5.5);
+\draw [ line width=0.8pt](17,11.25) to[short] (17,9.25);
+\draw [ line width=0.8pt](13,11.25) to[short] (13,9.25);
+\draw [ color={rgb,255:red,255; green,0; blue,0}, line width=2pt, ->, >=Stealth] (8.25,9.25) -- (9,9.25);
+\node [font=\Large, color={rgb,255:red,255; green,0; blue,0}] at (8.75,9.75) {$i_{a}$};
+\node [font=\Large] at (15,12) {$I_{FD}=3\cdoti_{a}$};
+\node [font=\Large] at (22.25,7.75) {$I_{S}=5A$};
+\draw [ color={rgb,255:red,0; green,0; blue,255}, line width=2pt, ->, >=Stealth] (13,9.25) -- (12.25,9.25);
+\draw [ color={rgb,255:red,0; green,0; blue,255}, line width=2pt, ->, >=Stealth] (13,9.25) -- (13.75,9.25);
+\draw [ color={rgb,255:red,0; green,0; blue,255}, line width=2pt, ->, >=Stealth] (13,9.25) -- (13,10);
+\draw [ color={rgb,255:red,0; green,0; blue,255}, line width=2pt, ->, >=Stealth] (13,9.25) -- (13,8.5);
+\draw [ color={rgb,255:red,0; green,0; blue,255}, line width=2pt, ->, >=Stealth] (17,9.25) -- (16.25,9.25);
+\draw [ color={rgb,255:red,0; green,0; blue,255}, line width=2pt, ->, >=Stealth] (17,9.25) -- (17.75,9.25);
+\draw [ color={rgb,255:red,0; green,0; blue,255}, line width=2pt, ->, >=Stealth] (17,9.25) -- (17,10);
+\draw [ color={rgb,255:red,0; green,0; blue,255}, line width=2pt, ->, >=Stealth] (17,9.25) -- (17,8.5);
+\node [font=\Large, color={rgb,255:red,0; green,0; blue,255}] at (12.75,8.5) {$i_{4}$};
+\node [font=\Large, color={rgb,255:red,0; green,0; blue,255}] at (13.25,10.25) {$i_{3}$};
+\node [font=\Large, color={rgb,255:red,0; green,0; blue,255}] at (16.75,8.5) {$i_{7}$};
+\node [font=\Large, color={rgb,255:red,0; green,0; blue,255}] at (17.25,10.25) {$i_{8}$};
+\node [font=\Large, color={rgb,255:red,0; green,0; blue,255}] at (12,9) {$i_{1}$};
+\node [font=\Large, color={rgb,255:red,0; green,0; blue,255}] at (13.75,9.75) {$i_{2}$};
+\node [font=\Large, color={rgb,255:red,0; green,0; blue,255}] at (18,9) {$i_{6}$};
+\node [font=\Large, color={rgb,255:red,0; green,0; blue,255}] at (16.25,9.75) {$i_{5}$};
+\draw [line width=0.8pt](15,5.5) to (15,5.25) node[sground]{};
+\draw [ color={rgb,255:red,30; green,130; blue,30}, , line width=1pt](17,9.25) to[short, -o] (18.25,10.5) ;
+\draw [ color={rgb,255:red,30; green,130; blue,30}, , line width=1pt](13,9.25) to[short, -o] (11.75,10.5) ;
+\node [font=\LARGE, color={rgb,255:red,30; green,130; blue,30}] at (19,11.25) {$V_{2}$};
+\node [font=\LARGE, color={rgb,255:red,30; green,130; blue,30}] at (11,11.25) {$V_{1}$};
+\node [font=\Huge, color={rgb,255:red,30; green,130; blue,30}] at (15,5.75) {\textbf{-    -}};
+\node [font=\Huge, color={rgb,255:red,30; green,130; blue,30}] at (18.5,10.75) {\textbf{+}};
+\node [font=\Huge, color={rgb,255:red,30; green,130; blue,30}] at (11.5,10.75) {\textbf{+}};
+\end{circuitikz}
+}%
+\label{fig:my_label}
+\end{figure}
+`; 
+
+
+circuits.C_7 = String.raw`
+\begin{figure}[!ht]
+\centering
+\resizebox{1\textwidth}{!}{%
+\begin{circuitikz}
+\tikzstyle{every node}=[font=\LARGE]
+\draw [ line width=0.8pt](6,12.5) to[R,l={ \Large $R_{1}=6$}] (8,12.5);
+\draw [ line width=0.8pt](8,12.5) to[short, -o] (10,12.5) ;
+\draw [ line width=0.8pt](6,12.5) to[american voltage source] (4,12.5);
+\draw [ line width=0.8pt](8,6.5) to[short, -o] (10,6.5) ;
+\draw [ line width=0.8pt](6,6.5) to[R,l={ \Large $R_{3}=8\Omega$}] (8,6.5);
+\draw [ line width=0.8pt](6,6.5) to[short] (4,6.5);
+\draw [line width=0.8pt](4,6.5) to (4,6.25) node[sground]{};
+\draw [line width=0.8pt](4,12.5) to (4,12) node[sground]{};
+\draw [ line width=0.8pt](8,9.5) to[short, -o] (10,9.5) ;
+\draw [ line width=0.8pt](6,9.5) to[R,l={ \Large $R_{2}=2\Omega$}] (8,9.5);
+\draw [ line width=0.8pt](5,9.5) to[short, -o] (4,9.5) ;
+\draw [ line width=0.8pt](5,9.5) to[short] (6,9.5);
+\draw [ line width=0.8pt](8,3.5) to[short, -o] (10,3.5) ;
+\draw [ line width=0.8pt](6,3.5) to[american controlled current source] (8,3.5);
+\draw [ line width=0.8pt](6,3.5) to[short] (5,3.5);
+\draw [ line width=0.8pt](5,3.5) to[short, -o] (4,3.5) ;
+\node [font=\Large] at (10,12) {$V_{1}$};
+\node [font=\Large] at (5,13.25) {$V_{S}=50V$};
+\node [font=\Large] at (10,9) {$V_{1}$};
+\node [font=\Large] at (4,9) {$V_{2}$};
+\node [font=\Large] at (10,6) {$V_{1}$};
+\node [font=\Large] at (10,3) {$V_{1}$};
+\node [font=\Large] at (4,3) {$V_{2}$};
+\node [font=\Large] at (3.25,5.75) {$0V$};
+\node [font=\Large] at (3.25,11.5) {$0V$};
+\node [font=\Large] at (7,4.25) {$I_{FD}=3\cdot i_{a}$};
+\node [font=\Large, color={rgb,255:red,0; green,0; blue,255}] at (8.75,13) {$i_{1}$};
+\node [font=\Large, color={rgb,255:red,0; green,0; blue,255}] at (8.5,10) {$i_{2}$};
+\node [font=\Large, color={rgb,255:red,0; green,0; blue,255}] at (8.75,7) {$i_{3}$};
+\node [font=\Large, color={rgb,255:red,0; green,0; blue,255}] at (8.75,4) {$i_{4}$};
+\draw [ color={rgb,255:red,0; green,0; blue,255}, line width=1pt, ->, >=Stealth] (9,12.5) -- (8.25,12.5);
+\draw [ color={rgb,255:red,0; green,0; blue,255}, line width=1pt, ->, >=Stealth] (9,9.5) -- (8.25,9.5);
+\draw [ color={rgb,255:red,0; green,0; blue,255}, line width=1pt, ->, >=Stealth] (9,6.5) -- (8.25,6.5);
+\draw [ color={rgb,255:red,0; green,0; blue,255}, line width=1pt, ->, >=Stealth] (9,3.5) -- (8.25,3.5);
+\node [font=\LARGE, color={rgb,255:red,20; green,150; blue,70}] at (6.25,12) {\textbf{-}};
+\node [font=\LARGE, color={rgb,255:red,20; green,150; blue,70}] at (7.75,12) {\textbf{+}};
+\node [font=\LARGE, color={rgb,255:red,20; green,150; blue,70}] at (6.25,9) {\textbf{-}};
+\node [font=\LARGE, color={rgb,255:red,20; green,150; blue,70}] at (6.25,6) {\textbf{-}};
+\node [font=\LARGE, color={rgb,255:red,20; green,150; blue,70}] at (7.75,9) {\textbf{+}};
+\node [font=\LARGE, color={rgb,255:red,20; green,150; blue,70}] at (7.75,6) {\textbf{+}};
+\end{circuitikz}
+}%
+\label{fig:my_label}
+\end{figure}
+`;
+
+
+circuits.C_8 = String.raw`
+\begin{figure}[!ht]
+\centering
+\resizebox{1\textwidth}{!}{%
+\begin{circuitikz}
+\tikzstyle{every node}=[font=\large]
+\draw [ line width=0.8pt](15,6.5) to[short, -o] (17,6.5) ;
+\draw [ line width=0.8pt](13,6.5) to[R,l={ \Large $R_{4}=4\Omega$}] (15,6.5);
+\draw [ line width=0.8pt](13,6.5) to[short] (11,6.5);
+\draw [line width=0.8pt](11,6.5) to (11,6.25) node[sground]{};
+\draw [ line width=0.8pt](15,12.5) to[short, -o] (17,12.5) ;
+\draw [ line width=0.8pt](13,12.5) to[R,l={ \Large $R_{2}=2\Omega$}] (15,12.5);
+\draw [ line width=0.8pt](12,12.5) to[short, -o] (11,12.5) ;
+\draw [ line width=0.8pt](12,12.5) to[short] (13,12.5);
+\draw [ line width=0.8pt](15,9.5) to[short, -o] (17,9.5) ;
+\draw [ line width=0.8pt](13,9.5) to[short] (12,9.5);
+\draw [ line width=0.8pt](13,9.5) to[american current source,l={ \Large $I_{S}=5A$}] (15,9.5);
+\draw [ line width=0.8pt](15,3.5) to[short, -o] (17,3.5) ;
+\draw [ line width=0.8pt](15,3.5) to[american controlled current source] (13,3.5);
+\draw [ line width=0.8pt](13,3.5) to[short] (12,3.5);
+\draw [ line width=0.8pt](12,3.5) to[short, -o] (11,3.5) ;
+\node [font=\Large] at (11,5.25) {$0V$};
+\draw [line width=0.8pt](11,9.5) to (11,9.25) node[sground]{};
+\draw [ line width=0.8pt](12,9.5) to[short] (11,9.5);
+\node [font=\Large] at (11,8.25) {$0V$};
+\node [font=\Large] at (17,11.75) {$V_{2}$};
+\node [font=\Large] at (17,9) {$V_{2}$};
+\node [font=\Large] at (17,6) {$V_{2}$};
+\node [font=\Large] at (17,3) {$V_{2}$};
+\node [font=\Large] at (11,12) {$V_{1}$};
+\node [font=\Large] at (11,3) {$V_{1}$};
+\node [font=\Large] at (14,4.25) {$I_{FD}=3\cdot i_{a}$};
+\node [font=\Large, color={rgb,255:red,0; green,0; blue,255}] at (16.25,13) {$i_{5}$};
+\node [font=\Large, color={rgb,255:red,0; green,0; blue,255}] at (16.25,10) {$i_{6}$};
+\node [font=\Large, color={rgb,255:red,0; green,0; blue,255}] at (16.25,7) {$i_{7}$};
+\node [font=\Large, color={rgb,255:red,0; green,0; blue,255}] at (16.25,4) {$i_{8}$};
+\draw [ color={rgb,255:red,0; green,0; blue,255}, line width=1pt, ->, >=Stealth] (16.5,3.5) -- (15.75,3.5);
+\draw [ color={rgb,255:red,0; green,0; blue,255}, line width=1pt, ->, >=Stealth] (16.5,9.5) -- (15.75,9.5);
+\draw [ color={rgb,255:red,0; green,0; blue,255}, line width=1pt, ->, >=Stealth] (16.5,12.5) -- (15.75,12.5);
+\node [font=\LARGE, color={rgb,255:red,20; green,150; blue,70}] at (13.25,12) {\textbf{-}};
+\node [font=\LARGE, color={rgb,255:red,20; green,150; blue,70}] at (13.25,6) {\textbf{-}};
+\node [font=\LARGE, color={rgb,255:red,20; green,150; blue,70}] at (14.75,12) {\textbf{+}};
+\node [font=\LARGE, color={rgb,255:red,20; green,150; blue,70}] at (14.75,6) {\textbf{+}};
+\draw [ line width=0.8pt](15.5,0.5) to[R,l={ \Large $R_{1}=6$}] (13.5,0.5);
+\draw [ line width=0.8pt](15.5,0.5) to[short, -o] (17,0.5) ;
+\draw [ line width=0.8pt](13.5,0.5) to[american voltage source] (12,0.5);
+\draw [line width=0.8pt](11,0.5) to (11,0) node[sground]{};
+\node [font=\Large] at (17,-0.25) {$V_{1}$};
+\node [font=\Large] at (12.5,1.5) {$V_{S}=50V$};
+\node [font=\Large] at (11,-1) {$0V$};
+\node [font=\Large, color={rgb,255:red,255; green,0; blue,0}] at (11.75,0) {$i_{a}$};
+\node [font=\LARGE, color={rgb,255:red,20; green,150; blue,70}] at (13.75,1) {\textbf{+}};
+\node [font=\LARGE, color={rgb,255:red,20; green,150; blue,70}] at (15.25,1) {\textbf{-}};
+\draw [ color={rgb,255:red,0; green,0; blue,255}, line width=1pt, ->, >=Stealth] (16.5,6.5) -- (15.75,6.5);
+\draw [ line width=0.8pt](12,0.5) to[short] (11,0.5);
+\draw [ color={rgb,255:red,255; green,0; blue,0}, line width=1pt, ->, >=Stealth] (11.25,0.5) -- (12,0.5);
+\end{circuitikz}
+}%
+\label{fig:my_label}
+\end{figure}
+`;
+
+circuits.C_9 = String.raw`
+\begin{figure}[!ht]
+\centering
+\resizebox{1\textwidth}{!}{%
+\begin{circuitikz}
+\tikzstyle{every node}=[font=\LARGE]
+\draw [line width=1.2pt, short] (16,11.5) -- (6,15.5);
+\draw [line width=1.2pt, short] (6,7.5) -- (16,11.5);
+\draw [ line width=0.8pt](7,13.5) to[R] (7,9.5);
+\draw [ line width=0.8pt](7,9.5) to[short, -o] (4,9.5) ;
+\draw [ line width=0.8pt](7,13.5) to[short, -o] (2,13.5) ;
+\draw [ line width=0.8pt](9,12.5) to[american controlled voltage source] (9,10.5);
+\draw [ line width=0.8pt](9,12.5) to[short] (11,12.5);
+\draw [ line width=0.8pt](11,11.5) to[R] (14,11.5);
+\draw [ line width=0.8pt](16,11.5) to[short, -o] (17,11.5) ;
+\draw [ line width=0.8pt](11,9.5) to[short, -o] (11,8.5) ;
+\draw [ line width=0.8pt](11,13.5) to[short, -o] (11,14.5) ;
+\draw [ line width=0.8pt](11,11.5) to[short] (11,12.5);
+\draw [line width=0.8pt](9,10.5) to (9,10.25) node[sground]{};
+\draw [ line width=0.8pt](14,11.5) to[short] (16,11.5);
+\draw [line width=0.8pt](4,7.5) to (4,7.25) node[sground]{};
+\draw [line width=0.8pt](2,7.5) to (2,7.25) node[sground]{};
+\node [font=\LARGE] at (2,10.5) {$V_{p}$};
+\node [font=\LARGE] at (4,8.5) {$V_{n}$};
+\node [font=\LARGE] at (7.75,11.5) {$R_{i}$};
+\node [font=\Large] at (9.5,13) {$A\cdot (V_{p}-V_{n})$};
+\node [font=\LARGE] at (12.5,12.25) {$R_{0}$};
+\node [font=\LARGE] at (11,15) {$+V_{cc}$};
+\node [font=\LARGE] at (11,7.75) {$-V_{cc}$};
+\node [font=\LARGE] at (17,9.5) {$V_{o}$};
+\draw [line width=0.8pt](17,7.5) to (17,7.25) node[sground]{};
+\draw (2,8) to[short] (2,10);
+\draw (2,11) to[short] (2,13);
+
+\draw (17,11) to[short] (17,10);
+\draw (17,9) to[short] (17,8);
+\draw [ line width=1.2pt](6,15.5) to[short] (6,7.5);
+\end{circuitikz}
+}%
+\label{fig:my_label}
+\end{figure}
+`;
+
+circuits.C_10 = String.raw`
+\begin{figure}[!ht]
+\centering
+\resizebox{1\textwidth}{!}{%
+\begin{circuitikz}
+\tikzstyle{every node}=[font=\Large]
+\draw [line width=1pt, short] (19,14) -- (23,12);
+\draw [line width=1pt, short] (23,12) -- (19,10);
+\draw [ line width=0.8pt](21,11) to[short, -o] (21,10.25) ;
+\draw [ line width=0.8pt](21,13) to[short, -o] (21,13.75) ;
+\node [font=\Huge] at (19.5,11) {+};
+\node [font=\Huge] at (19.5,13) {-};
+\draw [ line width=0.8pt](13,13) to[R,l={ \Large $R_{S}=25K\Omega$}] (19,13);
+\draw [ line width=0.8pt](13,13) to[american voltage source] (13,9.5);
+\draw [line width=0.8pt](13,9.5) to (13,9) node[sground]{};
+\draw [ line width=0.8pt](19,11) to[short] (17,11);
+\draw [ line width=0.8pt](18,15.5) to[R,l={ \Large $R_{F}=100K\Omega$}] (24,15.5);
+\draw [ line width=0.8pt](18,15.5) to[short] (18,13);
+\draw [ line width=0.8pt](24,15.5) to[short] (24,12);
+\draw [ line width=0.8pt](23,12) to[short] (24,12);
+\draw [ line width=0.8pt](24,12) to[R] (24,9.5);
+\draw [line width=0.8pt](24,9.5) to (24,9) node[sground]{};
+\draw [ line width=1pt](19,14) to[short] (19,10);
+\draw [ line width=0.8pt](17,11) to[american voltage source] (17,9.25);
+\draw [line width=0.8pt](17,9.25) to (17,9) node[sground]{};
+\node [font=\Large] at (15.25,10) {$V_{B}=0V$};
+\node [font=\Large] at (21,14.25) {$+V_{cc}=10V$};
+\node [font=\Large] at (21,9.5) {$-V_{cc}=-10V$};
+\node [font=\Large] at (25.75,10.75) {$R_{L}=10K\Omega$};
+\draw [ line width=0.8pt](24,12) to[short, -o] (25,12) ;
+\node [font=\Large] at (25.5,12) {$V_{o}$};
+\node [circle, fill={rgb,255:red,255; green,0; blue,0}, inner sep=3pt] at (19,13) {};
+\node [circle, fill={rgb,255:red,255; green,0; blue,0}, inner sep=3pt] at (19,11) {};
+\node [font=\Large] at (18.5,13.5) {$V_{n}$};
+\node [font=\Large] at (18.5,11.5) {$V_{p}$};
+\node [font=\Large] at (11.25,11.25) {$V_{A}=1V$};
+\end{circuitikz}
+}%
+\label{fig:my_label}
+\end{figure}
+`;
+
+circuits.C_11 = String.raw`
+\begin{figure}[!ht]
+\centering
+\resizebox{1\textwidth}{!}{%
+\begin{circuitikz}
+\tikzstyle{every node}=[font=\large]
+\draw [ color={rgb,255:red,255; green,255; blue,255} , fill={rgb,255:red,128; green,128; blue,128}] (8,14.5) rectangle  node {\Large Presença} (12,13.5);
+\draw [ color={rgb,255:red,255; green,255; blue,255} , fill={rgb,255:red,128; green,128; blue,128}] (4,12) rectangle  node {\Large Avalição} (8,11);
+\draw [ color={rgb,255:red,255; green,255; blue,255} , fill={rgb,255:red,128; green,128; blue,128}] (9,9.5) rectangle  node {\Large Exame} (13,8.5);
+\draw [ color={rgb,255:red,255; green,255; blue,255} , fill={rgb,255:red,11; green,168; blue,0}] (2,6.5) rectangle  node {\Large Aprovado} (6,5.5);
+\draw [ color={rgb,255:red,255; green,255; blue,255} , fill={rgb,255:red,182; green,2; blue,2}] (13,6.5) rectangle  node {\Large Não Aprovado} (17,5.5);
+\draw [ color={rgb,255:red,135; green,135; blue,135}, line width=2pt, short] (10,13.5) -- (10,12.5);
+\draw [ color={rgb,255:red,135; green,135; blue,135}, line width=2pt, short] (9,12.5) -- (6,12.5);
+\draw [ color={rgb,255:red,135; green,135; blue,135}, line width=2pt, short] (6,12.5) -- (6,12);
+\draw [ color={rgb,255:red,135; green,135; blue,135}, line width=2pt, short] (9,12.5) -- (15,12.5);
+\draw [ color={rgb,255:red,135; green,135; blue,135}, line width=2pt, short] (15,12.5) -- (15,7.5);
+\draw [ color={rgb,255:red,135; green,135; blue,135}, line width=2pt, short] (6,11) -- (6,10);
+\draw [ color={rgb,255:red,135; green,135; blue,135}, line width=2pt, short] (6,10) -- (11,10);
+\draw [ color={rgb,255:red,135; green,135; blue,135}, line width=2pt, short] (11,10) -- (11,9.5);
+\draw [ color={rgb,255:red,135; green,135; blue,135}, line width=2pt, short] (11,8.5) -- (11,7.5);
+\draw [ color={rgb,255:red,135; green,135; blue,135}, line width=2pt, short] (11,7.5) -- (15,7.5);
+\draw [ color={rgb,255:red,135; green,135; blue,135}, line width=2pt, short] (11,7.5) -- (5,7.5);
+\draw [ color={rgb,255:red,135; green,135; blue,135}, line width=2pt, short] (6,10) -- (3,10);
+\draw [ color={rgb,255:red,135; green,135; blue,135}, line width=2pt, short] (3,10) -- (3,7.5);
+\draw [ color={rgb,255:red,135; green,135; blue,135}, line width=2pt, ->, >=Stealth] (15,7.5) -- (15,6.5);
+\draw [ color={rgb,255:red,135; green,135; blue,135}, line width=2pt, ->, >=Stealth] (5,7.5) -- (5,6.5);
+\draw [ color={rgb,255:red,135; green,135; blue,135}, line width=2pt, ->, >=Stealth] (3,7.5) -- (3,6.5);
+\node [font=\large] at (4.5,10.5) {$\text{Média} \geq 6.0$};
+\node [font=\large] at (11.75,13) {$\text{Presença} < \text{75\%}$};
+\node [font=\large] at (8.25,13) {$\text{Presença} \geq \text{75\%}$};
+\node [font=\large] at (9,8) {$\text{Média} Final \geq 6.0$};
+\node [font=\large] at (8,10.5) {$3.0 \leq \text{Média} < 6.0$};
+\node [font=\large] at (12.75,8) {$\text{Média} Final < 6.0$};
+\end{circuitikz}
+}%
+\label{fig:my_label}
+\end{figure}
+`;

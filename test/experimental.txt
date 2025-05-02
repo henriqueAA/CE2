@@ -1,0 +1,83 @@
+
+
+
+
+// experimental
+
+
+
+
+
+
+
+
+// Adiciona evento de clique a todos os <p> com a classe 'open-modal'
+document.querySelectorAll(".open-modal").forEach(paragraph => {  
+    paragraph.addEventListener("click", function () {        
+        const img = this.querySelector("img"); // Obtém a imagem dentro do <p>
+        if (img) {
+            modal.style.display = "flex";
+            modalImg.src = img.src;
+            modalImg.rescale(2);
+        }
+    });
+});
+
+// Fechar modal ao clicar no botão '×'
+closeBtn.addEventListener("click", () => {
+    modal.style.display = "none";
+});
+
+// Fechar modal ao clicar fora da imagem
+modal.addEventListener("click", (event) => {
+    if (event.target === modal) {
+        modal.style.display = "none";
+    }
+});
+
+
+
+
+
+/* experiemntal */
+
+
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(255, 255, 255, 1);
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-content {
+    max-width: 90%;
+    max-height: 90%;
+    display: block;
+    margin: auto;
+    border-radius: 10px;
+}
+
+.close {
+    position: absolute;
+    top: 15px;
+    right: 25px;
+    font-size: 30px;
+    color: white;
+    cursor: pointer;
+}
+
+
+		<div id="imageModal" class="modal">
+			<span class="close">&times;</span>
+			<img id="modalImg" class="modal-content">
+		</div>
+
+
+
+<p class="circuitikz-code mb-3 open-modal" idCircuit="C_1" rescale="2.4"></p>

@@ -1,0 +1,290 @@
+
+.reveal{
+    max-width: 1500px;
+    margin-inline: auto!important;
+    background-color: #FFF!important;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    
+    
+    min-width: 1200px!important;
+    max-height: 1500px!important;/* height: 100vh!important; */
+}
+
+.reveal .slides section,
+.reveal .slides section > section {
+  height: 100%!important;
+  overflow-y: auto;
+  scrollbar-width: none;        /* Firefox */
+  -ms-overflow-style: none;     /* IE 10+ */
+}
+
+.reveal .slides section::-webkit-scrollbar,
+.reveal .slides section > section::-webkit-scrollbar {
+  display: none;                /* Chrome, Safari */
+}
+
+
+
+.capa{
+  position: absolute!important;
+
+  padding: 0!important;
+  transform: scale(1)!important;
+  max-width: 100%!important;
+  z-index: -1;
+}
+.titte-app{
+  position: relative;
+  top: 50%;
+  right: 50%;
+  
+  text-align: center!important;
+  font-family: var(--Montserrat)!important;
+  font-size: 1.2em;
+  width: 100%;
+  height: 100%;
+  color: #0b1450;
+  transform: translate(50%);
+  
+}
+
+
+.reveal .slides{
+    margin: 0!important;
+    width: 99%!important;
+    
+}
+
+
+/* Cabeçalho estilo PowerPoint */
+.reveal .slide-title {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding-left: 0;    
+    margin-top: 1.5rem;
+    padding-bottom: 10px;
+    text-align: left;
+    
+}
+
+.reveal .slide-title:after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 10px;
+    width: 100%!important;
+    border-bottom: 1px solid #222!important;  
+    
+    z-index: 1000;
+}
+
+
+.reveal .slide-title h1 div.icons {
+    float: right;  
+} 
+
+.reveal .slide-title h1 div.icons i {
+    padding-left: var(--space-4)
+} 
+
+.reveal .slide-title h1 div.icons .icon-tools {
+    color: var(--green-primary-800);
+} 
+
+
+.reveal .slide-title h1 div.logo {
+    float: left;  
+    padding-right: 30px;
+    padding-left: 12px;
+}
+
+.reveal .slide-title h1 div.logo i {
+    font-size: 2.6rem;
+    color: var(--blue-secondary-600);
+}
+
+.reveal .slides section.present .slide-content {
+    position: absolute;
+    top: 5rem;
+    left: 0;
+    right: 0;
+    bottom: 0;
+
+    min-height: calc(87vh - 1px)!important; 
+
+    text-align: left;
+    font-size: var(--text-3);   
+    margin-left: var(--space-8)!important;
+    position: relative;
+
+    overflow-anchor: none;
+    box-sizing: border-box;
+    
+    padding: 2rem;
+
+    width: 98% !important;
+    max-width: 100% !important;
+    white-space: normal;
+
+}
+
+
+.scroll-inner {
+    display: inline-block;
+    min-width: max-content; /* permite rolagem horizontal */
+    white-space: nowrap;     /* impede quebra de linha se quiser */
+  }
+
+.reveal .slides section > section.present {
+    height: 100% !important;
+  }
+
+/* .reveal .slide-content {
+    position: absolute;
+    top: var(--header-height);
+    left: 0;
+    right: 0;
+    bottom: 0;
+  
+    overflow-y: auto;
+    box-sizing: border-box;
+  
+    padding: 0 2rem 1rem 2rem; 
+    text-align: left;
+    font-size: var(--text-3);
+  
+    margin: 0 !important;
+  } */
+  .slide-container {
+    aspect-ratio: 16 / 9;
+    width: 90vw; /* ou 90vh, dependendo da estratégia */
+    max-height: 90vh;
+    background: #004488;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 0 20px rgba(0,0,0,0.4);
+    border-radius: 10px;
+  }
+
+  .conteudo {
+    text-align: center;
+    font-size: calc(1rem + 1vw);
+    padding: 2rem;
+  }
+
+  h1 {
+    font-size: calc(2rem + 1vw);
+    margin-bottom: 1rem;
+  }
+  .reveal .slides section.present .slide-content:before {
+    content: "";
+    margin: 0!important;
+    padding: 0!important;
+    position: absolute;    
+    top:0;
+    left: 0;
+    height: 100%!important;
+    width:3vw;   
+    background: rgb(255, 255, 255);
+    background: linear-gradient(0deg, rgba(255, 255, 255, 1) 5%, rgba(38, 65, 108,0.5) 50%, rgba(255, 255, 255, 1) 95%);
+    margin-left: calc(-1.2*var(--space-8))!important;
+    margin-top: -1.5rem!important;    
+    z-index: -1;
+}
+
+
+.reveal .slides section.present .slide-content:after {
+    content: "";
+    margin: 0!important;
+    padding: 0!important;
+    
+    position: absolute;
+    left:0;
+    bottom:0;
+    height: 100%!important;
+    width:100%;   
+    background: rgb(255, 255, 255);
+    background: linear-gradient(90deg, rgba(255,255,255,1) 0%, rgba(38,65,108,0.1) 50%, rgba(255,255,255,1) 100%);
+    clip-path: polygon(100% 100%, 0% 100% , 0.00% 35.02%, 1.82% 38.27%, 3.64% 41.60%, 5.45% 44.98%, 7.27% 48.35%, 9.09% 51.65%, 10.91% 54.84%, 12.73% 57.85%, 14.55% 60.66%, 16.36% 63.20%, 18.18% 65.45%, 20.00% 67.36%, 21.82% 68.90%, 23.64% 70.06%, 25.45% 70.81%, 27.27% 71.14%, 29.09% 71.04%, 30.91% 70.53%, 32.73% 69.59%, 34.55% 68.26%, 36.36% 66.55%, 38.18% 64.49%, 40.00% 62.11%, 41.82% 59.44%, 43.64% 56.54%, 45.45% 53.44%, 47.27% 50.20%, 49.09% 46.86%, 50.91% 43.48%, 52.73% 40.11%, 54.55% 36.81%, 56.36% 33.62%, 58.18% 30.61%, 60.00% 27.80%, 61.82% 25.26%, 63.64% 23.02%, 65.45% 21.10%, 67.27% 19.56%, 69.09% 18.40%, 70.91% 17.65%, 72.73% 17.32%, 74.55% 17.42%, 76.36% 17.94%, 78.18% 18.87%, 80.00% 20.20%, 81.82% 21.91%, 83.64% 23.97%, 85.45% 26.36%, 87.27% 29.02%, 89.09% 31.92%, 90.91% 35.02%, 92.73% 38.27%, 94.55% 41.60%, 96.36% 44.98%, 98.18% 48.35%, 100.00% 51.65%);
+    margin-left: calc(-1.2*var(--space-8))!important;
+    margin-top: -1.5rem!important;    
+    z-index: -10;
+}
+
+.reveal .slide-content p, .reveal .slide-content ul{
+    line-height: var(--space-6);
+}
+
+#loading {
+    font-size: 40px;
+    outline: none;
+    border: none;
+    background: transparent
+}
+
+.circuitikz-code img{
+    margin: 0!important;
+}
+
+.circuitikz-code-center img {
+    display: block!important;
+    margin: 0 auto!important;
+    padding-left: 3rem!important; /* Tentativa de ajustastar */
+}
+
+
+
+.equations{
+    text-align: center!important;
+    margin-block: 1rem;
+}
+
+hr{
+    margin-block: 2rem;
+}
+
+p{margin:0!important;}
+
+.hidden {
+  display: none !important;
+}
+
+dialog#loading {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  border: none;
+  margin: 0;
+  padding: 0;
+  background-color: rgba(0, 0, 0, 0.6); /* fundo escurecido */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+}
+
+.loading-content {
+  text-align: center;
+  color: white;
+}
+
+.spinner {
+  border: 8px solid #f3f3f3;
+  border-top: 8px solid #3498db;
+  border-radius: 50%;
+  width: 60px;
+  height: 60px;
+  margin: 0 auto 20px;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}

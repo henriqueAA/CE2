@@ -1,0 +1,236 @@
+<script>
+
+	// Inicializar os exercícios
+	const init_ex = ["ex1", "ex2"];
+
+	var blockPyScript = false;
+</script>
+
+<!doctype html>
+<html lang="en">
+
+	<head>
+		<meta charset="utf-8">
+
+		<title>Aulas - Prof. Henrique Amorim</title>
+		
+		<meta name="author" content="Henrique Amorim">
+
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+
+		<!-- --------- Reveal Base Styles --------- -->			
+		
+		<link rel="stylesheet" href="../../reveal.js-master/dist/reset.css">		
+		<link rel="stylesheet" href="../../reveal.js-master/dist/reveal.css">
+		<link rel="stylesheet" href="../../reveal.js-master/dist/theme/white.css" id="theme">
+		<link rel="stylesheet" href="../../reveal.js-master/plugin/highlight/monokai.css">  <!-- Theme used for syntax highlighting of code -->
+
+		
+		<!-- Miscellaneous -->
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+		
+		<!-- Base CSS -->
+		<link rel="stylesheet" href="../../css/general.css">			
+		
+
+	</head>
+
+	<body>
+
+		<dialog id="loading">
+			<h1>Loading...</h1>
+		</dialog>
+
+		<div class="reveal" id="mainReveal">
+			
+
+			<!-- Any section element inside of this container is displayed as a slide -->
+			<div class="slides">
+				
+				<section>
+					<div class="slide-title">
+						<h1>Criérios de Avaliação</h1>
+					</div>
+					<div class="slide-content">
+						<div class="display-flex flew-gap-3">
+							<div class="flex-basis-50">
+								<p class="mb-2">As avaliações serão compostas por <span class="bold">3 provas</span>. A média final será calculada através de média simples.</p>
+								
+								<p class="text-center box-blue mb-3 pr-6 pl-2 mt-3 mb-3 font-size-5"><span class="bold">\(média = \dfrac{P_{1}+P_{2}+P_{3}}{3}\)</span></p>							
+								<p>A promoção do aluno na unidade curricular obedecerá aos critérios estabelecidos pela Pró-Reitoria de Graduação, tal como discutido no Projeto Pedagógico do Curso.</p>
+
+							</div>
+							<div class="flex-basis-50">
+								<img src="../../media/images/teste.png" alt="" srcset="">																				
+							</div>
+						</div>
+						
+					</div>
+				</section>
+				
+				<section>
+					<div class="slide-title">
+						<h1>Conteúdo programático</h1>
+					</div>
+					<div class="slide-content">
+						<div class="display-flex flew-gap-3">
+							<div class="flex-basis-55">								
+								<p class="bold">1. Revisão do conteúdo programático de Circuitos I (parte I)</p>
+								<ol class="letters-list">
+									<li>Método das tensões de nó</li>
+									<li>Método das correntes de malha</li>
+									<li>Transformações de fontes</li>
+									<li>Equivalente de Thévenin e Norton</li>
+									<li>Superposição</li>										
+								</ol>	
+
+								<p class="bold">2. Amplificadores operacionais</p>
+								<ol class="letters-list">
+									<li>Amplificador inversor</li>
+									<li>Amplificador somador</li>
+									<li>Amplificador não inversor</li>
+									<li>Amplificador da diferença</li>
+									<li>Amplificadores diferenciador e integrador</li>										
+								</ol>	
+								<p class="bold">3. Revisão do conteúdo programático de Circuitos I (parte II)</p>
+
+								<ol class="letters-list">
+									<li>Resposta natural/degrau de circuito RC, RL</li>
+									<li>Regime permanente senoidal</li>
+								</ol>	
+
+								<p class="bold">4. Indutância Mútua</p>
+								<p class="bold">5. Transformador</p>								
+
+							</div>
+							<div class="flex-basis-45">
+								<p class="bold">6. Transformada de Laplace</p>
+								<ol class="letters-list">
+									<li>Transformada inversa de Laplace</li>
+									<li>Frações parciais</li>
+									<li>Resposta dinâmica</li>
+									<li>Resposta em frequência</li>
+									<li>Gráfico de bode</li>										
+								</ol>					
+								
+								<p class="bold">7. Análise de circuitos no domínio da frequência</p>
+								<ol class="letters-list">
+									<li>Função transferência</li>
+									<li>Análise de polos e zeros</li>
+								</ol>	
+								
+								<p class="bold">8. Filtros</p>
+								<ol class="letters-list">
+									<li>Filtros ativos</li>
+									<li>Filtros passivos</li>
+								</ol>	
+								
+								<p class="bold">9. Semicondutores</p>
+								<ol class="letters-list">
+									<li>Introdução a semicondutores</li>
+									<li>Diodos</li>
+									<li>Transistores (TJB)</li>
+									
+								</ol>	
+							</div>
+						</div>
+						
+					</div>
+				</section>
+
+				<section>
+					<div class="slide-title">
+						<h1>Bibliografia Básica</h1>
+					</div>
+					<div class="slide-content">
+						<ol class="line-height-4 font-size-3">
+							<li>Nilson, J. W.; Riedel, S. A; <span class="bold">Circuitos elétricos</span>; 8ª Edição; Editora: Pearson; 2008</li>
+							<li>Alexander, C.K., Sadiku, M. <span class="bold">Fundamentos de Circuitos Elétricos</span>; 5ª Edição; Editora: Mc Graw Hill – Bookman; 2013</li>
+							<li>Boylestad, Robert L.; <span class="bold">Introdução à Análise de Circuitos</span>; 10ª Edição; Editora: Prentice Hall; 2004</li>
+							<li>Boylestad, Robert L.; <span class="bold">Dispositivos Eletrônicos e Teoria de Circuitos</span>; 11ª Edição; Editora: Pearson; 2013</li>							
+							<li>Malvino, Albert Paul; <span class="bold">Eletrônica Vol. 1</span>; 7ª Edição; Editora: Amgh; 2008</li>
+					</ol>
+
+					<div class="display-flex flew-gap-1 mt-2">
+						<img style="height: 300px;" src="../../media/images/livros/nilson.jpg" alt="" srcset="">
+						<img style="height: 300px;" src="../../media/images/livros/sadiku.jpg" alt="" srcset="">
+						<img style="height: 300px;" src="../../media/images/livros/boylestad.jpg" alt="" srcset="">
+						<img style="height: 300px;" src="../../media/images/livros/dispositivos_eletronics.png" alt="" srcset="">
+						<img style="height: 300px;" src="../../media/images/livros/malvino.jpg" alt="" srcset="">											
+					</div>
+					<p class="font-size-2 italic">A edição do livro pouco influencia o conteúdo</p>
+					
+					</div>
+				</section>		
+				<section>
+					<div class="slide-title">
+						<h1>Bibliografia Complementar</h1>
+					</div>
+					<div class="slide-content">
+						<ol class="line-height-4 font-size-3 numbers-list">
+							<li>Morsche, H. G. Ter; <span class="bold">Fourier And Laplace Transforms</span>;; Editora: Cambridge; 2003</li>
+							<li>Oppenheim, A. V.; willsky, A. S.; Hamid, S.; Nawab, s. H.; <span class="bold">Sinais e Sistemas</span>; 2ª Edição; Editora: Pearson; 2010</li>
+							<li>Nilton Mullet Pereira, Ilton Gitz; <span class="bold">Análise de Circuitos Elétricos com Aplicações</span>; Editora: AMGH;  2014</li>
+							<li>Malley, J. O; <span class="bold">Análise de Circuitos</span>; 2ª Edição; Editora: Pearson Education; 1994</li>
+							<li>Johnson, D. E., John L. Hilburn, J. L.; Johnny, J. R.; <span class="bold">Fundamentos de Análise de Circuitos Elétricos</span>; 4ª Edição; Editora: LTC, 2000</li>
+							<li>Burian Jr, Y., Lyra, A. C.; <span class="bold">Circuitos Elétricos</span>; Editora: Pearson Prentice Hall; 2006</li>					
+						</ol>					
+					</div>
+				</section>										
+			</div>
+
+		</div>
+		
+		<!-- Monitor de ativação do Pyscript -->
+		<div hidden id="pyscript-ready"></div>
+		
+		
+		<!-- --------- Reveal Base SCRIPTS --------- -->
+		<script src="../../reveal.js-master/dist/reveal.js"></script>
+		<script src="../../reveal.js-master/plugin/zoom/zoom.js"></script>
+		<script src="../../reveal.js-master/plugin/notes/notes.js"></script>
+		<script src="../../reveal.js-master/plugin/search/search.js"></script>
+		<script src="../../reveal.js-master/plugin/markdown/markdown.js"></script>
+		<script src="../../reveal.js-master/plugin/highlight/highlight.js"></script>
+		<script src="../../reveal.js-master/plugin/math/math.js"></script>
+
+		<!-- Latex render -->
+		<!-- <script src="https://i.upmath.me/latex.js"></script> -->		
+		<script src="../../assets/latex/latex.js"></script>
+		<script src="../../assets/latex/latex_upmath.js"></script>
+		
+
+		<!-- --------------------------- PYSCRIPT --------------------------- -->
+		<!-- Python files -->
+		<script type="py" src="main.py" config="pyscript.toml" id="pyscript-main"></script>
+
+		<!-- PyScript Bootstrap -->
+		<script type="module" defer  src="https://pyscript.net/releases/2024.1.1/core.js" id="pyscript-core"></script>
+		
+
+		<!-- PyScript Bootstrap LOCAL -->
+		<!-- <script type="module" src="xxx/public/pyscript/core.js" id="pyscript-core"></script> -->
+		 <!-- Inserir no toml: interpreter = ["public/pyodide/pyodide.mjs"] -->
+				
+		<!-- <script src="https://cdn.plot.ly/plotly-latest.min.js"></script> -->
+		<script src="https://cdn.plot.ly/plotly-3.0.1.min.js" charset="utf-8"></script>
+
+
+		<!-- List of Circuits  -->
+		<script defer src="circuits.js"></script> 
+
+		<!-- Render Circuits  -->
+		<script defer src="../../js/renderCircuit.js"></script>
+
+		<!-- variaveis de inicialização -->
+		<script defer src="../../js/init.js"></script> 		
+
+		<!-- Base SCRIPT -->
+		<script defer src="../../js/general.js"></script> 
+
+	</body>
+</html>
+

@@ -1,0 +1,1 @@
+[[],[{"x":612.5,"y":225},{"x":612.5,"y":400},"Resistor (IEC)",5,"\\draw (12.25,14) to[european resistor] (12.25,10.5);","",[0,0,0],[255,255,255],0,false,32,0.4,{"isBold":false,"isItalic":false,"hasUnderline":false,"isMathMode":false,"rotation":0,"frequency":1,"amplitude":1,"phase":0,"multiwire":0,"alignmentText":"center","endNodeType":"circ"}]]

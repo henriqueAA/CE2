@@ -1,0 +1,1398 @@
+<script>
+
+	// Inicializar os exercícios
+	// const init_ex = ["ex1", "aula1_LK"];
+
+	var blockPyScript = false;
+</script>
+
+<!doctype html>
+<html lang="en">
+
+	<head>
+		<meta charset="utf-8">
+
+		<title>Aulas - Prof. Henrique Amorim</title>
+		
+		<meta name="author" content="Henrique Amorim">
+
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+
+		<!-- --------- Reveal Base Styles --------- -->			
+		
+		<link rel="stylesheet" href="../../reveal.js-master/dist/reset.css">		
+		<link rel="stylesheet" href="../../reveal.js-master/dist/reveal.css">
+		<link rel="stylesheet" href="../../reveal.js-master/dist/theme/white.css" id="theme">
+		<link rel="stylesheet" href="../../reveal.js-master/plugin/highlight/monokai.css">  <!-- Theme used for syntax highlighting of code -->
+		<link rel="stylesheet" href="../../reveal.js-master/plugin/title-footer/title-footer.css">
+
+
+		
+		<!-- Miscellaneous -->
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+		
+		<!-- Base CSS -->
+		<!-- <link rel="stylesheet" href="../../css/general.css">			 -->
+		<link rel="stylesheet" href="layout.css">
+		<link rel="stylesheet" href="customReveal.css">
+		 
+		
+
+	</head>
+
+	<body>
+		
+
+		<dialog id="loading">
+			<h1>Loading...</h1>
+		</dialog>
+
+		<div class="reveal" id="mainReveal">					
+			<div class="slides">
+				
+				<section data-state="no-toc-progress">
+					<h1  style="display: none;">Professor Henrique Amorim &#183; ICT-UNIFESP &#183; Eng. Biomédica</h1>
+					<h3  style="display: none;">[contato] [site]</h3>
+				</section>			
+				<section>
+					<div class="slide-title">
+						<h1>Conceitos básicos</h1>
+					</div>
+					<div class="slide-content">
+
+						<table class="tab-conceitos">
+							<thead>
+								<tr class="font-size-5">
+									<th>Corrente (A)</th>
+									<th>Tensão (V)</th>
+									<th>Potência (W)</th>
+									<th>Energia (J)</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr class="font-size-6">
+									<td>\(i(t)=\dfrac{dq}{dt}\)</td>
+									<td>\(v(t)=\dfrac{dw}{dq}\)</td>
+									<td>\(P=\dfrac{dw}{dt}\)</td>
+									<td>\(\normalsize\omega=\LARGE\int_{}^{}\normalsize=P\,dt\)</td>
+								</tr>
+							</tbody>
+						</table>
+						
+						<p class="font-size-6 m-7">\[P=v(t) \cdot i(t)=\left(\dfrac{dw}{dq}\right) \cdot \left(\dfrac{dq}{dt}\right)=\dfrac{dw}{dt}\]</p>
+						
+						<div>
+							<p class="text-box-6">
+								<span class="font-bold">Corrente:</span> Fluxo de cargas;<br>
+								<span class="font-bold">Tensão:</span> Diferença de potencial elétrico entre dois pontos;<br>
+								<span class="font-bold">Potência:</span> Velocidade com que se consome energia; e<br>
+								<span class="font-bold">Energia:</span> Representa o trabalho realizado.
+							</p>
+						</div>						
+					</div>
+				</section>
+
+				<section>
+					<div class="slide-title">
+						<h1>Lei de Ohm</h1>
+					</div>
+					<div class="slide-content">
+						<div class="display-flex flew-gap-7" style="height: 80%;">
+							<div class="flex-basis-50">
+								<div id="exemplo_1" style="height: 100%!important;"></div>
+							</div>
+							<div class="flex-basis-50">
+								
+								<div class="dislpaly-flex flex-col content-center">
+									<p class="circuitikz-code circuitikz-code-center" idCircuit="C_exemplo_1" rescale="1.2"></p>
+									<p class="mt-2 font-size-4">Altere o valor de <span class="equations" id="aula1_exemplo_1-eq-1"></span></p>
+									<input type="range" id="RValue" py-change="aula1_exemplo_1" min="1" max="50" style="width: 100%" value="10">
+									
+									<div class="mt-2 text-box-4">
+										<p class="font-bold mb-3">Fixando a corrente em \(I=2A\), responda: </p>
+										<ol class="numbers-list">
+											<li>Calcule a queda de tensão no resistor</li>
+											<li>Calcule a potência dissipada pelo resistor</li>
+											<li>Qual o trabalho realizado durante 3 segundo</li>
+										</ol>
+									</div>
+									<div class="mt-2">
+										<div class="tab-wrap">
+											<!-- active tab on page load gets checked attribute -->
+											<input type="radio" id="tab1" name="tabGroup1" class="tab" checked>
+											<label for="tab1" class="font-size-4">Item 1</label>
+										
+											<input type="radio" id="tab2" name="tabGroup1" class="tab">
+											<label for="tab2" class="font-size-4">Item 2</label>
+										
+											<input type="radio" id="tab3" name="tabGroup1" class="tab">
+											<label for="tab3" class="font-size-4">Item 3</label>
+										
+											<div class="tab__content">
+												<div class="font-size-4 mt-1 text-center">
+													<p class="mb-3  mt-2">Aplicação direta da Lei de Ohm</p>
+													<div class="equations" id="aula1_exemplo_1-eq-2"></div>																																		
+												</div>
+											</div>
+										
+											<div class="tab__content">
+												<div class="font-size-4 mt-1 text-center">
+													<p class="mb-3 mt-2">Corrente na queda de tensão, potência positiva</p>
+													<div class="equations" id="aula1_exemplo_1-eq-3"></div>
+													<p class="mb-3 mt-2">Alternativas para o cálculo da potência</p>
+													<div class="equations" id="aula1_exemplo_1-eq-5"></div>									
+													<div class="equations" id="aula1_exemplo_1-eq-6"></div>																			
+												</div>																	 
+											</div>
+										
+											<div class="tab__content">
+												<div class="font-size-4 mt-1 text-center">
+													<p class="mb-3 mt-2">Integral para o cáculo do trabalho</p>
+													<div class="equations" id="aula1_exemplo_1-eq-4"></div>	
+												</div>												
+											</div>
+										   </div>
+									</div>
+								</div>
+							</div>
+						</div>
+
+					</div>
+				</section>	
+				
+				<section>
+					<div class="slide-title">
+						<h1>Convenção Passiva</h1>
+					</div>
+					<div class="slide-content">
+						<p class="text-box-5"><span class="font-bold">Convenção passiva:</span> Sempre que a direção de referência para a corrente em um elemento estiver na <span class="bold">queda de tensão</span>, use um <span class="bold">sinal positivo</span> em qualquer expressão que relacione tensão com a corrente. Caso contrário (elevação de tensão) use um sinal negativo.</p>
+						
+						<table class="tab-cp mt-3 mb-3 font-size-7">
+							<tr>
+								<td><p class="circuitikz-code" idCircuit="C_CP1" rescale="1.5"></p></td>
+								<td><p class="circuitikz-code" idCircuit="C_CP2" rescale="1.5"></p></td>
+							</tr>
+							<tr>
+								<td>\(P=\color{red}{\boldsymbol{+}}\,v \cdot i\)</td>
+								<td>\(P=\color{red}{\boldsymbol{-}}\,v \cdot i\)</td>
+							  </tr>
+							  <tr>
+								<td><p class="circuitikz-code" idCircuit="C_CP3" rescale="1.5"></p></td>
+								<td><p class="circuitikz-code" idCircuit="C_CP4" rescale="1.5"></p></td>
+							  </tr>
+							  <tr>
+								<td>\(P=\color{red}{\boldsymbol{-}}\,v \cdot i\)</td>
+								<td>\(P=\color{red}{\boldsymbol{+}}\,v \cdot i\)</td>
+							  </tr>
+							</tr>
+						</table>
+						<p class="font-size-4 mt-5 text-right">Relação de sinais para o cálculo da potência (elevação e queda de tensão)</p>
+					</div>
+				</section>				
+				
+				<section>
+					<div class="slide-title">
+						<h1>Lei de Ohm</h1>
+					</div>
+					<div class="slide-content">				
+						<div class="display-flex">
+							<div class="display-flex flex-col">
+								<div class="display-flex flex-col" style="width: 30vh!important;">
+									<div><img src="../../media/images/aula_1/Simon_Ohm.png" class="rounded-7"></div>									
+								</div>
+							</div>
+							<div class="flex-grow-1">								
+								<p class="citation text-box-5 ml-3 mt-5"><span class="font-bold">Lei de Ohm</span>: Para certos materiais condutores, mantidas constantes as condições físicas (como temperatura), a intensidade de corrente elétrica (I) que os atravessa é diretamente proporcional à diferença de potencial elétrico (V) aplicada e inversamente proporcional à resistência elétrica (R) do condutor</p>
+								<p class="font-size-4 text-right mr-5"><span class="font-bold">Georg Simon Ohm</span><br>1789 - 1854<br>Alemão</p>						
+							</div>
+						</div>
+						<p class="font-size-6 text-center mt-4 font-bold">Equações:</p>
+						<table class="tab-ohm mt-6">
+							<tr class="font-size-6">
+								<td>\(V=R \cdot I\)</td>
+								<td>\(P=\dfrac{V^2}{R}\)</td>
+								<td>\(P=I^{2} \cdot R\)</td>
+							</tr>
+						</table>														
+					</div>															
+				</section>		
+				<section>
+					<div class="slide-title">
+						<h1>Leis de Kirchhoff</h1>
+					</div>
+					<div class="slide-content">				
+						<div class="display-flex">
+							<div class="display-flex flex-col">
+								<div class="display-flex flex-col" style="width: 30vh!important;">
+									<div><img src="../../media/images/aula_1/Kirchhoff.png" class="rounded-7"></div>									
+								</div>
+							</div>
+							<div class="flex-grow-1">								
+								<p class="citation text-box-4 ml-3 mt-6"><span class="font-bold">Lei de Kirchhoff das Tensões (LKT) – Lei das Malhas</span>: Em qualquer percurso fechado (malha) de um circuito elétrico, a soma algébrica das diferenças de potencial (tensões) é igual a zero, considerando um referencial consistente de polaridade</p>
+								<p class="citation text-box-4 ml-3 mt-5"><span class="font-bold">Lei de Kirchhoff das Correntes (LKC) – Lei dos Nós</span>: Em qualquer nó de um circuito elétrico, a soma algébrica das correntes que entram é igual à soma das correntes que saem, garantindo a conservação da carga elétrica</p>								
+								<p class="font-size-4 text-right mr-5"><span class="font-bold">Gustav Kirchhoff</span><br>1824 - 1887<br>Alemão</p>
+								
+							</div>									
+						</div>
+						<p class="font-size-6 text-center mt-4 mb-5 font-bold">Equações:</p>
+						<table class="tab-kir mt-3">
+							<tr class="font-size-6">
+								<td><p class="p-4">\(LKT\)</p></td>
+								<td><p class="p-4">\(LKC\)</p></td>
+							</tr>
+							<tr class="font-size-5">
+								<td>\(\begin{matrix}n\\\Large\sum_{}^{} \\k=1\end{matrix} V_{K}=0\)</td>
+								<td>\(\begin{matrix}m\\\Large\sum_{}^{} \\k=1\end{matrix} I_{K}=0\)</td>
+							</tr>
+						</table>
+					</div>															
+				</section>					
+				<section>
+					<div class="slide-title">
+						<h1>Divisor de Tensão</h1>
+					</div> 
+					<div class="slide-content font-size-2">
+						<p class="text-box-4">
+							<span class="font-bold">Associação em série:</span> Um nó é compartilhado apenas por dois ramos (corrente constante)<br>
+							<span class="font-bold">Associação em paralelo:</span> dois ramos compartilham dois nós (tensão constante)
+						</p>
+						<hr>
+						<div class="display-flex">
+							<div class="flex-basis-40">
+								<p class="circuitikz-code" idCircuit="C_Divisor_Tensao" rescale="1.5"></p>								
+							</div>
+							<div class="flex-basis-60">								
+								<div class="display-flex mt-3 text-box-4 flex-col items-center">
+									
+										<span class="equations" id="aula1_divisores-eq-1"></span><br>
+										<span class="equations" id="aula1_divisores-eq-2"></span>
+																			
+								</div>								
+							</div>
+						</div>
+						<div class="display-flex mt-3 flex-col mt-8">
+							<div><span class="font-size-4">Selecione o valor de <span class="equations" id="aula1_divisores-eq-5"></span></div>
+							<input type="range" id="R2ValueV" min="0" py-change="aula1_divisores" max="150" style="width: 100%" value="72">
+							<div><button class="button button-blue ml-2" onclick="document.getElementById('R2ValueV').value = 72" py-click="aula1_divisores" style="float: right;">Voltar para 1K</button></div>
+							<div class="mt-5"><p class="font-size-4 font-italic text-right">A tensão é diretamente proporcional a resistência</p></div>
+						</div>
+					</div>						
+				</section>	
+				
+				<section>
+					<div class="slide-title">
+						<h1>Divisor de Corrente</h1>
+					</div> 
+					<div class="slide-content font-size-2">
+						<p class="text-box-4">
+							<span class="font-bold">Associação em série:</span> Um nó é compartilhado apenas por dois ramos (corrente constante)<br>
+							<span class="font-bold">Associação em paralelo:</span> dois ramos compartilham dois nós (tensão constante)
+						</p>
+						<hr>
+						<div class="display-flex">
+							<div class="flex-basis-40">								
+								<p class="circuitikz-code" idCircuit="C_Divisor_Corrente" rescale="1.6"></p>								
+							</div>
+							<div class="flex-basis-60">								
+								<div class="display-flex mt-3 text-box-4 flex-col items-center">
+									
+										<span class="equations" id="aula1_divisores-eq-3"></span><br>
+										<span class="equations" id="aula1_divisores-eq-4"></span>
+																			
+								</div>								
+							</div>																			
+						</div>
+						<div class="display-flex mt-3 flex-col mt-8">
+							<div><span class="font-size-4">Selecione o valor de <span class="equations" id="aula1_divisores-eq-6"></span></div>
+							<input type="range" id="R2ValueI" min="0" py-change="aula1_divisores" max="150" style="width: 100%" value="72">
+							<div><button class="button button-blue ml-2" onclick="document.getElementById('R2ValueI').value = 72" py-click="aula1_divisores" style="float: right;">Voltar para 1K</button></div>
+							<div class="mt-5"><p class="font-size-4 font-italic text-right">A corrente é inversamente proporcional a resistência</p></div>
+						</div>
+					</div>						
+				</section>
+				<section>
+					<div class="slide-title">
+						<h1>Leis de Kirchhoff</h1>
+					</div> 
+					<div class="slide-content">	
+						<div class="display-flex w-100 justify-center flew-gap-7 mt-6">
+							<div class="display-flex justify-start flex-col items-center">
+								<p class="font-size-6 mb-7 font-bold">LKC - Lei de Kirchhoff da Correntes</p>
+								<div class="display-flex items-center">
+									<p class="circuitikz-code" idCircuit="C_LKC_1" rescale="1.3"></p>
+									<div class="ml-7">
+										<p class="font-size-5">\(\begin{matrix}m\\\Large\sum_{}^{} \\k=1\end{matrix} I_{K}=0\)</p>
+										<p class="font-size-4 mt-4">\(i_{1}+i_{4}=i_{3}+i_{2}\)</p>
+									</div>
+								</div>
+								<p class="circuitikz-code mt-8" idCircuit="C_LKC_2" rescale="1.3"></p>									
+								<p class="font-size-4 mt-5">\(i_{S}=i_{1}+i_{2}+i_{3}\)</p>
+								<p class="font-size-4 mt-5">Ou</p>
+								<p class="font-size-4 mt-5">\(-i_{S}+i_{1}+i_{2}+i_{3}=0\)</p>
+							</div>
+							<div class="display-flex justify-start flex-col items-center">
+								<p class="font-size-6 mb-7 font-bold">LKT - Lei de Kirchhoff das Tensões</p>
+								<p class="circuitikz-code" idCircuit="C_LKT" rescale="1.3"></p>	
+								<p class="font-size-4 mt-5">\(\begin{matrix}n\\\Large\sum_{}^{} \\k=1\end{matrix} V_{K}=0\)</p>
+								<p class="font-size-4 mt-5">Possíveis equações:</p>
+								<p class="font-size-4 mt-5">\(-V_{0}+V_{1}-V_{6}+V_{5}=0\)</p>
+								<p class="font-size-4 mt-5">\(V_{6}+V_{2}-V_{3}-V_{4}=0\)</p>
+								<p class="font-size-4 mt-5">\(-V_{0}+V_{1}+V_{2}-V_{3}-V_{4}+V_{5}=0\)</p>
+							</div>
+						</div>
+						
+						
+					</div>						
+				</section>
+				<section>
+					<section>
+						<div class="slide-title">
+							<h1>Exemplo - Leis de Kirchhoff</h1>
+						</div>
+						<div class="slide-content">
+							<p class="mb-3 font-size-4"><span class="font-bold">Exercício:</span> Utilize os conceitos de Leis de Ohm, Leis de Kirchhoff e divisores de tensão e corrente para calcular \(I_{x}\).</p>
+							<div class="display-flex flew-gap-4 content-center">
+								<div class="input-group input-group-lg w-30">
+									<span class="input-prefix">\(V_{S}=\)</span>
+									<input id="aula1_LK-VS" type="text"  inputRef="aula1_LK" class="input-field font-size-4" value="180">
+									<span class="input-suffix">\(V\)</span>
+								</div>
+								<div>
+									<button style="width: 150px;" class="button button-primary" py-click="aula1_LK">Calcular</button>
+								</div>
+								<div>
+
+									<button style="width: 150px;" class="button button-secondary" onclick="reset('aula1_LK')" py-click="aula1_LK">Reset</button>								
+								</div>
+							</div>
+							<div class="display-flex w-100 justify-center mt-8">
+								<div>
+									<p class="circuitikz-code" idCircuit="C_exercicio_Kirchhoff" ref="aula1_LK" rescale="1.5"></p>
+								</div>
+							</div>	
+							
+							<p class="font-size-5 mt-6 text-center">Resposta:</p>												
+							<p class="equations font-size-5 mt-3" id="aula1_LK-eq-1"></p>												
+						</div>
+					</section>	
+					<section>
+						<div class="slide-title">
+							<h1>Exemplo - Leis de Kirchhoff</h1>
+						</div>
+						<div class="slide-content">							
+							<div class="display-flex w-100 flex-col items-center mt-8 flew-gap-4">
+								<div>
+									<p class="circuitikz-code" idCircuit="C_exercicio_Kirchhoff_1" ref="aula1_LK" rescale="1.3"></p>
+								</div>
+								<div class="mt-7">
+									<p class="font-size-5">Etapa 1:</p>
+									<p class="text-box-4 mt-4">Com o valor dado de \(I_{A}\), calcular a queda de tensão do resistor \(R_{2}\):</p>
+									<div class="equations font-size-5 mt-5" id="aula1_LK-eq-2"></div>
+
+								</div>
+							</div>														
+						</div>
+					</section>	
+					<section>
+						<div class="slide-title">
+							<h1>Exemplo - Leis de Kirchhoff</h1>
+						</div>
+						<div class="slide-content">							
+							<div class="display-flex w-100 flex-col items-center mt-8 flew-gap-4">
+								<div>
+									<p class="circuitikz-code" idCircuit="C_exercicio_Kirchhoff_2" ref="aula1_LK" rescale="1.3"></p>
+								</div>
+								<div class="mt-7">
+									<p class="font-size-5">Etapa 2:</p>
+									<p class="text-box-4 mt-4">Utilizando a LKT pelo caminho fechado entre \(V_{S}\), \(R_{2}\) e \(R_{5}\), calcular a queda de tensão de \(R_{5}\):</p>
+									<div class="equations font-size-5 mt-5" id="aula1_LK-eq-3"></div>
+								</div>
+							</div>														
+						</div>
+					</section>	
+					<section>
+						<div class="slide-title">
+							<h1>Exemplo - Leis de Kirchhoff</h1>
+						</div>
+						<div class="slide-content">							
+							<div class="display-flex w-100 flex-col items-center mt-8 flew-gap-4">
+								<div>
+									<p class="circuitikz-code" idCircuit="C_exercicio_Kirchhoff_3" ref="aula1_LK" rescale="1.3"></p>
+								</div>
+								<div class="mt-7">
+									<p class="font-size-5">Etapa 3:</p>
+									<p class="text-box-4 mt-4">Com o valor da tensão \(V_{R5}\), calcular a corrente no ramo de \(R_{5}\) (Lei de Ohm):</p>
+									<div class="equations font-size-5 mt-5" id="aula1_LK-eq-4"></div>
+								</div>
+							</div>														
+						</div>
+					</section>	
+					<section>
+						<div class="slide-title">
+							<h1>Exemplo - Leis de Kirchhoff</h1>
+						</div>
+						<div class="slide-content">							
+							<div class="display-flex w-100 flex-col items-center mt-8 flew-gap-4">
+								<div>
+									<p class="circuitikz-code" idCircuit="C_exercicio_Kirchhoff_4" ref="aula1_LK" rescale="1.3"></p>
+								</div>
+								<div class="mt-7">
+									<p class="font-size-5">Etapa 4:</p>
+									<p class="text-box-4 mt-4">Conhecidas as correntes \(I_{R5}\) e \(I_{A}\), é possível calcular a corrente \(I_{R3}\) pela LKC:</p>
+									<div class="equations font-size-5 mt-5" id="aula1_LK-eq-5"></div>
+								</div>
+							</div>														
+						</div>
+					</section>	
+					<section>
+						<div class="slide-title">
+							<h1>Exemplo - Leis de Kirchhoff</h1>
+						</div>
+						<div class="slide-content">							
+							<div class="display-flex w-100 flex-col items-center mt-8 flew-gap-4">
+								<div>
+									<p class="circuitikz-code" idCircuit="C_exercicio_Kirchhoff_5" ref="aula1_LK" rescale="1.3"></p>
+								</div>
+								<div class="mt-7">
+									<p class="font-size-5">Etapa 5:</p>
+									<p class="text-box-4 mt-4">Com \(I_{R3}\) e \(R_{3}\) é possível calular a queda de tensão de \(R_{3}\) (Lei de Ohm):</p>
+									<div class="equations font-size-5 mt-5" id="aula1_LK-eq-6"></div>
+								</div>
+							</div>														
+						</div>
+					</section>	
+					<section>
+						<div class="slide-title">
+							<h1>Exemplo - Leis de Kirchhoff</h1>
+						</div>
+						<div class="slide-content">							
+							<div class="display-flex w-100 flex-col items-center mt-8 flew-gap-4">
+								<div>
+									<p class="circuitikz-code" idCircuit="C_exercicio_Kirchhoff_6" ref="aula1_LK" rescale="1.3"></p>
+								</div>
+								<div class="mt-7">
+									<p class="font-size-5">Etapa 6:</p>
+									<p class="text-box-4 mt-4">Utilizando LKT no caminnho \(R_{4}\), \(R_{3}\) e \(R_{5}\), é possível calcular a queda de tensão de \(R_{4}\):</p>
+									<div class="equations font-size-5 mt-5" id="aula1_LK-eq-7"></div>
+								</div>
+							</div>														
+						</div>
+					</section>	
+					<section>
+						<div class="slide-title">
+							<h1>Exemplo - Leis de Kirchhoff</h1>
+						</div>
+						<div class="slide-content">							
+							<div class="display-flex w-100 flex-col items-center mt-8 flew-gap-4">
+								<div>
+									<p class="circuitikz-code" idCircuit="C_exercicio_Kirchhoff_6" ref="aula1_LK" rescale="1.3"></p>
+								</div>
+								<div class="mt-7">
+									<p class="font-size-5">Etapa 7:</p>
+									<p class="text-box-4 mt-4">Pela Lei de Ohm, calculamos \(I_{x}\) por meio de \(R_{4}\) e \(V_{R4}\)</p>
+									<div class="equations font-size-5 mt-5" id="aula1_LK-eq-8"></div>
+								</div>
+							</div>														
+						</div>
+					</section>								
+				</section>
+									
+				<section>
+					<div class="slide-title">
+						<h1>Equipamentos Ideiais</h1>
+					</div>
+					<div class="slide-content">
+
+						<p class="circuitikz-code mb-3" idCircuit="C_Eq_ideais_1" rescale="1.4"></p>
+						<ul class="font-size-5 mt-4">
+							<li class="mb-3">O Amperímetro é responsável por medir corrente - Ligado em série</li>
+							<li>O Voltímetro é responsável por medir tensão - Ligado em paralelo</li>
+						</ul>
+						<hr>
+						<p class="font-size-6 line-height-7">
+							Em um <span class="font-font-bold">Amperímetro ideal</span> a <span class="font-bold">resistência</span> interna é igual a <span class="font-bold">zero</span>, enquanto em
+							um <span class="font-font-bold">Voltímetro ideal</span> a <span class="font-font-bold">resistência</span> interna é igual a <span class="font-bold">infinito</span>. Essa relação torna
+							o erro de medição igual a zero, uma vez que os <span class="font-font-bold">equipamentos ideais não
+							absorvem energia do sistema</span>.
+						</p>																		
+					</div>
+				</section>
+				<section>
+					<div class="slide-title">
+						<h1>Equipamentos Ideiais</h1>
+					</div>
+					<div class="slide-content">
+						<div class="display-flex w-100 justify-center items-center h-80">
+							<div>								
+								<p class="circuitikz-code mb-6" idCircuit="C_Eq_ideais_1" rescale="1.3"></p>
+								<p class="circuitikz-code mb-3" idCircuit="C_Eq_ideais_2" rescale="1.3"></p>
+								<p class="font-size-5 mt-6">Interpretação simbólica dos equipamentos ideiais</p>
+							</div>
+						</div>	
+					</div>
+				</section>
+				<section>
+					<div class="slide-title">
+						<h1>Equipamentos Não Ideiais</h1>
+					</div> 
+					<div class="slide-content">
+						<div class="display-flex w-100 justify-center">
+							<div>								
+								<p class="circuitikz-code mb-6" idCircuit="C_Eq_ideais_1" rescale="1"></p>
+								<p class="circuitikz-code mb-3" idCircuit="C_Volt_Amp" rescale="1.2"></p>
+								<p class="font-size-5 mt-6">Amperímetro e Voltímetro analógicos acoplados ao circuito</p>
+							</div>
+						</div>	
+					</div>						
+				</section>
+				<section>
+					<div class="slide-title">
+						<h1>Topologia de Circuitos</h1>
+					</div>
+					<div class="slide-content">
+						<div class="display-flex flex-col items-center">
+							<div>
+								<p class="circuitikz-code mb-3 mt-3" idCircuit="C_4" rescale="1.8"></p>
+							</div>
+	
+							<div class="display-flex flew-gap-7 mt-6 text-box-5">
+								<div class="flex-grow-1">
+									<div>
+										<p class="mb-4"><span class="font-bold">Nós \((n)\):</span> \(N_{a}, N_{b}, N_{c}, N_{d}\)</p>
+										<p class="mb-4"><span class="font-bold">Nós essenciais \((ne)\):</span> \(N_{b}, N_{c}, N_{d}\)</p>
+										<p class="mb-4"><span class="font-bold">Ramos \((b)\):</span> \(V_{1}, R_{1}, R_{2}, R_{3}, R_{4}, V_{2}\)</p>
+									</div>
+								</div>
+								<div class="flex-grow-1">
+									<div>
+										<p class="mb-4"><span class="font-bold">Ramos essenciais \((be)\):</span> \(V_{1}-R_{1}, R_{2}, R_{3}, R_{4}, V_{2}\)</p>
+										<p class="mb-4"><span class="font-bold">Malhas \((m)\):</span> \(M_{1}, M_{2}, M_{3}\)</p>
+										<p class="mb-4"><span class="font-bold">Circuito Planar</span></p>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</section>
+				<section>
+					<div class="slide-title">
+						<h1>Métodos de análise - Nr. Equações</h1>
+					</div> 
+					<div class="slide-content">
+						<div class="display-flex justify-center items-center" style="height: 80%;">
+							<div class="w-100">
+								<div class="display-flex justify-center">							
+									<p class="font-size-8 mt-7"><i class="fa-solid fa-turn-down mr-8" style="transform: scaleX(-1);"></i></p>							
+									<div class="text-center">
+										<p class="font-size-7 font-bold">\(be\) &#8594; número de equações</p>
+										<p class="font-size-6 mt-5 font-italic">(Número de correntes desconhecidas)</p>
+									</div>
+									<p class="font-size-8 mt-7"><i class="fa-solid fa-turn-down ml-8"></i></p>							
+								</div>
+								<div class="display-flex justify-center mt-5">
+									<div class="flex-basis-50 text-center">
+										<p class="font-size-7 mt-8">\((ne -1)\)</p>
+										<p class="font-size-7 mt-8 font-bold">\(LKC\)</p>								
+										<p class="font-size-7 mt-8 font-bold">Tensão dos Nós</p>																					
+									</div>
+		
+									<div class="flex-basis-50 text-center">
+										<p class="font-size-7 mt-8">\(be - (ne -1) = m\)</p>
+										<p class="font-size-7 mt-8 font-bold">\(LKT\)</p>								
+										<p class="font-size-7 mt-8 font-bold">Correntes de Malha</p>																					
+									</div>
+								</div>
+							</div>
+						</div>		
+						
+					</div>						
+				</section>
+				<section>
+					<div class="slide-title">
+						<h1>Protocolo para obter as Tensões dos Nós</h1>
+					</div> 
+					<div class="slide-content">
+						<p class="fr font-size-4 font-italic">Lembrem-se que essas etapas devem ser compreendidas e não decoradas</p>
+						<ol class="text-box-5">
+							<li>Identificar os nós essenciais
+								<ul>
+									<li>O número de equações necessárias para determinar as tensões dos nós será igual a: \(ne-1\) (nós essências - 1)</li>
+									<li>Alguns casos particulares podem reduzir o número de variáveis desconhecidas</li>
+								</ul>
+							</li>
+							<li class="mt-4">Designar um nó essencial como nó de referência
+								<ul>
+									<li>Representar pelo símbolo apropriado</li>
+									<li>Normalmente, ao escolher o nó com o maior número de ramos como referência, o sistema de equações
+										tende a ser mais simples (embora cada circuito possua características específicas e eventuais
+										restrições)</li>
+								</ul>
+							</li>
+							<li class="mt-4">Definir as Tensões do Nós como a elevação de tensão entre o nó de referência e os demais nós essenciais</li>
+							<li class="mt-4">Considerar que as correntes <span class="font-bold">SAEM</span> (ver exemplo) dos nós essenciais (desconsiderar o nó de referência)
+								<ul>
+									<li>Essa convenção padroniza a análise algébrica e facilita a obtenção das equações</li>
+								</ul>
+							</li>
+							<li class="mt-4">Calcular as tensões por meio da resolução de um sistema de equações lineares</li>
+							<ul>
+								<li>O sistema deverá necessáriamente ser um Sistema Possível e Determinado (SPD)</li>
+							</ul>							
+						</ol>
+						<div class="display-flex justify-center items-center font-size-4 mt-4">
+							<p class="circuitikz-code mb-3 mt-3" idCircuit="C_no_referencia" rescale="1.2"></p>
+							<p class="ml-5">Representação do nó de referência</p>
+						</div>
+					</div>
+				</section>
+
+				<section>
+					<section>
+						<div class="slide-title">
+							<h1>Tensão dos Nós Exemplo</h1>
+						</div>
+						<div class="slide-content">
+							<p class="mb-3 font-size-5"><span class="font-bold">Exercício:</span> Calcule a tensão dos Nós</p>
+							<div class="display-flex flex-col items-center">
+								<div>
+									<p class="circuitikz-code mb-3" idCircuit="C_5" ref="ex1" rescale="1.5"></p>
+								</div>
+		
+								<div class="mt-4 w-60">
+									<div class="display-flex flex-justify-content-center">
+										<div class="flex-grow-1">
+											<div class="input-group input-group-lg w-75">
+												<span class="input-prefix">\(R_{1}=\)</span>
+												<input id="ex1-R1" type="text" class="input-field" inputRef="ex1" value="6">
+												<span class="input-suffix">\(\Omega\)</span>
+											</div>
+											<div class="input-group input-group-lg w-75">
+												<span class="input-prefix">\(R_{2}=\)</span>
+												<input id="ex1-R2" type="text" class="input-field"  inputRef="ex1" value="2">
+												<span class="input-suffix">\(\Omega\)</span>
+											</div>
+											<div class="input-group input-group-lg w-75">
+												<span class="input-prefix">\(R_{3}=\)</span>
+												<input id="ex1-R3" type="text" class="input-field" inputRef="ex1" value="8">
+												<span class="input-suffix">\(\Omega\)</span>
+											</div>
+											<div class="input-group input-group-lg w-75">
+												<span class="input-prefix">\(R_{4}=\)</span>
+												<input id="ex1-R4" type="text" class="input-field" inputRef="ex1" value="4">
+												<span class="input-suffix">\(\Omega\)</span>
+											</div>
+										</div>
+										<div class="flex-grow-1">
+											<div class="input-group input-group-lg w-75">
+												<span class="input-prefix">\(V_{S}=\)</span>
+												<input id="ex1-VS" type="text" class="input-field" inputRef="ex1" value="50">
+												<span class="input-suffix">\(V\)</span>
+											</div>
+											<div class="input-group input-group-lg w-75">
+												<span class="input-prefix">\(I_{FD}=\)</span>
+												<input id="ex1-IFD_gain" type="text" class="input-field" inputRef="ex1" value="3">
+												<span class="input-suffix">\(\cdot\,i_{a}\,A\)</span>
+											</div>
+											<div class="input-group input-group-lg w-75">
+												<span class="input-prefix">\(I_{S}=\)</span>
+												<input id="ex1-IS" type="text" class="input-field" inputRef="ex1" value="5">
+												<span class="input-suffix">\(A\)</span>
+											</div>
+											<div class="w-75 border-box">
+												<div class="dislpaly-flex flex-justify-content-between">
+													<button class="button button-primary w-49" py-click="ex1">Calcular</button>
+													<button class="button button-outline-secondary w-49" onclick="reset('ex1')" py-click="ex1">Reset</button>
+												</div>												
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</section>
+					
+					<section>
+						<div class="slide-title">
+							<h1>Tensão dos Nós Exemplo</h1>
+						</div>
+						<div class="slide-content">
+							<div class="display-flex flex-col items-center font-size-5">
+
+								<p class="circuitikz-code mb-3" idCircuit="C_6" ref="ex1" rescale="1.3"></p>
+								<div class="display-flex items-center">
+									<div class="flex-grow-1">
+										<p>Equação dos nós:</p>
+									</div>
+									<div class="flex-grow-1">
+										<p class="equations" id="ex1-eq-22"></p>
+									</div>
+								</div>
+								<p class="mt-5 mb-4">Gabarito:</p>
+								<p class="equations text-red-primary-700" id="ex1-eq-23"></p>
+							</div>
+						</div>
+					</section>
+					
+					<section>
+						<div class="slide-title">
+							<h1>Tensão dos Nós Exemplo</h1>
+						</div>
+						<div class="slide-content">
+							<div class="display-flex justify-center mt-8">
+								<div>
+									<p class="circuitikz-code mr-5" ref="ex1" idCircuit="C_7" rescale="1.2"></p>
+								</div>
+								<div class="mt-4">
+									<div class="display-flex flex-col font-size-4 items-center">									
+										<div class="mb-7">
+											<p class="equations mt-3" id="ex1-eq-1"></p>
+											<p class="equations mt-3 text-red-primary-700" id="ex1-eq-2"></p>
+										</div>
+										<div class="mb-7">
+											<p class="equations mt-3" id="ex1-eq-3"></p>
+											<p class="equations mt-3 text-red-primary-700" id="ex1-eq-4"></p>
+										</div>
+										<div class="mb-7">
+											<p class="equations mt-3" id="ex1-eq-5"></p>
+											<p class="equations mt-3 text-red-primary-700" id="ex1-eq-6"></p>
+										</div>
+										<div>
+											<p class="equations mt-3 text-red-primary-700" id="ex1-eq-7"></p>
+										</div>									
+									</div>
+								</div>
+							</div>						
+						</div>
+					</section>
+					<section>
+						<div class="slide-title">
+							<h1>Tensão dos Nós Exemplo</h1>
+						</div>
+						<div class="slide-content">
+							<div class="display-flex justify-center mt-4">
+								<div>
+									<p class="circuitikz-code mr-5" ref="ex1" idCircuit="C_8" rescale="1.1"></p>
+								</div>
+								<div>
+									<div class="display-flex flex-col font-size-4 items-center">									
+										<div class="mb-7">
+											<p class="equations mt-3" id="ex1-eq-8"></p>
+											<p class="equations mt-3 text-red-primary-700" id="ex1-eq-9"></p>
+										</div>
+										<div class="mb-9">
+											<p class="equations mt-3 text-red-primary-700" id="ex1-eq-10"></p>
+											
+										</div>
+										<div class="mb-7">											
+											<p class="equations mt-3" id="ex1-eq-11"></p>
+											<p class="equations mt-3 text-red-primary-700" id="ex1-eq-12"></p>
+										</div>
+										<div class="mb-9">											
+											<p class="equations mt-3 text-red-primary-700" id="ex1-eq-13"></p>
+										</div>
+										<div>
+											<p class="equations mt-3" id="ex1-eq-14"></p>
+											<p class="equations mt-3 text-red-primary-700" id="ex1-eq-15"></p>
+										</div>									
+									</div>
+								</div>								
+							</div>						
+						</div>
+					</section>
+					
+					<section>
+						<div class="slide-title">
+							<h1>Tensão dos Nós Exemplo</h1> 
+						</div>
+						<div class="slide-content">
+							<div class="display-flex flew-gap-7 justify-center items-center">
+								<p class="equations font-size-5" id="ex1-eq-16"></p>
+								<p class="equations font-size-5" id="ex1-eq-17"></p>
+								<p class="equations font-size-5" id="ex1-eq-18"></p>
+								
+							</div>
+							<div class="display-flex flew-gap-7 justify-center items-center">
+								<p class="equations font-size-5" id="ex1-eq-19"></p>
+								<p class="equations font-size-5" id="ex1-eq-20"></p>								
+							</div>						
+							<div class="display-flex flew-gap-7 justify-center items-center mt-6">
+								<p class="equations font-size-5 font-bold text-red-primary-700" id="ex1-eq-21"></p>								
+							</div>	
+						</div>					
+					</section>					
+					
+				</section>
+				<section>
+					<div class="slide-title">
+						<h1>Protocolo para obter as Correntes de Malha</h1>
+					</div> 
+					<div class="slide-content">
+						<p class="fr font-size-4 font-italic mb-5">Lembrem-se que essas etapas devem ser compreendidas e não decoradas</p>
+						<ol class="text-box-5">
+							<li>Para resolver as equações de malha de forma intuitiva, devemos considerar que todas as correntes de malha <span class="font-bold">rotacionam no mesmo sentido</span></li>
+							<li>Sempre que um ramo for compartilhado por duas malhas, a corrente do ramos será a diferença entre a corrente da malha analisa e a corrente da malha vizinha</li>
+							<li>Quando um ramo for exclusivo de uma malha, a corrente do ramo será igual a corrente de malha</li>
+						</ol>
+						<div class="display-flex justify-center items-center mt-7">
+							<div><p class="circuitikz-code" idCircuit="C_exemplo_CM" rescale="1.3"></p></div>
+							<div>
+								<p class="font-size-4 mb-5 ml-5 font-bold">Equações das malhas:</p>
+								<p class="font-size-5">\(\begin{cases} -V_{1}+R_{1} \cdot i_{a}+R_{3} \cdot \left(i_{a}-i_{b}\right)=0 \\[0.1pt]  \\ R_{3} \cdot \left(i_{b}-i_{a}\right)+R_{2} \cdot i_{b}+V_{2}=0 \end{cases}\)</p>
+							</div>
+						</div>
+					</div>						
+				</section>
+				<section>
+					<section>
+						<div class="slide-title">
+							<h1>EXercício - Correntes de malha</h1>
+						</div>
+						<div class="slide-content">
+							<p class="mb-5 font-size-4"><span class="font-bold">Exercício:</span> Calcule a potência do resistor de \(2\Omega\) pelo método das correntes de malhas</p>
+							<div class="display-flex flew-gap-4 content-center">
+								<div class="display-flex flex-col w-30">
+									<div class="input-group input-group-lg w-100">
+										<span class="input-prefix">\(V_{S}=\)</span>
+										<input id="ex_CM-VS" inputRef="ex_CM" type="text" class="input-field font-size-4" value="30">
+										<span class="input-suffix">\(V\)</span>
+									</div>
+									<div class="input-group input-group-lg w-100">
+										<span class="input-prefix">\(I_{S}=\)</span>
+										<input id="ex_CM-IS" inputRef="ex_CM" type="text" class="input-field font-size-4" value="16">
+										<span class="input-suffix">\(A\)</span>
+									</div>
+								</div>
+								<div>
+									<button style="width: 150px;" class="button button-primary" py-click="ex_CM">Calcular</button>
+								</div>
+								<div>
+
+									<button style="width: 150px;" class="button button-secondary" onclick="reset('ex_CM')" py-click="ex_CM">Reset</button>								
+								</div>
+							</div>
+							<div class="display-flex w-100 justify-center mt-8">
+								<div>
+									<p class="circuitikz-code" idCircuit="C_ex_CM_1" ref="ex_CM" rescale="1.5"></p>
+								</div>
+							</div>	
+							
+							<p class="font-size-5 mt-6 text-center">Resposta:</p>
+							<p class="equations font-size-5 mt-6" id="ex_CM-eq-7"></p>
+						</div>
+					</section>
+					<section>
+						<div class="slide-title">
+							<h1>EXercício - Correntes de malha</h1>
+						</div> 
+						<div class="slide-content">
+							<p class="mb-5 font-size-4"><span class="font-bold">Exercício:</span> Calcule a potência do resistor de \(2\Omega\) pelo método das correntes de malhas</p>
+							<div class="display-flex flex-col justify-center items-center">
+								<p class="circuitikz-code"  ref="ex_CM" idCircuit="C_ex_CM_2" rescale="1.4"></p>
+								<div class="display-flex w-100 justify-center mt-4 font-size-5">
+									<div class="text-center p-6">
+										<p class="text-box-5">Pelo método das tensões o número de equações é:</p>
+										<p class="mt-4">\(ne-1=4-1=3\)</p>
+									</div>
+									<div class="text-center p-6">
+										<p class="text-box-5">Pelo método das correntes das malhas o número de equações é:</p>
+										<p class="mt-4">\(be-(ne-1)=m=3\)</p>
+										<p class="mt-5">Porém uma das correntes já é conhecida:</p>
+										<p class="equations mt-4" id="ex_CM-eq-8"></p>										
+									</div>
+								</div>
+							</div>								
+						</div>						
+					</section>
+					<section>
+						<div class="slide-title">
+							<h1>EXercício - Correntes de malha</h1>
+						</div> 
+						<div class="slide-content">
+							<p class="circuitikz-code" ref="ex_CM" idCircuit="C_ex_CM_3" rescale="1.5"></p>
+						</div>						
+					</section>
+					<section>
+						<div class="slide-title">
+							<h1>EXercício - Correntes de malha</h1>
+						</div> 
+						<div class="slide-content">
+							<p class="circuitikz-code" ref="ex_CM" idCircuit="C_ex_CM_3" rescale="1.5"></p>
+						</div>						
+					</section>
+					<section>
+						<div class="slide-title">
+							<h1>EXercício - Correntes de malha</h1> 
+						</div>
+						<div class="slide-content">
+							<div class="display-flex flex-col flew-gap-7 justify-center items-center">
+								<p class="equations font-size-3" id="ex_CM-eq-1"></p>
+								<p class="equations font-size-3" id="ex_CM-eq-2"></p>
+								<p class="equations font-size-3" id="ex_CM-eq-3"></p>
+								<p class="equations font-size-3" id="ex_CM-eq-4"></p>
+								<p class="equations font-size-3" id="ex_CM-eq-5"></p>								
+								<p class="equations font-size-3" id="ex_CM-eq-6"></p>								
+							</div>
+						</div>					
+					</section>
+				</section>
+				<section>
+					<div class="slide-title">
+						<h1>Super Nó vs Super Malha</h1>
+					</div> 
+					<div class="slide-content">
+						<div class="display-flex w-100 flex-col justify-center items-center h-80">
+							<div class="display-flex flex-col">
+								<p class="font-size-5 mb-3 font-bold">Método das tensões dos nós:</p>
+								<p class="font-size-5">Super Nó: Quando uma fonte de tensão é compartilhada entre duas tensões dos nos</p>
+								<p class="font-size-5  mb-3  mt-6 font-bold">Método das correntes das malhas:</p>
+								<p class="font-size-5">Super Malha: Quando uma fonte de corrente é compartilhada por duas malhas</p>
+							</div>
+							<div class="display-flex justify-center mt-8">
+								<p class="circuitikz-code" idCircuit="C_super_no" rescale="1.4"></p>		
+								<p class="circuitikz-code" idCircuit="C_super_malha" rescale="1.4"></p>		
+							</div>
+						</div>
+					</div>						
+				</section>
+				<section>
+					<div class="slide-title">
+						<h1>Equivalencia de Fontes</h1>
+					</div> 
+					<div class="slide-content">							
+						<div class="display-flex flex-col items-center justify-center mt-5">							
+							<p class="circuitikz-code" idCircuit="C_fontes_equivalencia_independentes" rescale="1.3"></p>
+							<p class="circuitikz-code mt-5" idCircuit="C_fontes_equivalencia_dependentes" rescale="1.3"></p>						
+						</div>
+						<hr class="w-80 mt-8">
+						<p class="font-size-5 text-center">Equações para equilavências:</p>
+						<div class="display-flex w-100 justify-center items-center mt-5">
+							<p class="font-size-5">\(V_{s}=R \cdot I_{s}\)</p>
+							<p class="font-size-5 ml-7 mr-7">OU</p>
+							<p class="font-size-5"> \(I_{s}=\dfrac{V_{s}}{R}\)</p>
+						</div>						
+					</div>						
+				</section>
+				<section>
+					<section class="blink">
+						<div class="slide-title">
+							<h1>Exemplo - Conversão de Fontes</h1>
+						</div>
+						<div class="slide-content">
+							<p class="mb-5 font-size-4"><span class="font-bold">Exercício:</span> Utilize a o conceito de equivalência entre fontes para simplificar o circuito e calcular \(V_{o}\).</p>
+							<div class="display-flex flew-gap-4 content-center">
+								<div class="display-flex flex-col w-30">
+									<div class="input-group input-group-lg w-100">
+										<span class="input-prefix">\(I_{a}=\)</span>
+										<input id="input_Ia_ex_CF" inputRef="ex_CF" type="text" class="input-field font-size-4" value="3">
+										<span class="input-suffix">\(A\)</span>
+									</div>
+									<div class="input-group input-group-lg w-100">
+										<span class="input-prefix">\(V_{x}=\)</span>
+										<input id="input_Vx_ex_CF" inputRef="ex_CF" type="text" class="input-field font-size-4" value="12">
+										<span class="input-suffix">\(V\)</span>
+									</div>
+								</div>
+								<div>
+									<button style="width: 150px;" class="button button-primary" py-click="ex_CF">Calcular</button>
+								</div>
+								<div>
+
+									<button style="width: 150px;" class="button button-secondary" onclick="reset('ex_CF')" py-click="ex_CF">Reset</button>								
+								</div>
+							</div>
+							<div class="display-flex w-100 justify-center mt-8">
+								<div>
+									<p class="circuitikz-code" idCircuit="C_Transformacao_Fontes_1" ref="ex_CF" rescale="1.5"></p>
+								</div>
+							</div>	
+							
+							<p class="font-size-5 mt-6 text-center">Resposta:</p>												
+							<p class="equations font-size-5 mt-6" id="ex_CF-eq-1"></p>												
+						</div>
+					</section>	
+					<section>
+						<div class="slide-title">
+							<h1>Exemplo - Conversão de Fontes</h1>
+						</div>
+						<div class="slide-content">							
+							<div class="display-flex w-100 flex-col items-center mt-8 flew-gap-4">
+								<div>
+									<p class="circuitikz-code" idCircuit="C_Transformacao_Fontes_2" ref="ex_CF" rescale="1.3"></p>
+								</div>
+								<div class="mt-7">
+									<p class="font-size-5">Etapa 1:</p>
+									<p class="text-box-4 mt-4">Explicação</p>
+									<div class="equations font-size-5 mt-5" id="ex_CF-eq-2"></div>
+
+								</div>
+							</div>														
+						</div>
+					</section>	
+					<section>
+						<div class="slide-title">
+							<h1>Exemplo - Conversão de Fontes</h1>
+						</div>
+						<div class="slide-content">							
+							<div class="display-flex w-100 flex-col items-center mt-8 flew-gap-4">
+								<div>
+									<p class="circuitikz-code" idCircuit="C_Transformacao_Fontes_3" ref="ex_CF" rescale="1.3"></p>
+								</div>
+								<div class="mt-7">
+									<p class="font-size-5">Etapa 2:</p>
+									<p class="text-box-4 mt-4">Explicação</p>
+									<div class="equations font-size-5 mt-5" id="ex_CF-eq-3"></div>
+								</div>
+							</div>														
+						</div>
+					</section>	
+					<section>
+						<div class="slide-title">
+							<h1>Exemplo - Conversão de Fontes</h1>
+						</div>
+						<div class="slide-content">							
+							<div class="display-flex w-100 flex-col items-center mt-8 flew-gap-4">
+								<div>
+									<p class="circuitikz-code" idCircuit="C_Transformacao_Fontes_4" ref="ex_CF" rescale="1.3"></p>
+								</div>
+								<div class="mt-7">
+									<p class="font-size-5">Etapa 3:</p>
+									<p class="text-box-4 mt-4">Explicação</p>
+									<div class="equations font-size-5 mt-5" id="ex_CF-eq-4"></div>
+								</div>
+							</div>														
+						</div>
+					</section>	
+					<section>
+						<div class="slide-title">
+							<h1>Exemplo - Conversão de Fontes</h1>
+						</div>
+						<div class="slide-content">							
+							<div class="display-flex w-100 flex-col items-center mt-8 flew-gap-4">
+								<div>
+									<p class="circuitikz-code" idCircuit="C_Transformacao_Fontes_5" ref="ex_CF" rescale="1.3"></p>
+								</div>
+								<div class="mt-7">
+									<p class="font-size-5">Etapa 4:</p>
+									<p class="text-box-4 mt-4">Explicação</p>
+									<div class="equations font-size-5 mt-5" id="ex_CF-eq-5"></div>
+								</div>
+							</div>														
+						</div>
+					</section>													
+				</section>
+				<section>
+					<div class="slide-title">
+						<h1>Definição Th</h1>
+					</div> 
+					<div class="slide-content">	
+						<div class="display-flex justify-center items-center">
+							<p class="circuitikz-code" idCircuit="C_Teoria_Th_1" rescale="1.3"></p>
+							<p class="circuitikz-code" idCircuit="C_Teoria_Th_2" rescale="1.3"></p>
+							<p class="circuitikz-code" idCircuit="C_Teoria_Th_3" rescale="1.3"></p>
+						</div>	
+						<div class="display-flex justify-center items-center mt-6">
+							<p class="circuitikz-code" idCircuit="C_Teoria_Th_4" rescale="1.4"></p>
+							<p class="circuitikz-code" idCircuit="C_Teoria_Th_5" rescale="1.4"></p>
+							<p class="circuitikz-code" idCircuit="C_Teoria_Th_6" rescale="1.4"></p>
+						</div>
+					</div>						
+				</section>
+				<section>
+					<section>						
+						<div class="slide-title">
+							<h1>Exemplo - Equivalente de Thevenin</h1>
+						</div>
+						<div class="slide-content">
+							<p class="mb-5 font-size-4"><span class="font-bold">Exercício:</span> Exercício: Calcule o equivalente de Thévenin em relação aos terminais a e b do circuito abaixo</p>
+							<div class="display-flex flew-gap-4 content-center">
+								<div class="display-flex flex-col w-30">
+									<div class="input-group input-group-lg w-100">
+										<span class="input-prefix">\(V_{s}=\)</span>
+										<input id="input_Vs_Eq_Th" inputRef="Eq_Th" type="text" class="input-field font-size-4" value="12">
+										<span class="input-suffix">\(V\)</span>
+									</div>
+									<div class="input-group input-group-lg w-100">
+										<span class="input-prefix">\(|I_{s}=\)</span>
+										<input id="input_Is_Eq_Th" inputRef="Eq_Th" type="text" class="input-field font-size-4" value="8">
+										<span class="input-suffix">\(A\)</span>
+									</div>
+								</div>
+								<div>
+									<button style="width: 150px;" class="button button-primary" py-click="Eq_Th">Calcular</button>
+								</div>
+								<div>
+									<button style="width: 150px;" class="button button-secondary" onclick="reset('Eq_Th')" py-click="Eq_Th">Reset</button>								
+								</div>
+							</div>
+							<div class="display-flex w-100 justify-center mt-4">
+								<div>
+									<p class="circuitikz-code" idCircuit="C_Eq_Th_ex_1" ref="Eq_Th" rescale="1.3"></p>
+								</div>
+							</div>								
+							<p class="font-size-5 mt-6 text-center">Resposta:</p>	
+							<p class="equations font-size-5 mt-5" id="Eq_Th-eq-16"></p>
+						</div>
+					</section>
+					<section>
+						<div class="slide-title">
+							<h1>Exemplo - Equivalente de Thevenin</h1>
+						</div>
+						<div class="slide-content">							
+							<div class="display-flex mt-4 flew-gap-4">
+								<p class="circuitikz-code" idCircuit="C_Eq_Th_ex_2" ref="Eq_Th" rescale="1.2"></p>	
+								<div class="font-size-5 mt-5">
+									<p>Etapa 1:</p>
+									<p class="mt-4">Explicação</p>
+									<p class="equations font-size-5 mt-5" id="Eq_Th-eq-1"></p>
+									<p class="equations font-size-5 mt-5" id="Eq_Th-eq-2"></p>
+									<p class="equations font-size-5 mt-5" id="Eq_Th-eq-3"></p>
+									<p class="equations font-size-5 mt-5" id="Eq_Th-eq-4"></p>
+									<p class="equations font-size-5 mt-5" id="Eq_Th-eq-5"></p>
+								</div>
+							</div>												
+						</div>
+					</section>
+					<section>
+						<div class="slide-title">
+							<h1>Exemplo - Equivalente de Thevenin</h1>
+						</div>
+						<div class="slide-content">							
+							<div class="display-flex mt-4 flew-gap-4 items-start">
+								<p class="circuitikz-code" idCircuit="C_Eq_Th_ex_3" ref="Eq_Th" rescale="1.2"></p>	
+								<div class="font-size-5 mt-5">
+									<p>Etapa 1:</p>
+									<p class="mt-4">Explicação</p>
+									<p class="equations font-size-5 mt-5" id="Eq_Th-eq-5"></p>
+									<p class="equations font-size-5 mt-5" id="Eq_Th-eq-6"></p>
+									<p class="equations font-size-5 mt-5" id="Eq_Th-eq-7"></p>
+									<p class="equations font-size-5 mt-5" id="Eq_Th-eq-8"></p>
+									<p class="equations font-size-5 mt-5" id="Eq_Th-eq-9"></p>
+									<p class="equations font-size-5 mt-5" id="Eq_Th-eq-10"></p>
+									<p class="equations font-size-5 mt-5" id="Eq_Th-eq-11"></p>
+									<p class="equations font-size-5 mt-5" id="Eq_Th-eq-12"></p>
+									<p class="equations font-size-5 mt-5" id="Eq_Th-eq-13"></p>
+								</div>
+							</div>	
+						</div>
+					</section>
+					<section>
+						<div class="slide-title">
+							<h1>Exemplo - Equivalente de Thevenin</h1>
+						</div>
+						<div class="slide-content">							
+							<div class="display-flex mt-4 flew-gap-4">
+								<p class="circuitikz-code" idCircuit="C_Eq_Th_ex_4" ref="Eq_Th" rescale="1.2"></p>	
+								<div class="font-size-5 mt-5">
+									<p>Etapa 1:</p>
+									<p class="mt-4">Explicação</p>
+									<p class="equations font-size-5 mt-5" id="Eq_Th-eq-14"></p>
+									<p class="equations font-size-5 mt-5" id="Eq_Th-eq-15"></p>
+								</div>
+							</div>														
+						</div>
+					</section>						
+				</section>				
+				<section>
+					<div class="slide-title">
+						<h1>Super Posição</h1>
+					</div> 
+					<div class="slide-content">
+						<div class="display-flex flex-col justify-center h-80">
+							<p class="text-box-6 mb-7"><span class="font-bold">O princípio da superposição</span> que a tensão ou corrente em um ramo, pode ser obtida pela análise isolada das fontes independentes.</p>
+							<div class="ml-4 text-box-6">
+								<p class="mb-4 line-height-7"><span class="font-bold">Etapa 1</span> – “Desligue” as fontes independentes exceto uma. Calcule as correntes e/ou tensão nos ramos de interesse;</p>
+								<p class="mb-4 line-height-7"><span class="font-bold">Etapa 2</span> – Repita a Etapa 1 até que todas as fontes independentes tenham sido analisadas de forma isolada; e</p>
+								<p class="mb-4 line-height-7"><span class="font-bold">Etapa 3</span> – Some as tensões e/ou correntes ramo a ramo</p>						
+							</div>
+							<p class="font-size-5 mt-6 font-italic text-right">Ver exemplo a seguir</p>
+						</div>
+					</div>						
+				</section>
+				<section>
+					<section>						
+						<div class="slide-title">
+							<h1>Exemplo - Superposição</h1>
+						</div>
+						<div class="slide-content">
+							<p class="mb-5 font-size-4"><span class="font-bold">Exercício:</span> XXXX</p>
+							<div class="display-flex flew-gap-4 content-center">
+								<div class="display-flex flex-col w-30">
+									<div class="input-group input-group-lg w-100">
+										<span class="input-prefix">\(V_{1}=\)</span>
+										<input id="Ex_Superposicao-V1" inputRef="Ex_Superposicao" type="text" class="input-field font-size-4" value="12">
+										<span class="input-suffix">\(V\)</span>
+									</div>
+									<div class="input-group input-group-lg w-100">
+										<span class="input-prefix">\(V_{2}=\)</span>
+										<input id="Ex_Superposicao-V2" inputRef="Ex_Superposicao" type="text" class="input-field font-size-4" value="24">
+										<span class="input-suffix">\(V\)</span>
+									</div>
+									<div class="input-group input-group-lg w-100">
+										<span class="input-prefix">\(I_{1}=\)</span>
+										<input id="Ex_Superposicao-I1" inputRef="Ex_Superposicao" type="text" class="input-field font-size-4" value="6">
+										<span class="input-suffix">\(A\)</span>
+									</div>
+								</div>
+								<div>
+									<button style="width: 150px;" class="button button-primary" py-click="Ex_Superposicao">Calcular</button>
+								</div>
+								<div>
+									<button style="width: 150px;" class="button button-secondary" onclick="reset('Ex_Superposicao')" py-click="Ex_Superposicao">Reset</button>								
+								</div>
+							</div>
+							<div class="display-flex w-100 justify-center mt-4">
+								<div>
+									<p class="circuitikz-code" idCircuit="C_Ex_Superposicao_1" ref="Ex_Superposicao" rescale="1.4"></p>
+								</div>
+							</div>								
+							<p class="font-size-5 mt-6 mb-4 text-center">Resposta:</p>	
+							<p class="equations font-size-5 mt-5" id="Ex_Superposicao-eq-1"></p>
+
+							
+						</div>
+					</section>
+					<section>
+						<div class="slide-title">
+							<h1>Exemplo - Superposição</h1>
+						</div>
+						<div class="slide-content">							
+							<div class="display-flex mt-4 flew-gap-4">
+								<p class="circuitikz-code" idCircuit="C_Ex_Superposicao_2" ref="Ex_Superposicao" rescale="1.2"></p>									
+								<p class="circuitikz-code" idCircuit="C_Ex_Superposicao_3" ref="Ex_Superposicao" rescale="1.2"></p>
+								<p class="circuitikz-code" idCircuit="C_Ex_Superposicao_4" ref="Ex_Superposicao" rescale="1.2"></p>
+							</div>												
+						</div>
+					</section>
+					<section>
+						<div class="slide-title">
+							<h1>Exemplo - Superposição</h1>
+						</div>
+						<div class="slide-content">							
+							<div class="display-flex mt-4 flew-gap-4 items-start">
+								<p class="circuitikz-code" idCircuit="C_Ex_Superposicao_2" ref="Ex_Superposicao" rescale="1.4"></p>
+								<div class="font-size-5 mt-5 flex-grow-1">
+									<p>Etapa X:</p>
+									<p class="mt-4">Explicação</p>
+									<div class="w-100 text-center">
+										<p class="equations font-size-5 mt-5" id="Ex_Superposicao-eq-2"></p>
+										<p class="equations font-size-5 mt-5" id="Ex_Superposicao-eq-3"></p>
+									</div>
+								</div>
+							</div>
+						</div>
+					</section>
+					<section>
+						<div class="slide-title">
+							<h1>Exemplo - Superposição</h1>
+						</div>
+						<div class="slide-content">							
+							<div class="display-flex mt-4 flew-gap-4 items-start">
+								<p class="circuitikz-code" idCircuit="C_Ex_Superposicao_5" ref="Ex_Superposicao" rescale="1.4"></p>							
+								<div class="font-size-5 mt-5 flex-grow-1">
+									<p>Etapa X:</p>
+									<p class="mt-4">Explicação</p>
+									<div class="w-100 text-center">
+										<p class="equations font-size-5 mt-5" id="Ex_Superposicao-eq-4"></p>
+										<p class="equations font-size-5 mt-5" id="Ex_Superposicao-eq-5"></p>									
+										<p class="equations font-size-5 mt-5" id="Ex_Superposicao-eq-6"></p>
+										<p class="equations font-size-5 mt-5" id="Ex_Superposicao-eq-7"></p>
+									</div>
+								</div>
+							</div>														
+						</div>
+					</section>
+					<section>
+						<div class="slide-title">
+							<h1>Exemplo - Superposição</h1>
+						</div>
+						<div class="slide-content">							
+							<div class="display-flex mt-4 flew-gap-4 items-start">
+								<p class="circuitikz-code" idCircuit="C_Ex_Superposicao_6" ref="Ex_Superposicao" rescale="1.4"></p>							
+								<div class="font-size-5 mt-5 flex-grow-1">
+									<p>Etapa X:</p>
+									<p class="mt-4">Explicação</p>
+									<div class="w-100 text-center">
+										<p class="equations font-size-5 mt-6" id="Ex_Superposicao-eq-8"></p>
+										<p class="equations font-size-5 mt-6" id="Ex_Superposicao-eq-9"></p>
+										<p class="equations font-size-5 mt-6" id="Ex_Superposicao-eq-10"></p>
+										<p class="equations font-size-5 mt-6" id="Ex_Superposicao-eq-11"></p>
+									</div>
+								</div>
+							</div>														
+						</div>
+					</section>											
+				</section>								
+			</div>
+
+		</div>
+
+		<script>
+
+			const newDiv = document.createElement("variaveis");  // Usando uma div
+			newDiv.id = "HH";
+			document.body.appendChild(newDiv);  // Adicionando o novo elemento no DOM			
+
+			function teste() {
+				const a = document.getElementById("HH");
+				const obj = JSON.parse(a.getAttribute("data-json"));  // Pegando o JSON do atributo data-json
+				console.log(obj.R);  // Agora podemos acessar o conteúdo com o JSON
+			}
+		</script>
+
+		<!-- Monitor de ativação do Pyscript -->
+		<div hidden id="pyscript-ready"></div>
+		
+		
+		<!-- --------- Reveal Base SCRIPTS --------- -->
+		<script src="../../reveal.js-master/dist/reveal.js"></script>
+		<script src="../../reveal.js-master/plugin/zoom/zoom.js"></script>
+		<script src="../../reveal.js-master/plugin/notes/notes.js"></script>
+		<script src="../../reveal.js-master/plugin/search/search.js"></script>
+		<script src="../../reveal.js-master/plugin/markdown/markdown.js"></script>
+		<script src="../../reveal.js-master/plugin/highlight/highlight.js"></script>
+		<script src="../../reveal.js-master/plugin/math/math.js"></script>
+		<script src="../../reveal.js-master/plugin/title-footer/title-footer.js"></script>
+				
+
+		<!-- Latex render -->
+		<!-- <script src="https://i.upmath.me/latex.js"></script> -->		
+		<script src="../../assets/latex/latex.js"></script>
+		<!-- <script src="../../assets/latex/latex_upmath.js"></script> -->
+		<script src="//i.upmath.me/latex.js"></script>
+		
+
+		<!-- --------------------------- PYSCRIPT --------------------------- -->
+		<!-- Python files -->
+		<script type="py" src="main.py" config="pyscript.toml" id="pyscript-main"></script>
+		
+
+		<!-- PyScript Bootstrap -->
+		<script type="module" defer  src="https://pyscript.net/releases/2024.1.1/core.js" id="pyscript-core"></script>
+		
+
+		<!-- PyScript Bootstrap LOCAL -->
+		<!-- <script type="module" src="xxx/public/pyscript/core.js" id="pyscript-core"></script> -->
+		 <!-- Inserir no toml: interpreter = ["public/pyodide/pyodide.mjs"] -->
+				
+		<!-- <script src="https://cdn.plot.ly/plotly-latest.min.js"></script> -->
+		<script src="https://cdn.plot.ly/plotly-3.0.1.min.js" charset="utf-8"></script>
+
+
+		<!-- List of Circuits  -->
+		<script defer src="circuits.js"></script> 
+
+		<!-- Render Circuits  -->
+		<script defer src="../../js/renderCircuit.js"></script>
+
+		<!-- variaveis de inicialização -->
+		<script defer src="../../js/init.js"></script> 		
+
+		<!-- Base SCRIPT -->
+		<script defer src="../../js/general.js"></script> 
+
+	</body>
+</html>
+

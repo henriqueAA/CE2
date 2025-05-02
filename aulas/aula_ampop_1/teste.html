@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Apresentação - Convenção Passiva</title>
+  <style>
+   * {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background: linear-gradient(135deg, #0a1f44, #1c3b5a);
+  font-family: 'Segoe UI', sans-serif;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  position: relative;
+}
+
+.cover {
+  text-align: center;
+  color: #fff;
+  position: relative;
+  padding: 60px 80px;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 20px;
+  backdrop-filter: blur(8px);
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
+  z-index: 1;
+}
+
+.icon {
+  color: #00d1ff;
+  margin-bottom: 30px;
+}
+
+h1 {
+  font-size: 3rem;
+  margin-bottom: 10px;
+}
+
+.subtitle {
+  font-size: 1.4rem;
+  color: #aad0f0;
+}
+
+.author {
+  font-size: 1.1rem;
+  color: #aac5db;
+  margin-top: 8px;
+}
+
+/* Linhas animadas */
+.pulse-line {
+  position: absolute;
+  width: 200px;
+  height: 200px;
+  stroke: #00ffe1;
+  stroke-width: 2;
+  fill: none;
+  opacity: 0.2;
+  animation: pulse 3s ease-in-out infinite;
+}
+
+.top-left {
+  top: -50px;
+  left: -50px;
+}
+
+.bottom-right {
+  bottom: -50px;
+  right: -50px;
+}
+
+@keyframes pulse {
+  0%, 100% {
+    opacity: 0.2;
+    stroke-width: 2;
+  }
+  50% {
+    opacity: 0.6;
+    stroke-width: 4;
+  }
+}
+
+  </style>
+</head>
+<body>
+  <div class="cover">
+    <svg class="pulse-line top-left" viewBox="0 0 100 100">
+      <path d="M10,90 Q20,10 30,90 T50,90" />
+    </svg>
+    <svg class="pulse-line bottom-right" viewBox="0 0 100 100">
+      <path d="M90,10 Q70,90 60,10 T40,10" />
+    </svg>
+
+    <div class="icon">
+      <!-- Circuito com resistor no centro -->
+      <svg width="80" height="80" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+           stroke-linecap="round" stroke-linejoin="round">
+        <path d="M2 12h4"></path>
+        <path d="M18 12h4"></path>
+        <rect x="6" y="9" width="12" height="6" rx="2"></rect>
+        <circle cx="2" cy="12" r="1"></circle>
+        <circle cx="22" cy="12" r="1"></circle>
+      </svg>
+    </div>
+    <h1>Convenção Passiva</h1>
+    <p class="subtitle">Engenharia Biomédica · ICT-UNIFESP</p>
+    <p class="author">Professor Henrique Amorim</p>
+  </div>
+</body>
+</html>

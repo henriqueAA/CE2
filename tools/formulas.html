@@ -1,0 +1,519 @@
+<!DOCTYPE html>
+<html lang="en" data-bs-theme="dark">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Equations Creator</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <style>
+        .equation {
+            font-size: 30px;
+        }
+        .rawCode {
+            font-size: 18px;
+            color: #888;
+            white-space: pre-wrap;
+        }
+        .input-prefixo {
+            width: 200px;
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+
+<body>    
+    <div class="container mt-3" id="main-content">
+
+        <h4 class="mb-4">Digite sua equação</h4> 
+
+        <div class="d-flex">
+            
+            <div class="input-group input-prefixo">
+                <span class="input-group-text">Prefixo:</span>
+                <input type="text" class="form-control" id="prefixo" value="">
+            </div>
+            <div class="ms-4 mt-1">
+                <button type="button" class="btn btn-sm btn-light ms-2" id="btnSalvar">Salvar</button>
+                <button type="button" class="btn btn-sm btn-light ms-2" id="btnCarregar">Carregar</button>
+                
+            </div>
+
+        </div>
+
+        <ul class="nav nav-tabs" id="myTab" role="tablist">
+            <li class="nav-item" role="presentation">
+                <button class="nav-link active" id="tab1-tab" data-bs-toggle="tab" data-bs-target="#tab1" type="button" role="tab">Equações</button>
+            </li>
+            <li class="nav-item" role="presentation">
+                <button class="nav-link" id="tab2-tab" data-bs-toggle="tab" data-bs-target="#tab2" type="button" role="tab">Dicionário</button>
+            </li>
+        </ul>
+
+        <div class="tab-content mt-3" id="myTabContent">
+            <div class="tab-pane fade show active" id="tab1" role="tabpanel">
+                <div id="equation-row">
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <textarea id="input-equation-1" class="form-control" rows="3"></textarea>
+                            <p class="rawCode" id="codeRaw-1"></p>
+                        </div>
+                        <div class="col-sm-6">
+                            <p class="equation fs-4" id="equationShow-1"></p> 
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="tab-pane fade" id="tab2" role="tabpanel">
+                <textarea id="input-to-python" class="form-control" rows="10"></textarea>
+            </div>
+        </div>
+        <div hidden="hidden" id="sistema-de-equacoes-henrique-amorim"></div>
+
+    </div>
+
+    <script>
+        let idFocus = 1;
+        let history = [];
+        let historyIndex = -1;
+        let oneClick = true;
+        
+        // Função para atualizar os divs de equação
+        function updateEquationDivs(textareaId, content) {
+            const prefix = document.getElementById("prefixo").value || "ex2";
+            const eqNumber = textareaId.split("-")[2]; // Pega o número do textarea (1, 2, 3...)
+            const eqDiv = document.getElementById(`${prefix}-eq-${eqNumber}`);
+            
+            if (eqDiv) {
+                eqDiv.textContent = content;
+                // Se você quiser renderizar como LaTeX também:
+                eqDiv.innerHTML = `\\(${convertToLatex(content)}\\)`;
+                MathJax.typesetPromise([eqDiv]);
+            }
+        }
+    
+        function convertToLatex(input) {
+            let formattedCode = input;
+    
+            // Substituir frações antes de tratar os parênteses
+            formattedCode = formattedCode.replace(/\(([^()]+?)\)\/\(([^()]+?)\)/g, "\\dfrac{$1}{$2}");
+    
+            // Substituir (( e )) corretamente por \left( e \right)
+            formattedCode = formattedCode.replace(/\(\(/g, "\\left(").replace(/\)\)/g, "\\right)");
+    
+            // Substituir "*" por "\\cdot" para multiplicação
+            formattedCode = formattedCode.replace(/\*/g, " \\cdot ");
+    
+            // Substituir qualquer coisa entre aspas "X" por \left\lfloor X \right\rfloor
+            formattedCode = formattedCode.replace(/"([^"]+)"/g, "\\left\\lfloor $1 \\right\\rfloor");
+    
+            // Substituir múltiplas linhas por \begin{cases} ... \end{cases}
+            if (formattedCode.includes("\n")) {
+                formattedCode = "\\begin{cases} " + formattedCode.split("\n").join(" \\\\[0.1pt]  \\\\ ") + " \\end{cases}";
+            }
+    
+            return formattedCode;
+        }
+    
+        function updateEquation(inputElement, showElement, rawElement) {
+            let rawCode = inputElement.value;
+            inputElement.setAttribute("textoSalvo", rawCode);
+            let formattedCode = convertToLatex(rawCode);
+    
+            let equation = `\\(${formattedCode}\\)`;
+            showElement.innerHTML = equation;
+            rawElement.textContent = "Equation: " + equation;
+            
+            // Atualiza o div correspondente
+            updateEquationDivs(inputElement.id, rawCode);
+    
+            MathJax.typesetPromise([showElement]);
+        }
+    
+        function initializeNewEntry() {
+            const equationContainer = document.getElementById("equation-row");
+            let textareaCount = document.querySelectorAll('textarea[id^="input-equation-"]').length;
+    
+            const newRow = document.createElement('div');
+            newRow.innerHTML = `
+                <div class="row">
+                    <div class="col-sm-6">
+                        <textarea id="input-equation-${textareaCount+1}" class="form-control" rows="3"></textarea>
+                        <p class="rawCode" id="codeRaw-${textareaCount+1}"></p>
+                    </div>
+                    <div class="col-sm-6">
+                        <p class="equation fs-4" id="equationShow-${textareaCount+1}"></p> 
+                    </div>
+                </div>`;
+            equationContainer.appendChild(newRow);
+            
+            // Configurar os listeners para o novo textarea
+            const newTextarea = document.getElementById(`input-equation-${textareaCount+1}`);
+            const newEquationShow = document.getElementById(`equationShow-${textareaCount+1}`);
+            const newRawCodeShow = document.getElementById(`codeRaw-${textareaCount+1}`);
+            
+            newTextarea.addEventListener("input", function() {
+                if (historyIndex === -1 || newTextarea.value !== history[historyIndex]) {
+                    history.push(newTextarea.value);
+                    historyIndex = history.length - 1;
+                }
+                updateEquation(newTextarea, newEquationShow, newRawCodeShow);
+            });
+            
+            newTextarea.focus();        
+        }
+
+        // Adiciona o listener de keydown apenas uma vez
+        document.addEventListener("keydown", function (event) {
+            const inputEquation = document.getElementById("input-equation-" + idFocus);
+            
+            if (!inputEquation) return;
+            
+            if (event.ctrlKey && event.key === 'f') {
+                event.preventDefault();
+                const cursorPosition = inputEquation.selectionStart;
+                const currentText = inputEquation.value;
+                const newText = currentText.slice(0, cursorPosition) + "()/()" + currentText.slice(cursorPosition);
+                inputEquation.value = newText;
+                inputEquation.setSelectionRange(cursorPosition + 1, cursorPosition + 1);
+                inputEquation.dispatchEvent(new Event('input'));
+            }
+
+            if (event.ctrlKey && event.key === 'p') {
+                event.preventDefault();
+                const cursorPosition = inputEquation.selectionStart;
+                const currentText = inputEquation.value;
+                const newText = currentText.slice(0, cursorPosition) + "(())" + currentText.slice(cursorPosition);
+                inputEquation.value = newText;
+                inputEquation.setSelectionRange(cursorPosition + 2, cursorPosition + 2);
+                inputEquation.dispatchEvent(new Event('input'));
+            }
+
+            if (event.ctrlKey && event.key === 'z') {
+                event.preventDefault();
+                if (historyIndex > 0) {
+                    historyIndex--;
+                    inputEquation.value = history[historyIndex];
+                    inputEquation.dispatchEvent(new Event('input'));
+                }
+            }
+
+            if (event.ctrlKey && event.key === 'y') {
+                event.preventDefault();
+                if (historyIndex < history.length - 1) {
+                    historyIndex++;
+                    inputEquation.value = history[historyIndex];
+                    inputEquation.dispatchEvent(new Event('input'));
+                }
+            }
+            
+            if (event.ctrlKey && (event.key === '+' || event.key === '=')) {
+                event.preventDefault();
+                if (oneClick) {
+                    initializeNewEntry();
+                    oneClick = false;
+                    // Reset oneClick após um pequeno delay para evitar múltiplas execuções
+                    setTimeout(() => { oneClick = true; }, 100);
+                }                  
+            }
+        });
+
+        // Configura o listener de focus apenas para atualizar o idFocus
+        document.addEventListener('focus', function (event) {
+            if (event.target.tagName === 'TEXTAREA' && event.target.id.startsWith("input-equation-")) {
+                idFocus = event.target.id.split("-")[2];
+            }
+        }, true);
+
+        // Configura o listener de input para o textarea inicial
+        document.getElementById("input-equation-1").addEventListener("input", function() {
+            const inputEquation = document.getElementById("input-equation-1");
+            const equationShow = document.getElementById("equationShow-1");
+            const rawCodeShow = document.getElementById("codeRaw-1");
+            
+            if (historyIndex === -1 || inputEquation.value !== history[historyIndex]) {
+                history.push(inputEquation.value);
+                historyIndex = history.length - 1;
+            }
+            updateEquation(inputEquation, equationShow, rawCodeShow);
+        });
+
+        // Evento ao clicar na aba "Dicionário"
+        document.getElementById("tab2-tab").addEventListener("click", function () {
+            const inputToPython = document.getElementById("input-to-python");
+            let prefixoValue = document.getElementById("prefixo").value;
+
+            if(prefixoValue.length != 0){
+                prefixoValue = prefixoValue + ".";
+            }
+
+            const rawCodes = document.querySelectorAll('.rawCode');
+            inputToPython.value = "equations = {\n"; 
+            let nEQ = 1;
+            rawCodes.forEach(rawCode => {
+                let latexCode = rawCode.textContent.replace('Equation: ', '');                
+                latexCode = latexCode.replace(/\\left\\lfloor (.*?) \\right\\rfloor/g, '"+ repr(round(' + prefixoValue + '$1, 2)) +"');
+                
+                latexCode = latexCode.substring(2, latexCode.length - 2);
+                latexCode = latexCode.replaceAll("\\", "\\\\");
+                latexCode = "\\(" + latexCode + "\\)";
+                latexCode = '"eq-'+nEQ+'": "' + latexCode + '",';
+                nEQ++;
+                latexCode = "   " + latexCode;
+
+                inputToPython.value += latexCode + "\n";
+            });
+            inputToPython.value = inputToPython.value + "}";
+        });
+    </script>
+
+
+    <!-- Salvar e carregar arquivo -->
+    <script>
+        // Função para criptografar (agora compatível com Unicode)
+        function cifrar(texto) {
+            // Primeiro converte para UTF-8
+            const textoUTF8 = unescape(encodeURIComponent(texto));
+
+            // Aplica o deslocamento simples (Cifra de César)
+            let cifrado = textoUTF8.split('').map(c =>
+                String.fromCharCode(c.charCodeAt(0) + 5)
+            ).join('');
+
+            // Depois converte para Base64
+            return btoa(cifrado);
+        }
+
+        // Função para descriptografar
+        function decifrar(cifrado) {
+            // Converte de Base64
+            let texto = atob(cifrado);
+
+            // Reverte o deslocamento
+            texto = texto.split('').map(c =>
+                String.fromCharCode(c.charCodeAt(0) - 5)
+            ).join('');
+
+            // Converte de volta para Unicode
+            return decodeURIComponent(escape(texto));
+        }
+        async function salvarArquivoComDialogo(conteudo, nomePadrao = 'arquivo.txt') {
+            try {
+                // 1. Abre a caixa de diálogo para salvar arquivo
+                const handle = await window.showSaveFilePicker({
+                    suggestedName: nomePadrao,
+                    types: [{
+                        description: 'Equações - Henrique',
+                        accept: { 'text/plain': ['.txt'] }
+                    }]
+                });
+
+                // 2. Cria um stream para escrever o arquivo
+                const writable = await handle.createWritable();
+
+                // 3. Escreve o conteúdo
+
+                await writable.write(conteudo);
+
+                // 4. Fecha o arquivo
+                await writable.close();
+
+                console.log('Arquivo salvo com sucesso!');
+                return true;
+            } catch (err) {
+                // O usuário cancelou a operação
+                if (err.name === 'AbortError') {
+                    console.log('Salvamento cancelado pelo usuário');
+                } else {
+                    console.error('Erro ao salvar:', err);
+                }
+                return false;
+            }
+        }
+
+        // Como usar (deve ser chamado a partir de um evento do usuário, como click):
+        document.getElementById('btnSalvar').addEventListener('click', async () => {
+
+            const mainContent = document.getElementById("main-content");
+            const original = mainContent.innerHTML;
+            const criptografado = cifrar(original);
+
+            const texto = criptografado;
+            const salvou = await salvarArquivoComDialogo(texto, 'equacoes.txt');
+
+            if (salvou) {
+                alert('Arquivo salvo com sucesso!');
+            }
+        });
+
+        document.getElementById('btnCarregar').addEventListener('click', async () => {
+            try {
+                const fileInput = document.createElement('input');
+                fileInput.type = 'file';
+                fileInput.accept = '.txt';
+
+                fileInput.addEventListener('change', async (event) => {
+                    const file = event.target.files[0];
+                    if (!file) return;
+
+                    const reader = new FileReader();
+
+                    reader.onload = async (e) => {
+                        try {
+                            const descriptografado = decifrar(e.target.result);
+
+                            if (isHTML(descriptografado) && verificarInfo(descriptografado)) {
+                                const htmlFormatado = converterTextarea(descriptografado);
+
+                                // 1. Criar um novo container temporário
+                                const tempDiv = document.createElement('div');
+                                tempDiv.innerHTML = htmlFormatado;
+
+                                // 2. Extrair apenas o conteúdo que queremos preservar
+                                const equationsContent = tempDiv.querySelector('#equation-row').innerHTML;
+                                const pythonContent = tempDiv.querySelector('#input-to-python').value;
+                                const prefixValue = tempDiv.querySelector('#prefixo').value;
+
+                                // 3. Atualizar apenas as partes necessárias
+                                document.getElementById('equation-row').innerHTML = equationsContent;
+                                document.getElementById('input-to-python').value = pythonContent;
+                                document.getElementById('prefixo').value = prefixValue;
+
+                                // 4. Re-inicializar os listeners dos textareas
+                                reinicializarTextareas();
+                                formatarRawCode();
+
+                                alert('Conteúdo carregado com sucesso!');
+                            } else {
+                                alert("Arquivo inválido ou corrompido");
+                            }
+                        } catch (err) {
+                            console.error('Erro ao processar arquivo:', err);
+                            alert('Erro ao processar arquivo');
+                        }
+                    };
+
+                    reader.readAsText(file);
+                });
+
+                fileInput.click();
+            } catch (err) {
+                console.error('Erro:', err);
+                alert('Erro ao carregar arquivo');
+            }
+        });
+
+        function reinicializarTextareas() {
+            // Reconfigura todos os listeners de input
+            document.querySelectorAll('textarea[id^="input-equation-"]').forEach(textarea => {
+                const id = textarea.id.split('-')[2];
+                const equationShow = document.getElementById(`equationShow-${id}`);
+                const rawCodeShow = document.getElementById(`codeRaw-${id}`);
+
+                textarea.addEventListener('input', function () {
+                    updateEquation(textarea, equationShow, rawCodeShow);
+                });
+            });
+
+            // Re-inicializa o MathJax para renderizar as equações
+            if (typeof MathJax !== 'undefined') {
+                MathJax.typesetPromise();
+            }
+
+            // Re-inicializa os tabs do Bootstrap
+            if (typeof bootstrap !== 'undefined') {
+                const tabEls = document.querySelectorAll('button[data-bs-toggle="tab"]');
+                tabEls.forEach(tabEl => {
+                    new bootstrap.Tab(tabEl);
+                });
+            }
+        }
+
+        function isHTML(str) {
+            // Cria um elemento temporário
+            const temp = document.createElement('div');
+            temp.innerHTML = str;
+
+            // Verifica se há elementos HTML no primeiro nível
+            for (let i = 0; i < temp.childNodes.length; i++) {
+                if (temp.childNodes[i].nodeType === 1) { // Node.ELEMENT_NODE
+                    return true;
+                }
+            }
+            return false;
+        }
+        function verificarInfo(conteudo) {
+            const regex = /<div\s+hidden="hidden"\s+id="sistema-de-equacoes-henrique-amorim"\s*><\/div>/;
+            return regex.test(conteudo);
+        }
+
+        function converterTextarea(htmlString) {
+            // Usando regex para fazer a substituição diretamente na string
+            return htmlString.replace(
+                /<textarea([^>]*)textosalvo="([^"]*)"([^>]*)>/gi,
+                '<textarea$1$3>$2</textarea>'
+            );
+        }
+
+        function formatarRawCode() {
+
+            document.querySelectorAll("textarea").forEach(textarea => {
+                // 1. Simula a digitação do "a" (como antes)
+                textarea.value += "a";
+
+                // Dispara eventos associados (input, keydown, keyup)
+                const inputEvent = new Event("input", { bubbles: true });
+                textarea.dispatchEvent(inputEvent);
+
+                const keyDownEvent = new KeyboardEvent("keydown", {
+                    key: "a",
+                    code: "KeyA",
+                    bubbles: true
+                });
+                textarea.dispatchEvent(keyDownEvent);
+
+                const keyUpEvent = new KeyboardEvent("keyup", {
+                    key: "a",
+                    code: "KeyA",
+                    bubbles: true
+                });
+                textarea.dispatchEvent(keyUpEvent);
+
+                // 2. Agora, simula o BACKSPACE para deletar o "a"
+                const backspaceDownEvent = new KeyboardEvent("keydown", {
+                    key: "Backspace",
+                    code: "Backspace",
+                    keyCode: 8, // Código do Backspace
+                    bubbles: true
+                });
+
+                const backspaceUpEvent = new KeyboardEvent("keyup", {
+                    key: "Backspace",
+                    code: "Backspace",
+                    keyCode: 8,
+                    bubbles: true
+                });
+
+                // Dispara os eventos de Backspace
+                textarea.dispatchEvent(backspaceDownEvent);
+                textarea.dispatchEvent(backspaceUpEvent);
+
+                // Remove o último caractere ("a") do value
+                textarea.value = textarea.value.slice(0, -1);
+
+                // Dispara novamente o evento "input" para notificar a mudança
+                const newInputEvent = new Event("input", { bubbles: true });
+                textarea.dispatchEvent(newInputEvent);
+            });
+        }
+
+
+    </script>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+</body>
+</html>

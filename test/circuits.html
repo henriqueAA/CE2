@@ -1,0 +1,128 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        /* .circuitikz-code img{
+            width: calc(var(--latex-zoom, 1)*2*260.25pt)!important; 
+            height: calc(var(--latex-zoom, 1)*2*141.75pt)!important;
+            
+
+        } */
+    </style>
+
+</head>
+<body>
+
+    <script src="https://i.upmath.me/latex.js"></script>
+    
+    <div id="divCircuits">
+        <p class="circuitikz-code" id="C_1"></p>
+        <p class="circuitikz-code" id="C_2"></p>
+    </div>
+
+    <br><br><br>
+    <!-- <input type="button" onclick='trocaX({"circuits": [{"id": "C_2", "components": ["R_{12}", "V_{s}", "C_{1}"], "values": ["100", "30", "50"], "units": ["O", "V", "F"]}, {"id": "C_1", "components": ["A1", "B2", "C3"], "values": ["10", "20", "30"], "units": ["x", "y", "z"]}]})' value="BTN"> -->
+    <input type="button" onclick='trocaX({"circuits": [{"id": "C_2", "components": ["R_{12}", "V_{s}", "C_{1}", "t_{ }"], "values": ["100", "30", "50","0"], "units": ["\\Omega", "V", "\\mu F", "s"]}]})' value="BTN">
+    
+    <script>
+
+        function trocaX(jsonChanges) {
+            for (let i = 0; i < jsonChanges.circuits.length; i++) {
+                const circuit = jsonChanges.circuits[i];
+
+                try {
+                    // Verifica se o elemento existe antes de acessar o conteúdo
+                    let element = document.getElementById(circuit.id);
+                    if (!element) {
+                        throw new Error(`Elemento com ID ${circuit.id} não encontrado.`);
+                    }
+
+                    let code = element.innerHTML;
+                    //let code = encodeURIComponent(eval(`circuits.${circuit.id}`)); //recupera o circuito original
+
+                    // Verifica se components, values e units possuem o mesmo tamanho
+                    if (circuit.components.length !== circuit.values.length || circuit.components.length !== circuit.units.length) {
+                        throw new Error(`Tamanhos inconsistentes para components, values e units no circuito ${circuit.id}`);
+                    }
+
+                    let findArray = [];
+                    let replaceArray = [];
+
+                    // Itera sobre os componentes
+                    for (let j = 0; j < circuit.components.length; j++) {
+                        const component = circuit.components[j];
+                        const componentASCII = encodeURIComponent(component + "=");
+
+                        if (!code.includes(componentASCII)) { // verifica se o circuito possui o componente do JSON
+                            throw new Error(`Componente: ${component} não encontrado no circuito ${circuit.id}`);
+                        }
+
+                        const value = encodeURIComponent(circuit.values[j]);
+                        const unit = encodeURIComponent(circuit.units[j]);
+
+                        findArray.push(componentASCII);
+                        replaceArray.push(componentASCII+value+unit);
+
+                        //console.log(`Componente: ${component}, Valor: ${value}, Unidade: ${unit}`);
+                    }
+                    // console.log(findArray);
+                    // console.log(replaceArray);
+                    
+                    const newCode = multipleReplacesByPosition(code, findArray, replaceArray);
+                    document.getElementById(circuit.id).innerHTML = newCode;
+                    
+
+                } catch (error) {
+                    console.error(`Erro ao processar o circuito ${circuit.id}: ${error.message}`);
+                }
+            }
+        }
+
+        function stringToASCII(str) {
+            let asciiArray = [];
+            for (let i = 0; i < str.length; i++) {
+                asciiArray.push(str.charCodeAt(i));
+            }
+            return asciiArray;
+        }
+
+        function multipleReplacesByPosition(str, findArray, replaceArray) {
+    if (findArray.length !== replaceArray.length) {
+        console.error("Os vetores de busca e substituição devem ter o mesmo tamanho.");
+        return str;
+    }
+
+    for (let i = 0; i < findArray.length; i++) {
+        const find = findArray[i];
+        const replace = replaceArray[i];
+
+        // Expressão regular para encontrar a string e apagar caracteres até "%24"
+        const regex = new RegExp(`(${find})[^%]*%24`, "g");
+
+        // Substitui removendo os valores indesejados
+        str = str.replace(regex, `${replace}%24`);
+    }
+
+    return str;
+}
+
+
+        function troca() {
+            let code = document.getElementById('C_1').innerHTML;
+            console.log(code);
+            code = code.replace("R1%3D10K", "R1%3D200K");
+            document.getElementById('C_1').innerHTML = code;
+        }
+    </script>
+
+    <script src="circuits.js"></script>
+
+
+</body>
+</html>
+
+

@@ -1,0 +1,72 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #circuito img{
+            width: calc(var(--latex-zoom, 1)*2*260.25pt)!important; 
+            height: calc(var(--latex-zoom, 1)*2*141.75pt)!important;
+            
+
+        }
+    </style>
+
+</head>
+<body>
+
+    <script src="https://i.upmath.me/latex.js"></script>
+    <p id="circuito">$$
+    \begin{circuitikz}
+        \tikzstyle{every node}=[font=\large]
+        \draw[step=1.25cm,lightgray,very thin] (4.5,13.5)
+        \draw (8.75,12) to[closing switch] (11.25,12);
+        \draw (11.25,12) to[R,l={ \large R1=10K}] (13.75,12);
+        \draw (13.75,12) to[C,l={ \large 20$\mu$}] (13.75,9.5);
+        \draw (8.75,9.5) to[short] (13.75,9.5);
+        \draw (11.25,9.5) to (11.25,9.25) node[ground]{};
+        \draw (8.75,12) to[american voltage source,l={ \large 20V}] (8.75,9.5);
+        \draw [ color={rgb,255:red,255; green,0; blue,0}, -&gt;, &gt;=Stealth] (10.75,12) -- (11.25,12);
+        \draw (13.75,12) to[short, -o] (14.5,12) ;
+        \node [font=\large] at (10,12.5) {t=0s};
+        \node [font=\large] at (15.25,12) {$v_c(t)$};
+        \node [font=\large] at (11,11.5) {$i_c(t)$};
+    \end{circuitikz}
+    $$</p>
+    <p id="circuito2">
+        $$
+        
+
+        
+        \begin{circuitikz}
+        \tikzstyle{every node}=[font=\LARGE]
+        \draw (12,14.75) to[american voltage source] (12,12.75);
+        \draw [ line width=0.8pt](22,14.75) to[american voltage source] (22,12);
+        \draw [ line width=0.8pt](19,14.75) to[american voltage source] (19,12.75);
+        \draw [ line width=0.8pt](17,10.75) to[american voltage source] (17,7.75);
+        \end{circuitikz}
+       
+  
+        
+        $$
+    </p>
+    <br><br><br>
+    <input type="button" onclick="troca()" value="BTN">
+
+    <script>
+        
+        function troca(){
+            let code = document.getElementById('circuito').innerHTML;            
+            console.log(code);
+            code = code.replace("R1%3D10K", "R1%3D200K");
+            document.getElementById('circuito').innerHTML = code;        
+        }
+    </script>
+
+
+</body>
+</html>
+
+

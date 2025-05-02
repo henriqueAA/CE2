@@ -168,7 +168,7 @@ function ex_SG(action) {
 }
 
 
-function ex_DAC_refresh_input() {
+function ex_DAC_refresh_input(action) {
 
   const prefixo = "ex_DAC";
 
@@ -190,10 +190,10 @@ function ex_DAC_refresh_input() {
   if (toogleV4.checked) bitV4 = bit_on;
   
   equations = {
-    "label-V1": `\\(=${bitV1}V\\)`,
-    "label-V2": `\\(=${bitV2}V\\)`,
-    "label-V3": `\\(=${bitV3}V\\)`,
-    "label-V4": `\\(=${bitV4}V\\)`,    
+    "label-V1": `=${bitV1}V`,
+    "label-V2": `=${bitV2}V`,
+    "label-V3": `=${bitV3}V`,
+    "label-V4": `=${bitV4}V`,    
   }
 
   for (const key in equations) {

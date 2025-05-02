@@ -38,11 +38,11 @@ Reveal.initialize({
         RevealSearch,
         RevealMarkdown,
         RevealHighlight,
-        RevealMath.MathJax2,    
+        RevealMath.MathJax3,    
       ],  
       dependencies:
         [			
-          { src: '../../reveal.js-master/plugin/title-footer/title-footer.js', async: true, callback: function() { title_footer.initialize(); } }
+          { src: 'reveal.js-master/plugin/title-footer/title-footer.js', async: true, callback: function() { title_footer.initialize(); } }
         ]
   
     });

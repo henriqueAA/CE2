@@ -12,7 +12,7 @@
 		
 		<meta name="author" content="Henrique Amorim">
 
-		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="mobile-web-app-capable" content="yes">
 		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 
 		<meta name="viewport" content="width=device-width, initial-scale=1">
@@ -22,9 +22,7 @@
 		<link rel="stylesheet" href="../../reveal.js-master/dist/reset.css">		
 		<link rel="stylesheet" href="../../reveal.js-master/dist/reveal.css">
 		<link rel="stylesheet" href="../../reveal.js-master/dist/theme/white.css" id="theme">
-		<link rel="stylesheet" href="../../reveal.js-master/plugin/highlight/monokai.css">  <!-- Theme used for syntax highlighting of code -->
-		<link rel="stylesheet" href="../../reveal.js-master/plugin/title-footer/title-footer.css">
-
+		<link rel="stylesheet" href="../../reveal.js-master/plugin/highlight/monokai.css">  <!-- Theme used for syntax highlighting of code -->		
 
 		
 		<!-- Miscellaneous -->
@@ -32,8 +30,8 @@
 		
 		<!-- Base CSS -->
 		<!-- <link rel="stylesheet" href="../../css/general.css">			 -->
-		<link rel="stylesheet" href="layout.css">
-		<link rel="stylesheet" href="customReveal.css">
+		<link rel="stylesheet" href="../../css/general.css">
+		<link rel="stylesheet" href="../../css/customReveal.css">
 
 		<link rel="stylesheet" href="custom.css">		
 	</head>
@@ -539,14 +537,14 @@
 							<div class="flex-basis-30">
 								<div class="input-group input-group-lg w-80">
 									<span class="input-prefix">\(Bit\space ON=\)</span>
-									<input id="ex_DAC-Bit-ON" type="text" inputRef="ex_DAC" oninput="ex_DAC_refresh_input()" class="input-field" value="5">
+									<input id="ex_DAC-Bit-ON" type="text" inputRef="ex_DAC" oninput="ex_DAC_refresh_input(0)" class="input-field" value="5">
 									<span class="input-suffix">\(V\)</span>
 								</div>	
 								<div class="display-flex items-center mt-3">									
 									<div class="mr-4"><p>\(V_{1}\)</p></div>
 									<div>
 										<label class="switch">
-											<input id="ex_DAC_toogle_V1" type="checkbox" onclick="ex_DAC_refresh_input()">
+											<input id="ex_DAC_toogle_V1" type="checkbox" onclick="ex_DAC_refresh_input(0)">
 											<span class="slider round"></span>
 										</label>
 									</div>
@@ -556,7 +554,7 @@
 									<div class="mr-4"><p>\(V_{2}\)</p></div>
 									<div>
 										<label class="switch">
-											<input id="ex_DAC_toogle_V2" type="checkbox" onclick="ex_DAC_refresh_input()">
+											<input id="ex_DAC_toogle_V2" type="checkbox" onclick="ex_DAC_refresh_input(0)">
 											<span class="slider round"></span>
 										</label>
 									</div>
@@ -566,7 +564,7 @@
 									<div class="mr-4"><p>\(V_{3}\)</p></div>
 									<div>
 										<label class="switch">
-											<input id="ex_DAC_toogle_V3" type="checkbox" onclick="ex_DAC_refresh_input()">
+											<input id="ex_DAC_toogle_V3" type="checkbox" onclick="ex_DAC_refresh_input(0)">
 											<span class="slider round"></span>
 										</label>
 									</div>
@@ -576,7 +574,7 @@
 									<div class="mr-4"><p>\(V_{4}\)</p></div>
 									<div>
 										<label class="switch">
-											<input id="ex_DAC_toogle_V4" type="checkbox" onclick="ex_DAC_refresh_input()">
+											<input id="ex_DAC_toogle_V4" type="checkbox" onclick="ex_DAC_refresh_input(0)">
 											<span class="slider round"></span>
 										</label>
 									</div>

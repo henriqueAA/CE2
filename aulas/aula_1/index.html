@@ -1,62 +1,64 @@
 <script>
-
-	// Inicializar os exercícios
-	// const init_ex = ["ex1", "aula1_LK"];
-
 	var blockPyScript = false;
 </script>
 
 <!doctype html>
 <html lang="en">
 
-	<head>
-		<meta charset="utf-8">
+<head>
+	<meta charset="utf-8">
 
-		<title>Aulas - Prof. Henrique Amorim</title>
+	<title>Aulas - Prof. Henrique Amorim</title>
+
+	<meta name="author" content="Henrique Amorim">
+
+	<meta name="mobile-web-app-capable" content="yes">
+	<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<!-- --------- Reveal Base Styles --------- -->
+
+	<link rel="stylesheet" href="../../reveal.js-master/dist/reset.css">
+	<link rel="stylesheet" href="../../reveal.js-master/dist/reveal.css">
+	<link rel="stylesheet" href="../../reveal.js-master/dist/theme/white.css" id="theme">
+	<link rel="stylesheet" href="../../reveal.js-master/plugin/highlight/monokai.css">
+
+	<!-- Miscellaneous -->
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+
+	<!-- Base CSS -->
+
+	<link rel="stylesheet" href="../../css/general.css">
+	<link rel="stylesheet" href="../../css/customReveal.css">
+
+	<link rel="stylesheet" href="custom.css">
+</head>
+
+<body>
+
+
+	<dialog id="loading" class="hidden">
+		<div class="loading-content">
+			<div class="spinner"></div>
+			<p>Carregando...</p>
+		</div>
+	</dialog>
+
+	<div class="reveal" id="mainReveal">
 		
-		<meta name="author" content="Henrique Amorim">
+		<div class="slides">
 
-		<meta name="apple-mobile-web-app-capable" content="yes">
-		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+			<section data-state="no-toc-progress">
+				<div class="display-flex justify-center items-center h-100 ">
+					<img src="../../media/images-base/capa.png" class="capa" alt="">
+					<p class="titte-app">
+						Revisão de Circuitos 1						
+					</p>
+					<h1 style="display: none;">Prof. Henrique Amorim - UNIFESP - ICT - Engenharia Biomédica</h1>
+				</div>
 
-		<meta name="viewport" content="width=device-width, initial-scale=1">
-
-		<!-- --------- Reveal Base Styles --------- -->			
-		
-		<link rel="stylesheet" href="../../reveal.js-master/dist/reset.css">		
-		<link rel="stylesheet" href="../../reveal.js-master/dist/reveal.css">
-		<link rel="stylesheet" href="../../reveal.js-master/dist/theme/white.css" id="theme">
-		<link rel="stylesheet" href="../../reveal.js-master/plugin/highlight/monokai.css">  <!-- Theme used for syntax highlighting of code -->
-		<link rel="stylesheet" href="../../reveal.js-master/plugin/title-footer/title-footer.css">
-
-
-		
-		<!-- Miscellaneous -->
-		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
-		
-		<!-- Base CSS -->
-		<!-- <link rel="stylesheet" href="../../css/general.css">			 -->
-		<link rel="stylesheet" href="layout.css">
-		<link rel="stylesheet" href="customReveal.css">
-		 
-		
-
-	</head>
-
-	<body>
-		
-
-		<dialog id="loading">
-			<h1>Loading...</h1>
-		</dialog>
-
-		<div class="reveal" id="mainReveal">					
-			<div class="slides">
-				
-				<section data-state="no-toc-progress">
-					<h1  style="display: none;">Professor Henrique Amorim &#183; ICT-UNIFESP &#183; Eng. Biomédica</h1>
-					<h3  style="display: none;">[contato] [site]</h3>
-				</section>			
+			</section>		
 				<section>
 					<div class="slide-title">
 						<h1>Conceitos básicos</h1>
@@ -201,7 +203,7 @@
 						<div class="display-flex">
 							<div class="display-flex flex-col">
 								<div class="display-flex flex-col" style="width: 30vh!important;">
-									<div><img src="../../media/images/aula_1/Simon_Ohm.png" class="rounded-7"></div>									
+									<div><img src="media/Simon_Ohm.png" class="rounded-7"></div>									
 								</div>
 							</div>
 							<div class="flex-grow-1">								
@@ -227,7 +229,7 @@
 						<div class="display-flex">
 							<div class="display-flex flex-col">
 								<div class="display-flex flex-col" style="width: 30vh!important;">
-									<div><img src="../../media/images/aula_1/Kirchhoff.png" class="rounded-7"></div>									
+									<div><img src="media/Kirchhoff.png" class="rounded-7"></div>									
 								</div>
 							</div>
 							<div class="flex-grow-1">								
@@ -848,7 +850,7 @@
 				<section>
 					<section>
 						<div class="slide-title">
-							<h1>EXercício - Correntes de malha</h1>
+							<h1>Exercício - Correntes de malha</h1>
 						</div>
 						<div class="slide-content">
 							<p class="mb-5 font-size-4"><span class="font-bold">Exercício:</span> Calcule a potência do resistor de \(2\Omega\) pelo método das correntes de malhas</p>
@@ -1005,7 +1007,7 @@
 							</div>
 							<div class="display-flex w-100 justify-center mt-8">
 								<div>
-									<p class="circuitikz-code" idCircuit="C_Transformacao_Fontes_1" ref="ex_CF" rescale="1.5"></p>
+									<p class="circuitikz-code" idCircuit="C_Transformacao_Fontes_1" ref="ex_CF" rescale="1.3"></p>
 								</div>
 							</div>	
 							
@@ -1115,7 +1117,7 @@
 										<span class="input-suffix">\(V\)</span>
 									</div>
 									<div class="input-group input-group-lg w-100">
-										<span class="input-prefix">\(|I_{s}=\)</span>
+										<span class="input-prefix">\(I_{s}=\)</span>
 										<input id="input_Is_Eq_Th" inputRef="Eq_Th" type="text" class="input-field font-size-4" value="8">
 										<span class="input-suffix">\(A\)</span>
 									</div>
@@ -1329,23 +1331,23 @@
 
 		</div>
 
-		<script>
-
-			const newDiv = document.createElement("variaveis");  // Usando uma div
-			newDiv.id = "HH";
-			document.body.appendChild(newDiv);  // Adicionando o novo elemento no DOM			
-
-			function teste() {
-				const a = document.getElementById("HH");
-				const obj = JSON.parse(a.getAttribute("data-json"));  // Pegando o JSON do atributo data-json
-				console.log(obj.R);  // Agora podemos acessar o conteúdo com o JSON
-			}
-		</script>
 
 		<!-- Monitor de ativação do Pyscript -->
 		<div hidden id="pyscript-ready"></div>
-		
-		
+
+		<script>
+			// function resizeSlide() {
+			//   const slide = document.getElementById("slide-content");
+			//   const scaleX = window.innerWidth / 1280;
+			//   const scaleY = window.innerHeight / 720;
+			//   const scale = Math.min(scaleX, scaleY);
+			//   slide.style.transform = `scale(${scale})`;
+			// }
+		  
+			// window.addEventListener("resize", resizeSlide);
+			// window.addEventListener("load", resizeSlide);
+		  </script>
+		  
 		<!-- --------- Reveal Base SCRIPTS --------- -->
 		<script src="../../reveal.js-master/dist/reveal.js"></script>
 		<script src="../../reveal.js-master/plugin/zoom/zoom.js"></script>
@@ -1389,10 +1391,15 @@
 
 		<!-- variaveis de inicialização -->
 		<script defer src="../../js/init.js"></script> 		
+		<script defer src="../../js/revealInit.js"></script> 
 
 		<!-- Base SCRIPT -->
 		<script defer src="../../js/general.js"></script> 
+		<script defer src="../../js/reload.js"></script> 
+
+		
+		<script defer src="main.js"></script> 
+		
 
 	</body>
 </html>
-

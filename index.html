@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Aulas - Prof. Henrique Amorim</title>
+  <style>
+    :root {
+      --cor-fundo: #0f172a;
+      --cor-card: #1e293b;
+      --cor-link: #38bdf8;
+      --cor-hover: #7dd3fc;
+      --cor-texto: #f1f5f9;
+    }
+
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background-color: var(--cor-fundo);
+      color: var(--cor-texto);
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      padding: 2rem;
+      min-height: 100vh;
+    }
+
+    .container {
+      width: 100%;
+      max-width: 600px;
+    }
+
+    h1 {
+      text-align: center;
+      margin-bottom: 1.5rem;
+    }
+
+    ul.link-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    ul.link-list li {
+      background-color: var(--cor-card);
+      margin: 0.5rem 0;
+      border-radius: 10px;
+      transition: transform 0.2s;
+    }
+
+    ul.link-list li:hover {
+      transform: scale(1.02);
+    }
+
+    ul.link-list a {
+      display: block;
+      text-decoration: none;
+      padding: 1rem;
+      color: var(--cor-link);
+      font-size: 1.1rem;
+      transition: color 0.2s;
+    }
+
+    ul.link-list a:hover {
+      color: var(--cor-hover);
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <ul class="link-list">
+      <li><a href="aulas/aula_apresentacao/index.html" target="_blank">Apresentação</a></li>
+      <li><a href="aulas/aula_1/index.html" target="_blank">Aula 1</a></li>
+      <li><a href="aulas/aula_ampop_1/index.html" target="_blank">AmpOps</a></li>      
+    </ul>
+  </div>
+</body>
+</html>

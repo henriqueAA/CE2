@@ -1373,6 +1373,8 @@ ol.letters-list li::before {content: counter(custom-counter, lower-alpha) ") ";}
     user-select: none;
     vertical-align: middle;
     font-size: var(--text-3);
+    opacity: 0.8;
+
 }
 
 .button:hover {
@@ -1406,30 +1408,30 @@ ol.letters-list li::before {content: counter(custom-counter, lower-alpha) ") ";}
 
 /* Primário (Azul) */
 .button-primary {
-    background-color: var(--blue-primary-500);
+    background-color: var(--blue-primary-600);
     color: var(--text-inverted);
 }
 
 .button-primary:hover {
-    background-color: var(--blue-primary-600);
+    background-color: var(--blue-primary-700);
 }
 
 .button-primary:active {
-    background-color: var(--blue-primary-700);
+    background-color: var(--blue-primary-800);
 }
 
 /* Secundário (Cinza) */
 .button-secondary {
-    background-color: var(--gray-100);
+    background-color: var(--gray-200);
     color: var(--text-primary);
 }
 
 .button-secondary:hover {
-    background-color: var(--gray-200);
+    background-color: var(--gray-300);
 }
 
 .button-secondary:active {
-    background-color: var(--gray-300);
+    background-color: var(--gray-400);
 }
 
 /* Sucesso (Verde) */

@@ -9,7 +9,7 @@ function toolBar(){
 
   const logoIcon = document.createElement("div");
   logoIcon.classList.add("logo");
-  logoIcon.innerHTML = "<i class='fa-solid fa-microchip'></i>";
+  logoIcon.innerHTML = "<i class='fa-solid fa-lightbulb'></i>";
 
   const allSlideTitle = document.querySelectorAll(".slide-title h1");
   allSlideTitle.forEach((item) => {

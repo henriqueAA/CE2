@@ -1,6 +1,6 @@
 
 .reveal{
-    max-width: 1500px;
+    max-width: 1550px;
     margin-inline: auto!important;
     background-color: #FFF!important;
     box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
@@ -52,6 +52,7 @@
 .reveal .slides{
     margin: 0!important;
     width: 99%!important;
+    height: 100vh!important;
     
 }
 
@@ -62,7 +63,7 @@
     top: 0;
     left: 0;
     width: 100%;
-    padding-left: 0;    
+    padding-left: 0;         
     margin-top: 1.5rem;
     padding-bottom: 10px;
     text-align: left;
@@ -83,6 +84,7 @@
 
 .reveal .slide-title h1 div.icons {
     float: right;  
+    padding-right: 20px;
 } 
 
 .reveal .slide-title h1 div.icons i {
@@ -98,11 +100,13 @@
     float: left;  
     padding-right: 30px;
     padding-left: 12px;
+
 }
 
 .reveal .slide-title h1 div.logo i {
-    font-size: 2.6rem;
-    color: var(--blue-secondary-600);
+  font-size: 1.6vw !important;
+  color: var(--blue-secondary-600);
+  margin-top: 3px;
 }
 
 .reveal .slides section.present .slide-content {
@@ -122,7 +126,7 @@
     overflow-anchor: none;
     box-sizing: border-box;
     
-    padding: 2rem;
+    padding: 2rem 3.8rem 0 1rem;
 
     width: 98% !important;
     max-width: 100% !important;
@@ -157,24 +161,7 @@
   
     margin: 0 !important;
   } */
-  .slide-container {
-    aspect-ratio: 16 / 9;
-    width: 90vw; /* ou 90vh, dependendo da estratégia */
-    max-height: 90vh;
-    background: #004488;
-    color: white;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    box-shadow: 0 0 20px rgba(0,0,0,0.4);
-    border-radius: 10px;
-  }
 
-  .conteudo {
-    text-align: center;
-    font-size: calc(1rem + 1vw);
-    padding: 2rem;
-  }
 
   h1 {
     font-size: calc(2rem + 1vw);
@@ -188,7 +175,7 @@
     top:0;
     left: 0;
     height: 100%!important;
-    width:3vw;   
+    width:2.5vw;   
     background: rgb(255, 255, 255);
     background: linear-gradient(0deg, rgba(255, 255, 255, 1) 5%, rgba(38, 65, 108,0.5) 50%, rgba(255, 255, 255, 1) 95%);
     margin-left: calc(-1.2*var(--space-8))!important;
@@ -204,7 +191,7 @@
     
     position: absolute;
     left:0;
-    bottom:0;
+    bottom:-100px;
     height: 100%!important;
     width:100%;   
     background: rgb(255, 255, 255);
@@ -215,9 +202,6 @@
     z-index: -10;
 }
 
-.reveal .slide-content p, .reveal .slide-content ul{
-    line-height: var(--space-6);
-}
 
 #loading {
     font-size: 40px;

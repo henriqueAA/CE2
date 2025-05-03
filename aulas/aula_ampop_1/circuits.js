@@ -25,20 +25,14 @@ circuits.C_exemplo_PID_1 = String.raw`
 \resizebox{1\textwidth}{!}{%
 \begin{circuitikz}
 \tikzstyle{every node}=[font=\LARGE]
-\draw [ line width=0.7pt](7,12) node[op amp,scale=1, yscale=-1 ] (opamp1) {};
-\draw [ line width=0.7pt](opamp1.+) to[short] (5.5,12.5);
-\draw [ line width=0.7pt] (opamp1.-) to[short] (5.5,11.5);
 \draw [ line width=0.7pt](8.2,12) to[short](8.5,12);
 \draw [ line width=0.7pt](3,12.5) to[R] (5.5,12.5);
 \draw [ line width=0.7pt](5.5,13.75) to[R] (8,13.75);
-\draw [ line width=0.7pt](7,12) node[op amp,scale=1, yscale=-1 ] (opamp2) {};
-\draw [ line width=0.7pt](opamp2.+) to[short] (5.5,12.5);
-\draw [ line width=0.7pt] (opamp2.-) to[short] (5.5,11.5);
+\draw [ line width=0.7pt](7,12) node[op amp,scale=1, yscale=1 ] (opamp2) {};
+\draw [ line width=0.7pt](opamp2.-) to[short] (5.5,12.5);
+\draw [ line width=0.7pt] (opamp2.+) to[short] (5.5,11.5);
 \draw [ line width=0.7pt](8.2,12) to[short](8.5,12);
 \draw [ line width=0.7pt](3,8.5) to[R] (5.5,8.5);
-\draw [ line width=0.7pt](7,12) node[op amp,scale=1, yscale=-1 ] (opamp2) {};
-\draw [ line width=0.7pt](opamp2.+) to[short] (5.5,12.5);
-\draw [ line width=0.7pt] (opamp2.-) to[short] (5.5,11.5);
 \draw [ line width=0.7pt](8.2,12) to[short](8.5,12);
 \draw [ line width=0.7pt](5.5,5.75) to[R] (8,5.75);
 \draw [line width=0.7pt](5.5,3.5) to (5.5,3.25) node[sground]{};
@@ -80,9 +74,6 @@ circuits.C_exemplo_PID_1 = String.raw`
 \draw [ line width=0.7pt](opamp2.+) to[short] (12,7);
 \draw [ line width=0.7pt] (opamp2.-) to[short] (12,8);
 \draw [ line width=0.7pt](14.7,7.5) to[short](15,7.5);
-\draw [ line width=0.7pt](7,12) node[op amp,scale=1] (opamp2) {};
-\draw [ line width=0.7pt](opamp2.+) to[short] (5.5,11.5);
-\draw [ line width=0.7pt] (opamp2.-) to[short] (5.5,12.5);
 \draw [ line width=0.7pt](8.2,12) to[short](8.5,12);
 \end{circuitikz}
 }%
@@ -138,33 +129,62 @@ circuits.C_SG = String.raw`
 \centering
 \resizebox{1\textwidth}{!}{%
 \begin{circuitikz}
-\tikzstyle{every node}=[font=\Large]
-\draw [ line width=0.7pt](8,8.75) to[R] (11,11.75);
-\draw [ line width=0.7pt](11,11.75) to[R] (14,8.75);
-\draw [ line width=0.7pt](8,8.75) to[R] (11,5.75);
-\draw [ line width=0.7pt](11,5.75) to[R] (14,8.75);
-\draw [ line width=0.7pt](6,11.75) to[american voltage source] (6,5.75);
-\draw [ line width=0.7pt](6,11.75) to[R] (11,11.75);
-\draw [ line width=0.7pt](6,5.75) to[short] (11,5.75);
-\draw [ line width=0.7pt](19.25,8.25) node[op amp,scale=1] (opamp2) {};
-\draw [ line width=0.7pt](opamp2.+) to[short] (17.75,7.75);
-\draw [ line width=0.7pt] (opamp2.-) to[short] (17.75,8.75);
-\draw [ line width=0.7pt](20.45,8.25) to[short](20.75,8.25);
-\draw [ line width=0.7pt](15,7.75) to[R] (17.75,7.75);
-\draw [ line width=0.7pt](17.5,7.75) to[R] (17.5,5.75);
-\draw [ line width=0.7pt](15,8.75) to[R] (17.75,8.75);
-\draw [ line width=0.7pt](17.5,10.25) to[R] (20,10.25);
-\draw [ line width=0.7pt](17.5,10.25) to[short] (17.5,8.75);
-\draw [ line width=0.7pt](20,10.25) to[short] (20,8.25);
-\draw [ line width=0.7pt](20.75,8.25) to[short, -o] (21,8.25) ;
-\draw [line width=0.7pt](17.5,5.75) to (17.5,5.25) node[sground]{};
-\draw [line width=0.7pt](11,5.75) to (11,5.25) node[sground]{};
-\draw [ line width=0.7pt](14,8.75) to[short] (15,8.75);
-\draw [ line width=0.7pt](8,8.75) to[short] (12,8.75);
-\draw [ line width=0.7pt](12,8.75) to[short] (12,8.25);
-\draw [ line width=0.7pt](12,8.25) to[crossing] (15,8.25);
-\draw [ line width=0.7pt](15,8.25) to[short] (15,7.75);
-\node [font=\Large] at (13.25,10.5) {SG};
+\tikzstyle{every node}=[font=\LARGE]
+\draw [ line width=0.8pt](8,9.75) to[american voltage source] (8,2.75);
+\draw [ line width=0.8pt](12,9.75) to[R] (12,5.75);
+\draw [ line width=0.8pt](16,9.75) to[R] (16,5.75);
+\draw [ line width=0.8pt](16,5.75) to[european resistor] (16,2.75);
+\draw [ line width=0.8pt](8,9.75) to[short] (16,9.75);
+\draw [line width=0.8pt](8,2.75) to (8,2.25) node[sground]{};
+\draw [line width=0.8pt](12,2.75) to (12,2.25) node[sground]{};
+\draw [line width=0.8pt](16,2.75) to (16,2.25) node[sground]{};
+\draw [ line width=0.8pt](21,7.75) to[R] (24,7.75);
+\draw [ line width=0.8pt](21,4.75) to[R] (24,4.75);
+\draw [ line width=0.8pt](24,4.75) to[R] (24,2.75);
+\draw [line width=0.8pt](24,2.75) to (24,2.25) node[sground]{};
+\draw [ line width=0.8pt](24,7.75) to[short] (25,7.75);
+\draw [ line width=0.8pt](24,9.75) to[R] (27.25,9.75);
+\draw [ line width=0.8pt](24,9.75) to[short] (24,7.75);
+\draw [ line width=0.8pt](27.25,9.75) to[short] (27.25,7.25);
+\draw [ line width=0.8pt](12,5.75) to[R] (12,2.75);
+\draw [ line width=0.8pt](24.5,6.75) to[short] (24,6.75);
+\draw [ line width=0.8pt](24,6.75) to[short] (24,4.75);
+\draw [ line width=0.8pt](27.5,7.25) to[short, -o] (28,7.25) ;
+\draw [ line width=0.8pt](16,5.75) to[short, -o] (14.75,5.75) ;
+\draw [ line width=0.8pt](27.7,7.25) to[short](28,7.25);
+\draw [ line width=0.8pt](27.7,7.25) to[short](28,7.25);
+\draw [ line width=0.8pt](17.5,5.75) to[short] (17.5,7.25);
+\draw [ line width=0.8pt](17.5,7.25) to[short] (18,7.25);
+\draw [ line width=0.8pt](18,8.25) to[short] (17.5,8.25);
+\draw [ line width=0.8pt](17.5,8.25) to[short] (17.5,9.75);
+\draw [ line width=0.8pt](17.5,9.75) to[short] (21,9.75);
+\draw [ line width=0.8pt](21,9.75) to[short] (21,7.75);
+\draw [ line width=0.8pt](12,5.75) to[short, -o] (13.25,5.75) ;
+\draw [ line width=0.8pt](12.75,5.75) to[short] (12.75,0.75);
+\draw [ line width=0.8pt](21.2,7.75) to[short](21.5,7.75);
+\draw [ line width=0.8pt](18,1.75) to[short] (17.5,1.75);
+\draw [ line width=0.8pt](17.5,1.75) to[short] (17.5,3.25);
+\draw [ line width=0.8pt](17.5,3.25) to[short] (21,3.25);
+\draw [ line width=0.8pt](21,1.25) to[short] (21,2.75);
+\draw [ line width=0.8pt](21,2.75) to[short] (21,4.75);
+\draw [ line width=0.8pt](16,5.75) to[short] (17.5,5.75);
+\draw [ line width=0.8pt](18,0.75) to[short] (12.75,0.75);
+\draw [ line width=0.8pt](20.7,1.25) to[short](21,1.25);
+\draw [ line width=0.8pt](20.7,1.25) to[short](21,1.25);
+\draw [ line width=0.8pt](27.2,7.25) to[short](27.5,7.25);
+\draw [ line width=0.8pt](19.5,1.25) node[op amp,scale=1] (opamp2) {};
+\draw [ line width=0.8pt](opamp2.+) to[short] (18,0.75);
+\draw [ line width=0.8pt] (opamp2.-) to[short] (18,1.75);
+\draw [ line width=0.8pt](20.7,1.25) to[short](21,1.25);
+\draw [ line width=0.8pt](19.5,7.75) node[op amp,scale=1] (opamp2) {};
+\draw [ line width=0.8pt](opamp2.+) to[short] (18,7.25);
+\draw [ line width=0.8pt] (opamp2.-) to[short] (18,8.25);
+\draw [ line width=0.8pt](20.7,7.75) to[short](21,7.75);
+\draw [ line width=0.8pt](26,7.25) node[op amp,scale=1] (opamp2) {};
+\draw [ line width=0.8pt](opamp2.+) to[short] (24.5,6.75);
+\draw [ line width=0.8pt] (opamp2.-) to[short] (24.5,7.75);
+\draw [ line width=0.8pt](27.2,7.25) to[short](27.5,7.25);
+\node [font=\Large] at (17,4.25) {$R_{SG}$};
 \end{circuitikz}
 }%
 \label{fig:my_label}
